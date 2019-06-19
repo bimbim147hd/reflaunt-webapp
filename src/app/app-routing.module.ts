@@ -12,13 +12,18 @@ const appRoutes: Routes = [
     children: [
       {
         path: '',
-        component: HomepageComponent
+        redirectTo: 'wardrobe',
+        pathMatch: 'full'
       },
+      // {
+      //   path: 'product',
+      //   loadChildren: './components/product/product.module#ProductModule'
+      // },
       {
-        path: 'product',
-        loadChildren: './components/product/product.module#ProductModule'
+        path: 'wardrobe',
+        loadChildren: './components/wardrobe/wardrobe.module#WardrobeModule'
       }
-    ],
+    ]
     // canActivate: [AuthGuardService]
   },
   {
