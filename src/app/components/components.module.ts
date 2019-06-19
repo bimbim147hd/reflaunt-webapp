@@ -9,9 +9,10 @@ import { BaseComponent } from './base.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { DirectivesModule } from '../common/directives/directives.module';
 import { PipesModule } from '@vicoders/angular';
+import { WardrobeComponent } from './wardrobe/wardrobe.component';
 
 @NgModule({
-  declarations: [PageNotFoundComponent, MainComponent, HomepageComponent, BaseComponent],
+  declarations: [PageNotFoundComponent, MainComponent, HomepageComponent, BaseComponent, WardrobeComponent],
   imports: [CommonModule, RouterModule, FormsModule, BrowserAnimationsModule, DirectivesModule, PipesModule],
   providers: [],
   exports: []

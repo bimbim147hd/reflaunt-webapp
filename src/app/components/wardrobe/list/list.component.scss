@@ -1,0 +1,149 @@
+@import 'font';
+
+.wardrobe {
+  padding-top: 80px;
+  .wardrobe__left-col {
+    margin-top: 90px;
+    width: 2px;
+    min-height: 766px;
+    border-right: solid 1px #dbdbdb;
+    .title {
+      font-family: $playfair-display;
+      font-size: $large;
+      font-weight: bold;
+      line-height: normal;
+      letter-spacing: 0.7px;
+      color: #000000;
+    }
+    .box {
+      margin-top: 42px;
+      .box-number {
+        font-family: $lato-regular;
+        font-size: $normal;
+        font-weight: bold;
+        line-height: normal;
+        letter-spacing: 0.3px;
+        color: #3a3a3a;
+        margin-bottom: 6px;
+      }
+      .box-number.symbol {
+        padding-left: 10px;
+        position: relative;
+        &:before {
+          position: absolute;
+          content: '$';
+          font-family: $lato-regular;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: normal;
+          letter-spacing: 0.3px;
+          color: #3a3a3a;
+          left: 0;
+        }
+      }
+      .box-description {
+        font-family: $lato-regular;
+        font-size: $small;
+        font-weight: 600;
+        line-height: normal;
+        color: #6d7278;
+      }
+    }
+  }
+  .wardrobe__right-col {
+    margin-top: 90px;
+    padding-left: 70px;
+    .nav-main {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #dee2e6;
+      .nav {
+        width: 302px;
+        border: none;
+      }
+      .nav-tabs .nav-item.show .nav-link,
+      .nav-tabs .nav-link.active {
+        font-weight: 900;
+        color: #000000;
+        border-bottom: solid 2px #000000;
+      }
+      .nav-tabs .nav-link {
+        padding: 5px 0;
+        font-family: $lato-regular;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.4px;
+        color: #8f8f8f;
+        border: none;
+        text-align: left;
+      }
+    }
+    .tab-content .tab-pane .products {
+      min-height: 200px; /* height given for illustration */
+      display: flex;
+      flex-flow: row wrap;
+      position: relative;
+      .child {
+        position: relative;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.17);
+        background-color: #ffffff;
+        height: 341px;
+        flex: 0 1 calc(33.33% - 20px); /* <-- adjusting for margin */
+        text-align: center;
+        img {
+          margin-top: 35px;
+        }
+        .product--name {
+          position: relative;
+          font-family: $playfair-display;
+          font-size: 16px;
+          font-weight: bold;
+          line-height: normal;
+          color: #000000;
+          margin-top: 50px;
+          &:before {
+            position: absolute;
+            content: '';
+            width: 14px;
+            height: 1px;
+            border: solid 1px #000000;
+            bottom: -12px;
+            left: 113px;
+          }
+        }
+        .product--info {
+          font-family: $lato-regular;
+          font-size: $small;
+          line-height: normal;
+          color: #000000;
+          margin-top: 25px;
+        }
+        .product--state {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          padding: 20px;
+          background-color: #90c25d;
+          color: #ffffff;
+          .status,
+          .price {
+            font-family: $lato-regular;
+            font-size: $small;
+            font-weight: bold;
+            line-height: normal;
+            letter-spacing: 0.5px;
+            float: left;
+          }
+          .price {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: normal;
+            float: right;
+          }
+        }
+      }
+    }
+  }
+}
