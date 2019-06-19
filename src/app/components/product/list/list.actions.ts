@@ -1,0 +1,10 @@
+export const HOMEPAGE_COMPONENT = 'HOMEPAGE_COMPONENT';
+export const FETCH_PRODUCT_LISTPRODUCT_REQUESTED = 'FETCH_PRODUCT_LISTPRODUCT_REQUESTED';
+export const FETCH_PRODUCT_LISTPRODUCT_SUCCESSED = 'FETCH_PRODUCT_LISTPRODUCT_SUCCESSED';
+
+export const fetchListProductRequested = (payload?) => {
+  return {
+    type: FETCH_PRODUCT_LISTPRODUCT_REQUESTED,
+    data: payload
+  };
+};

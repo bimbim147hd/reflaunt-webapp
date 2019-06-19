@@ -1,0 +1,227 @@
+<div id="demo" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ng-container *ngIf="payload.sliders.fetched; else loading">
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+      <ng-container *ngFor="let slider of payload.sliders.data.items; let i = index">
+        <div class="carousel-item" [ngClass]="{ active: i === 0 }">
+          <div class="home-page--header" [style.background-image]="'url(' + slider.image + ')'">
+            <h1>
+              {{ slider.title }}
+            </h1>
+          </div>
+
+          <div class="submit-btn">
+            <a href="{{ slider.action_url }}" class="vc-btn vc-btn--zoom">{{ slider.action_text }}</a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+
+<div class="intro-homepage">
+  <div class="intro-main">
+    <div class="container paralax">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div class="intro-item">
+            <div class="intro-item-icon"><span class="glyphicon glyphicon-star-empty"></span></div>
+            <div class="intro-item-title"><p>Website chuẩn SEO</p></div>
+            <div class="intro-item-content">
+              <p>
+                Website được thiết kế bằng Wordpess - được cài đặt những plugin SEO, thân thiện với mobile di động và bộ máy tìm kiếm, được
+                Viwebsite cài đặt và hỗ trợ SEO lên TOP Google.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div class="intro-item">
+            <div class="intro-item-icon"><span class="glyphicon glyphicon-ok"></span></div>
+            <div class="intro-item-title"><p>Bảo Mật</p></div>
+            <div class="intro-item-content">
+              <p>
+                Thông tin website được bảo mật, phát triển website không lo mất dữ liệu nhờ tính năng cho phép download code về
+                hosting/server riêng, backup dữ liệu hàng ngày
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div class="intro-item">
+            <div class="intro-item-icon"><span class="glyphicon glyphicon-send"></span></div>
+            <div class="intro-item-title"><p>Hỗ Trợ Di Chuyển</p></div>
+            <div class="intro-item-content">
+              <p>
+                Chúng tôi hỗ trợ bạn di chuyển mã nguồn website mẫu của chúng tôi qua server, hosting của bạn mà không bị mất dữ liệu
+                website. <b>Đây là chức năng hiện tại chưa bên nào hỗ trợ</b>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div class="intro-item">
+            <div class="intro-item-icon"><span class="glyphicon glyphicon-thumbs-up"></span></div>
+            <div class="intro-item-title"><p>Hỗ trợ 24/7</p></div>
+            <div class="intro-item-content">
+              <p>
+                Hỗ trợ miễn phí hosting, cài đặt, cấu hình, bảo trì, bảo mật. Hỗ trợ thiết kế, tính năng, SEO, online marketing. Đội ngũ
+                Viwebsite luôn hỗ trợ bạn trong quá trình bạn sử dụng.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="product-list">
+    <ng-container *ngIf="payload.highlight.fetched; else loading">
+      <div class="product-item">
+        <div class="row">
+          <h3 class="page-title">
+            <span>Các mẫu Website nổi bật</span>
+          </h3>
+          <small></small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="product-item col-md-4 col-lg-3 col-sm-6 col-xs-12" *ngFor="let product of payload.highlight.data">
+          <product-item [product]="product"></product-item>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      <div id="loading">
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="product-list">
+    <ng-container *ngIf="payload.most_popular.fetched; else loading">
+      <div class="product-item">
+        <div class="row">
+          <h3 class="page-title">
+            <span>Các mẫu Website phổ biến</span>
+          </h3>
+          <small></small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="product-item col-md-4 col-lg-3 col-sm-6 col-xs-12" *ngFor="let product of payload.most_popular.data">
+          <product-item [product]="product"></product-item>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="product-list" *ngIf="payload.products.fetched">
+    <div *ngFor="let category of supportedCategory">
+      <ng-container *ngIf="(payload.products.data | filterBy: 'categories[0].id':category.category_id | hasItem)">
+        <div class="product-item">
+          <div class="row">
+            <h3 class="page-title">
+              <span>{{ category.label }}</span>
+            </h3>
+            <small></small>
+          </div>
+        </div>
+        <div class="row" style="padding-bottom: 17px;">
+          <div
+            class="product-item col-md-4 col-lg-3 col-sm-6 col-xs-12"
+            *ngFor="let product of (payload.products.data | filterBy: 'categories[0].id':category.category_id)"
+          >
+            <product-item [product]="product"></product-item>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="see-more">
+    <a [routerLink]="['/products']"><button>Xem Thêm Các Mẫu Website Khác</button></a>
+  </div>
+</div>
+<div id="tech-logo">
+  <div class="container text-center">
+    <a class="tech_logo vmms_ruby-on-rails" href="http://rubyonrails.org/"> </a>
+    <a class="tech_logo vmms_javascript" href="https://www.javascript.com/"> </a>
+    <a class="tech_logo vmms_angularjs" href="https://angularjs.org/"> </a>
+    <a class="tech_logo vmms_swift" href="https://developer.apple.com/swift/"> </a>
+    <a class="tech_logo vmms_ios" href="http://www.apple.com/ios/"> </a>
+    <a class="tech_logo vmms_android" href="https://www.android.com/"> </a>
+    <a class="tech_logo vmms_python" href="https://www.python.org/"> </a>
+    <a class="tech_logo vmms_html-css" href="https://www.w3.org/standards/webdesign/htmlcss"> </a>
+    <a class="tech_logo vmms_nodejs" href="https://nodejs.org/en/"> </a>
+    <a class="tech_logo vmms_ember-js" href="http://emberjs.com/"> </a>
+    <a class="tech_logo vmms_reactjs" href="https://facebook.github.io/react/"> </a>
+    <a class="tech_logo vmms_wordpress" href="http://wordpress.com"> </a>
+    <a class="tech_logo vmms_php" href="htpp://php.net"> </a>
+    <a class="tech_logo vmms_docker" href="https://www.docker.com/"> </a>
+  </div>
+</div>
+<div class="create-web">
+  <div class="steps-create-web">
+    <div class="container">
+      <div class="title-steps">
+        <p>Tạo Web Miễn phí dễ như đếm với ViWebsite</p>
+      </div>
+      <div class="row list-steps">
+        <div class=" col-sm-6 col-md-4 col-lg-4  recomm">
+          <span class="step-icon">
+            <i class="far fa-file-alt" aria-hidden="true"></i>
+          </span>
+          <div class="summary">
+            <h3>
+              Bước 1
+            </h3>
+            <h2 class="step-title">Chọn mẫu website</h2>
+            <p><strong>Chọn mẫu website trong kho mẫu website demo</strong></p>
+          </div>
+        </div>
+
+        <div class=" col-sm-6 col-md-4 col-lg-4 recomm">
+          <span class="step-icon">
+            <i class="far fa-calendar-alt" aria-hidden="true"></i>
+          </span>
+          <div class="summary">
+            <h3>
+              Bước 2
+            </h3>
+            <h2 class="step-title">Tạo website</h2>
+            <p><strong>Nhập tên domain </strong><strong>và click Tạo web</strong></p>
+          </div>
+        </div>
+
+        <div class=" col-sm-6 col-md-4 col-lg-4 recomm">
+          <span class="step-icon step-icon-destop">
+            <i class="fa fa-desktop" aria-hidden="true"></i>
+          </span>
+          <div class="summary">
+            <h3>
+              Bước 3
+            </h3>
+            <h2 class="step-title">Xác thực email</h2>
+            <p><strong>Xác thực qua email và n</strong><strong>hận ngay website chính chủ</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="see-more">
+        <a [routerLink]="['/products']"><button>Tạo Website Ngay</button></a>
+      </div>
+    </div>
+  </div>
+</div>

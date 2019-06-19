@@ -1,0 +1,42 @@
+<!-- {{ payload|json }} -->
+<div class="post-detail-section" *ngIf="payload.product.fetched">
+  <div class="container">
+    <div class="row">
+      <div class=" col-lg-8 ">
+        <div class="col-left">
+          <img src="{{ payload.product.data.image }}" alt="" class="image-product" />
+          <div class="function">
+            <button><a href="">ZOOM</a></button>
+            <button class="btn-share"><a href=""><i class="fab fa-facebook"></i>SHARE</a></button>
+          </div>
+        </div>
+      </div>
+      <div class=" col-lg-4 ">
+        <div class="col-right description">
+          <div class="entry-content">
+            <h1 class="entry-title">{{ payload.product.data.title }}</h1>
+            <div class="entry-author clearfix">
+              <span class="entry-author__title">{{ payload.product.data.short_description }}</span>
+            </div>
+            <div class="entry-author clearfix">
+              <div class="entry-author__title product-views"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;{{ payload.product.data.amount_installed }}</div>
+            </div>
+            <div class="entry-excerpt clearfix">
+              <div class="entry-excerpt__title">{{ payload.product.data.description }}</div>
+              <div class="entry-excerpt__content"></div>
+            </div>
+            <!-- <div class="entry-metadata clearfix">
+
+            </div> -->
+            <div class="entry-action">
+              <div class="clearfix">
+                <span class="entry-action__price">$3000</span>
+                <a (click)="redirectToContactPage(url)" class="btn vc-btn">Cài Đặt Ngay</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
