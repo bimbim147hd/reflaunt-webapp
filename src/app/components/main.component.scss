@@ -29,9 +29,13 @@
   line-height: normal;
   color: #ffffff;
   position: relative;
+  i {
+    margin-left: 5px;
+  }
 }
 
 .header li a:hover {
+  cursor: pointer;
   &:before {
     content: '';
     width: 33px;

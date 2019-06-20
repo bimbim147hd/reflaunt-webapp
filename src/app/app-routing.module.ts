@@ -23,8 +23,8 @@ const appRoutes: Routes = [
         path: 'wardrobe',
         loadChildren: './components/wardrobe/wardrobe.module#WardrobeModule'
       }
-    ]
-    // canActivate: [AuthGuardService]
+    ],
+    canActivate: [AuthGuardService]
   },
   {
     path: 'auth',

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   jwtTokenKey: 'JWT_TOKEN',
-  apiUrl: 'localhost'
+  apiUrl: 'https://api.reflaunt.com'
 };
