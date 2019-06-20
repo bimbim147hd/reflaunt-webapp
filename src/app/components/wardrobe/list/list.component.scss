@@ -1,7 +1,7 @@
 @import 'font';
 
 .wardrobe {
-  padding-top: 80px;
+  padding: 80px 0 50px 0;
   .wardrobe__left-col {
     margin-top: 90px;
     width: 2px;
@@ -110,7 +110,8 @@
             height: 1px;
             border: solid 1px #000000;
             bottom: -12px;
-            left: 113px;
+            left: 50%;
+            margin-left: -5px;
           }
         }
         .product--info {
@@ -124,7 +125,8 @@
           position: absolute;
           bottom: 0;
           width: 100%;
-          padding: 20px;
+          height: 45px;
+          padding: 0 20px;
           background-color: #90c25d;
           color: #ffffff;
           .status,
@@ -135,13 +137,55 @@
             line-height: normal;
             letter-spacing: 0.5px;
             float: left;
+            line-height: 45px;
           }
           .price {
             font-size: 14px;
             font-weight: 500;
             letter-spacing: normal;
             float: right;
+            line-height: 45px;
           }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .wardrobe {
+    .wardrobe__right-col {
+      .tab-content .tab-pane .products {
+        .child {
+          flex: 0 1 calc(50% - 20px);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .wardrobe {
+    .wardrobe__left-col {
+      border: none;
+      min-height: 300px;
+      border-bottom: solid 1px #dbdbdb;
+      margin-top: 40px;
+    }
+    .wardrobe__right-col {
+      padding-left: 15px;
+      margin-top: 65px;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .wardrobe {
+    .wardrobe__right-col {
+      .tab-content .tab-pane .products {
+        .child {
+          flex: 0 1 calc(100%);
+          margin-right: 0;
         }
       }
     }
