@@ -1,26 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
 import { AuthComponent } from '../auth.component';
 import { Store } from './../../../store/store.module';
 import { LOGIN_REQUESTED, renderLoginForm } from './login.actions';
-import { AppInjector } from '../../../app-injector';
-import { InputBase, TextBox, Block } from '@vicoders/reactive-form';
-import { Validators } from '@angular/forms';
+import { FORGOT_PASSWORD_REQUESTED } from '../forgot-password/forgot-password.actions';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent extends AuthComponent implements OnInit {
+export class LoginComponent extends AuthComponent
+  implements OnInit, AfterViewInit {
+  public showForgotPassForm = false;
   public store;
   public redirectUrl = 'product';
   user = {
     email: '',
     password: ''
   };
-  constructor(private router: Router, private _activatedRoute: ActivatedRoute, store: Store) {
+  forgot = {
+    email: '',
+    from: 'WEB_APP'
+  };
+  constructor(
+    private router: Router,
+    private _activatedRoute: ActivatedRoute,
+    store: Store
+  ) {
     super();
     this.store = store.getInstance();
     _activatedRoute.queryParams.subscribe(params => {
@@ -30,58 +38,27 @@ export class LoginComponent extends AuthComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    const inputs: InputBase<any>[] = [
-      new TextBox({
-        key: 'email',
-        type: 'email',
-        label: 'Email *',
-        classes: ['col-12'],
-        group_classes: ['col-12'],
-        order: 1,
-        validators: [
-          {
-            validator: Validators.required,
-            message: 'This field is required'
-          },
-          {
-            validator: Validators.email,
-            message: 'Your email address is invalid'
-          }
-        ]
-      }),
-      new TextBox({
-        key: 'password',
-        type: 'password',
-        label: 'Password *',
-        classes: ['col-12'],
-        group_classes: ['col-12'],
-        order: 1,
-        validators: [
-          {
-            validator: Validators.required,
-            message: 'This field is required'
-          },
-          {
-            validator: Validators.min(4),
-            message: 'Password should more than 4 characters'
-          }
-        ]
-      }),
-      new Block({
-        classes: ['col-12'],
-        content: `
-        <div class="text-right register-link">
-          <a href="/auth/register">Bạn chưa có tài khoản</a>
-        </div>
-        `
-      })
-    ];
-    this.store.dispatch(renderLoginForm(inputs));
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    document.querySelector('.img__btn').addEventListener('click', function() {
+      document.querySelector('.cont').classList.toggle('s--signup');
+    });
   }
 
   onSubmit(form) {
-    const store = AppInjector.get(Store).getInstance();
-    store.dispatch({ type: LOGIN_REQUESTED, data: form.value });
+    const data = {
+      email: this.user.email,
+      password: this.user.password
+    };
+    this.store.dispatch({ type: LOGIN_REQUESTED, data: data });
+  }
+
+  onSubmitForgot(form) {
+    this.store.dispatch({ type: FORGOT_PASSWORD_REQUESTED, data: this.forgot });
+  }
+
+  goToForgotPass() {
+    this.showForgotPassForm = !this.showForgotPassForm;
   }
 }
