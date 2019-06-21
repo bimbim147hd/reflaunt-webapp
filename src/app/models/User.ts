@@ -1,12 +1,16 @@
 import * as _ from 'lodash';
 import Role from './Role';
 import UserBase from './Base/UserBase';
+import Retailer from './Retailer';
 
 class User extends UserBase {
   constructor(options) {
     super(options);
     (this as any).roles = d => {
       return _.map(d.data, item => new Role(item));
+    };
+    (this as any).retailer = d => {
+      return new Retailer(d.data);
     };
     this.bind(options);
   }

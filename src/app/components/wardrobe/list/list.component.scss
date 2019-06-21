@@ -112,6 +112,9 @@
         text-align: center;
         img {
           margin-top: 35px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: 22px 0px;
         }
         .product--name {
           position: relative;

@@ -3,8 +3,12 @@ import { combineReducers } from 'redux';
 import { Auth } from '../components/auth/auth.reducer';
 import { Homepage } from '../components/homepage/homepage.reducer';
 import { environment } from '../../environments/environment';
+import { Wardrobe } from '../components/wardrobe/wardrobe.reducer';
 
-const RootReducer = (state = { config: environment, isShowBtnSettings: false }, action) => {
+const RootReducer = (
+  state = { config: environment, isShowBtnSettings: false },
+  action
+) => {
   switch (action.type) {
     case 'INIT_APP_MENU':
       const target = _.cloneDeep(action.data);
@@ -31,7 +35,10 @@ const RootReducer = (state = { config: environment, isShowBtnSettings: false }, 
         item.show = !_.isUndefined(_.find(item.main, i => i.show));
         return item;
       });
-      return _.assign({}, state, { MenuItems: MenuItems, isShowBtnSettings: action.isShowBtnSettings });
+      return _.assign({}, state, {
+        MenuItems: MenuItems,
+        isShowBtnSettings: action.isShowBtnSettings
+      });
     default:
       return state;
   }
@@ -40,5 +47,6 @@ const RootReducer = (state = { config: environment, isShowBtnSettings: false }, 
 export default combineReducers({
   Auth,
   Homepage,
-  RootReducer
+  RootReducer,
+  Wardrobe
 });
