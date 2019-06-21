@@ -9,7 +9,7 @@ import { HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class ProductService extends BaseService {
-  public url = '/api/products';
+  public url = '/api/v1/products';
   public model = Product;
 
   getProductBySlug(slug, params?): Observable<any> {

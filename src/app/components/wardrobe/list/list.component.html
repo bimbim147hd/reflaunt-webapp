@@ -1,7 +1,10 @@
-<div class="wardrobe">
+<div class="wardrobe" *ngIf="payload.fetched">
   <div class="wardrobe__notification">
     <div class="container notification--desc">
-      <p><span>i</span><a routerLink="/wardrobe">How does resell work?</a></p>
+      <p>
+        <span>i</span
+        ><a (click)="openNav()" routerLink="/wardrobe">How does resell work?</a>
+      </p>
     </div>
   </div>
   <div class="container">
@@ -9,15 +12,15 @@
       <div class="col-12 col-md-3 wardrobe__left-col">
         <h1 class="title">Wardrobe</h1>
         <div class="box">
-          <p class="box-number">8</p>
+          <p class="box-number">{{ payload.items.length }}</p>
           <p class="box-description">Total Listings</p>
         </div>
         <div class="box">
-          <p class="box-number symbol">1,245</p>
+          <p class="box-number symbol">{{ payload.totalValueMade }}</p>
           <p class="box-description">Total Value Made</p>
         </div>
         <div class="box">
-          <p class="box-number symbol">3,685</p>
+          <p class="box-number symbol">{{ payload.totalPotentialValue }}</p>
           <p class="box-description">Total Potential Value</p>
         </div>
       </div>
@@ -33,7 +36,7 @@
                 role="tab"
                 aria-controls="nav-all"
                 aria-selected="true"
-                >All Items (6)</a
+                >All Items ({{ payload.items.length }})</a
               >
               <a
                 class="nav-item nav-link"
@@ -43,7 +46,7 @@
                 role="tab"
                 aria-controls="nav-pending"
                 aria-selected="false"
-                >Pending (1)</a
+                >Pending ({{ payload.pendingProdutcs.length }})</a
               >
               <a
                 class="nav-item nav-link"
@@ -53,7 +56,7 @@
                 role="tab"
                 aria-controls="nav-sold"
                 aria-selected="false"
-                >Sold (1)</a
+                >Sold ({{ payload.soldProducts.length }})</a
               >
             </div>
           </div>
@@ -65,61 +68,30 @@
             role="tabpanel"
             aria-labelledby="nav-all-tab"
           >
-            <div class="products">
-              <div class="child">
-                <img src="/assets/images/img.png" alt="" />
+            <div class="products" *ngIf="payload.items | hasItem">
+              <div class="child" *ngFor="let item of payload.items">
+                <img
+                  [ngStyle]="{
+                    'background-image': item.getImageBackgroundStyle()
+                  }"
+                  src="/assets/images/mask.png"
+                  alt=""
+                />
                 <h2 class="product--name">Balenciaga</h2>
-                <p class="product--info">Mini City Bag</p>
-                <div class="product--state">
-                  <span class="status">Selling</span>
-                  <span class="price">$450</span>
+                <p class="product--info">{{ item.name }}</p>
+                <div
+                  class="product--state"
+                  [ngStyle]="{
+                    'background-color': item.getStatusLabel().color
+                  }"
+                >
+                  <span class="status">{{ item.getStatusLabel().label }}</span>
+                  <span class="price">${{ item.price.price }}</span>
                 </div>
               </div>
-              <div class="child">
-                <img src="/assets/images/img.png" alt="" />
-                <h2 class="product--name">Balenciaga</h2>
-                <p class="product--info">Mini City Bag</p>
-                <div class="product--state">
-                  <span class="status">Selling</span>
-                  <span class="price">$450</span>
-                </div>
-              </div>
-              <div class="child">
-                <img src="/assets/images/img.png" alt="" />
-                <h2 class="product--name">Balenciaga</h2>
-                <p class="product--info">Mini City Bag</p>
-                <div class="product--state">
-                  <span class="status">Selling</span>
-                  <span class="price">$450</span>
-                </div>
-              </div>
-              <div class="child">
-                <img src="/assets/images/img.png" alt="" />
-                <h2 class="product--name">Balenciaga</h2>
-                <p class="product--info">Mini City Bag</p>
-                <div class="product--state">
-                  <span class="status">Selling</span>
-                  <span class="price">$450</span>
-                </div>
-              </div>
-              <div class="child">
-                <img src="/assets/images/img.png" alt="" />
-                <h2 class="product--name">Balenciaga</h2>
-                <p class="product--info">Mini City Bag</p>
-                <div class="product--state">
-                  <span class="status">Selling</span>
-                  <span class="price">$450</span>
-                </div>
-              </div>
-              <div class="child">
-                <img src="/assets/images/img.png" alt="" />
-                <h2 class="product--name">Balenciaga</h2>
-                <p class="product--info">Mini City Bag</p>
-                <div class="product--state">
-                  <span class="status">Selling</span>
-                  <span class="price">$450</span>
-                </div>
-              </div>
+            </div>
+            <div class="products" *ngIf="!(payload.items | hasItem)">
+              Resource not found!
             </div>
           </div>
           <div
@@ -128,16 +100,30 @@
             role="tabpanel"
             aria-labelledby="nav-pending-tab"
           >
-            <div class="products">
-              <div class="child">
-                <img src="/assets/images/img.png" alt="" />
+            <div class="products" *ngIf="payload.pendingProdutcs | hasItem">
+              <div class="child" *ngFor="let item of payload.pendingProdutcs">
+                <img
+                  [ngStyle]="{
+                    'background-image': item.getImageBackgroundStyle()
+                  }"
+                  src="/assets/images/mask.png"
+                  alt=""
+                />
                 <h2 class="product--name">Balenciaga</h2>
-                <p class="product--info">Mini City Bag</p>
-                <div class="product--state">
-                  <span class="status">Selling</span>
-                  <span class="price">$450</span>
+                <p class="product--info">{{ item.name }}</p>
+                <div
+                  class="product--state"
+                  [ngStyle]="{
+                    'background-color': item.getStatusLabel().color
+                  }"
+                >
+                  <span class="status">{{ item.getStatusLabel().label }}</span>
+                  <span class="price">${{ item.price.price }}</span>
                 </div>
               </div>
+            </div>
+            <div class="products" *ngIf="!(payload.pendingProdutcs | hasItem)">
+              Resource not found!
             </div>
           </div>
           <div
@@ -146,20 +132,64 @@
             role="tabpanel"
             aria-labelledby="nav-sold-tab"
           >
-            <div class="products">
-              <div class="child">
-                <img src="/assets/images/img.png" alt="" />
+            <div class="products" *ngIf="payload.soldProducts | hasItem">
+              <div class="child" *ngFor="let item of payload.soldProducts">
+                <img
+                  [ngStyle]="{
+                    'background-image': item.getImageBackgroundStyle()
+                  }"
+                  src="/assets/images/mask.png"
+                  alt=""
+                />
                 <h2 class="product--name">Balenciaga</h2>
-                <p class="product--info">Mini City Bag</p>
-                <div class="product--state">
-                  <span class="status">Selling</span>
-                  <span class="price">$450</span>
+                <p class="product--info">{{ item.name }}</p>
+                <div
+                  class="product--state"
+                  [ngStyle]="{
+                    'background-color': item.getStatusLabel().color
+                  }"
+                >
+                  <span class="status">{{ item.getStatusLabel().label }}</span>
+                  <span class="price">${{ item.price.price }}</span>
                 </div>
               </div>
+            </div>
+            <div class="products" *ngIf="!(payload.soldProducts | hasItem)">
+              Resource not found!
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div id="howSell" class="overlay">
+  <div class="overlay-content content">
+    <h3>How does resell works?</h3>
+    <p>
+      when you sell an item in second cycle ... Lorem Ipsum is simply dummy text
+      of the printing and typesetting industry. Lorem Ipsum has been the
+      industry's standard dummy text ever since the 1500s, when an unknown
+      printer took a galley of type and scrambled it to make a type specimen
+      book. It has survived not only five centuries, but also the leap into
+      electronic typesetting, remaining essentially unchanged. It was
+      popularised in the 1960s with the release of Letraset sheets containing
+      Lorem Ipsum passages, and more recently with desktop publishing software
+      like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
+    <h4>States of reselling</h4>
+    <ol>
+      <li>Resell</li>
+      <li>Pending Listing</li>
+      <li>Pending Sale</li>
+      <li>Pending Delivery</li>
+      <li>Sale Completed</li>
+    </ol>
+  </div>
+  <div class="overlay-content">
+    <i (click)="closeNav()" class="fa fa-times-circle-o" aria-hidden="true">
+      <span>Close</span></i
+    >
   </div>
 </div>
