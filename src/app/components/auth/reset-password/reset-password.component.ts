@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Store } from './../../../store/store.module';
 import { RESET_PASSWORD_REQUESTED } from './reset-password.actions';
 import * as _ from 'lodash';
@@ -10,7 +10,7 @@ import Notification from '@vicoders/support/services/Notification';
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss']
 })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit, AfterViewInit {
   public store;
   public data: any = {
     password: '',
@@ -45,6 +45,12 @@ export class ResetPasswordComponent implements OnInit {
         token: token
       };
       this.store.dispatch({ type: RESET_PASSWORD_REQUESTED, data: data });
+    });
+  }
+
+  ngAfterViewInit() {
+    document.querySelector('.img__btn').addEventListener('click', function() {
+      document.querySelector('.cont').classList.toggle('s--signup');
     });
   }
 }

@@ -1,7 +1,10 @@
 <div class="wardrobe">
   <div class="wardrobe__notification">
     <div class="container notification--desc">
-      <p><span>i</span><a routerLink="/wardrobe">How does resell work?</a></p>
+      <p>
+        <span>i</span
+        ><a (click)="openNav()" routerLink="/wardrobe">How does resell work?</a>
+      </p>
     </div>
   </div>
   <div class="container">
@@ -161,5 +164,35 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div id="howSell" class="overlay">
+  <div class="overlay-content content">
+    <h3>How does resell works?</h3>
+    <p>
+      when you sell an item in second cycle ... Lorem Ipsum is simply dummy text
+      of the printing and typesetting industry. Lorem Ipsum has been the
+      industry's standard dummy text ever since the 1500s, when an unknown
+      printer took a galley of type and scrambled it to make a type specimen
+      book. It has survived not only five centuries, but also the leap into
+      electronic typesetting, remaining essentially unchanged. It was
+      popularised in the 1960s with the release of Letraset sheets containing
+      Lorem Ipsum passages, and more recently with desktop publishing software
+      like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
+    <h4>States of reselling</h4>
+    <ol>
+      <li>Resell</li>
+      <li>Pending Listing</li>
+      <li>Pending Sale</li>
+      <li>Pending Delivery</li>
+      <li>Sale Completed</li>
+    </ol>
+  </div>
+  <div class="overlay-content">
+    <i (click)="closeNav()" class="fa fa-times-circle-o" aria-hidden="true">
+      <span>Close</span></i
+    >
   </div>
 </div>

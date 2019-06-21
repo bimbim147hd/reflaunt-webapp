@@ -29,4 +29,13 @@ export class MainComponent implements OnInit {
     Cookies.remove(environment.jwtTokenKey, { path: '/' });
     this.router.navigate(['/', 'auth', 'login']);
   }
+
+  openNav() {
+    document.getElementById('myNav').style.width = '100%';
+    document.getElementById('myNav').style.zIndex = '9';
+  }
+
+  closeNav() {
+    document.getElementById('myNav').style.width = '0%';
+  }
 }

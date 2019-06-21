@@ -13,12 +13,23 @@
       <li><a href="#Notification">Notification</a></li>
       <li><a href="#Wallet">Wallet</a></li>
       <li>
-        <a (click)="logout()"
-          >{{ store.getState().Auth.login.profile.email }} | logout
+        <a (click)="openNav()"
+          >{{ store.getState().Auth.login.profile.email }}
           <i class="fa fa-angle-down" aria-hidden="true"></i>
         </a>
       </li>
     </ul>
   </div>
 </header>
+
+<div id="myNav" class="overlay">
+  <div class="overlay-content">
+    <i (click)="closeNav()" class="fa fa-undo" aria-hidden="true">
+      <span>Go Back</span></i
+    >
+    <i (click)="logout()" class="fa fa-power-off" aria-hidden="true"
+      ><span>Sign Out</span></i
+    >
+  </div>
+</div>
 <router-outlet></router-outlet>

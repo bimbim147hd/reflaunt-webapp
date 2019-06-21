@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  openNav() {
+    document.getElementById('howSell').style.width = '100%';
+    document.getElementById('howSell').style.zIndex = '9';
   }
 
+  closeNav() {
+    document.getElementById('howSell').style.width = '0%';
+  }
 }

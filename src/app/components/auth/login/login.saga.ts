@@ -74,16 +74,11 @@ function* watchFetchLoginDetailSuccessed() {
 
 export function* loggedInUser() {
   const api = AppInjector.get(ApiService);
-  const fetched = yield select((state: any) => state.Auth.login.fetched);
-  if (!fetched) {
-    try {
-      const result = yield api.user.profile({ includes: 'roles' }).toPromise();
-      return result;
-    } catch (e) {
-      yield put({ type: API_CALL_ERROR, error: e });
-    }
-  } else {
-    return yield select((state: any) => state.Auth.login.profile);
+  try {
+    const result = yield api.user.profile({ includes: 'roles' }).toPromise();
+    return result;
+  } catch (e) {
+    yield put({ type: API_CALL_ERROR, error: e });
   }
 }
 
