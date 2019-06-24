@@ -5,9 +5,10 @@ import { PipesModule as VicodersPipesModule } from '@vicoders/angular';
 import { DirectivesModule } from '../../common/directives/directives.module';
 import { WardrobeRoutingModule } from './wardrobe-routing.module';
 import { ListComponent } from './list/list.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
-  declarations: [ListComponent],
+  declarations: [ListComponent, DetailComponent],
   imports: [
     CommonModule,
     WardrobeRoutingModule,

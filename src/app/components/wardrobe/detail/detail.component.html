@@ -1,0 +1,217 @@
+<div class="product__detail" *ngIf="payload.fetched">
+  <div class="product__detail--back container">
+    <p>
+      <a routerLink="/wardrobe"
+        ><i class="fa fa-angle-left" aria-hidden="true"></i> Back to Wardrobe</a
+      >
+    </p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3 product__detail__left-col">
+        <h1 class="title">Loewe</h1>
+        <p class="desc">{{ payload.item.getName() }}</p>
+
+        <div class="resale">
+          <p class="label">Resale Price</p>
+          <p class="price">${{ payload.item.getPrice().price }}</p>
+          <p class="like">
+            <i class="fa fa-heart" aria-hidden="true"></i
+            >{{ payload.item.getLikesNumber() }} Likes
+          </p>
+        </div>
+
+        <p class="left-col__line"></p>
+
+        <p class="listed">
+          Listed on the following marketplaces since
+          {{ payload.item.markets[0].listed_at | date: 'dd/MM/yy' }}
+        </p>
+        <div class="listed__logos">
+          <div *ngFor="let item of payload.item.markets" class="logo">
+            <img width="50px" src="{{ item.images[0].url }}" alt="" />
+          </div>
+        </div>
+
+        <p class="left-col__line"></p>
+
+        <div class="item__info">
+          <p class="item__info--title">product verified by</p>
+          <img src="/assets/images/verified.png" alt="" />
+          <p class="item__info--id">23435123</p>
+        </div>
+
+        <div class="item_srouce">
+          <div class="item_srouce--item item__1">
+            <p class="item--label">authentication id</p>
+            <p class="item--desc">{{ payload.item.authentication_id }}</p>
+          </div>
+          <div class="item_srouce--item item__2">
+            <p class="item--label">source</p>
+            <img src="{{ payload.item.source_logo }}" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-9 product__detail__right-col">
+        <div class="notification">
+          <span>Selling - your item has been listed</span>
+        </div>
+        <div class="item--images">
+          <ng-container *ngIf="payload.item.images | hasItem">
+            <div class="item--image" *ngFor="let item of payload.item.images">
+              <img
+                [ngStyle]="{
+                  'background-image': 'url(' + item.url + ')'
+                }"
+                src="/assets/images/mask.png"
+                alt=""
+              />
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!(payload.item.images | hasItem)">
+            No images
+          </ng-container>
+        </div>
+        <div class="item--info">
+          <label class="label" for="">Detail</label>
+          <div class="desc">
+            <ng-container
+              *ngIf="
+                payload.item.description && payload.item.description !== ''
+              "
+            >
+              {{ payload.item.description }}
+            </ng-container>
+            <ng-container
+              *ngIf="
+                !payload.item.description || payload.item.description === ''
+              "
+            >
+              No description
+            </ng-container>
+          </div>
+        </div>
+        <div class="item--info">
+          <label class="label" for="">Material</label>
+          <div class="desc">
+            <ng-container
+              *ngIf="payload.item.material && payload.item.material !== ''"
+            >
+              {{ payload.item.material }}
+            </ng-container>
+            <ng-container
+              *ngIf="!payload.item.material || payload.item.material === ''"
+            >
+              No material
+            </ng-container>
+          </div>
+        </div>
+        <div class="item--info">
+          <label class="label" for="">Condition</label>
+          <div class="desc">
+            <div class="condition-desc">
+              <div class="left-col">
+                <p>
+                  The item has been used or worn and shows moderate signs of
+                  wear but it still looks great.
+                </p>
+                <span class="tag">Scuffs at edge</span>
+                <span class="tag">Scuffs at edge</span>
+              </div>
+              <div class="right-col">
+                <div class="range">
+                  <input
+                    disabled="true"
+                    id="conditions"
+                    type="range"
+                    min="1"
+                    max="5"
+                    steps="1"
+                    value="{{ payload.item.getConditionMask() }}"
+                  />
+                </div>
+
+                <ul class="range-labels">
+                  <li class="active selected">GENTLY LOVED</li>
+                  <li>good</li>
+                  <li>very good</li>
+                  <li>execellent</li>
+                  <li>brand new</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item--info">
+          <label class="label" for="">Seller’s Comment</label>
+          <div class="desc">
+            <ng-container
+              *ngIf="
+                payload.item.seller_comment &&
+                payload.item.seller_comment !== ''
+              "
+            >
+              {{ payload.item.seller_comment }}
+            </ng-container>
+            <ng-container
+              *ngIf="
+                !payload.item.seller_comment ||
+                payload.item.seller_comment === ''
+              "
+            >
+              No comment
+            </ng-container>
+          </div>
+        </div>
+        <div class="item--info">
+          <label class="label" for="">Item Includes</label>
+          <div class="desc">
+            <div class="list-item">
+              <ng-container *ngIf="payload.item.item_includes[0] | hasItem">
+                <div
+                  class="item"
+                  *ngFor="let item of payload.item.item_includes[0]"
+                >
+                  <p *ngFor="let i of item">{{ i }}</p>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="!(payload.item.item_includes[0] | hasItem)">
+                No item includes
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <div class="item--info item--info--last">
+          <label class="label" for="">Size</label>
+          <div class="desc">
+            <p class="title">Dimensions</p>
+            <p class="content">
+              <ng-container
+                *ngIf="
+                  payload.item.dimensions &&
+                  payload.item.dimensions !== ''
+                "
+              >
+                {{ payload.item.dimensions }}
+              </ng-container>
+              <ng-container
+                *ngIf="
+                  !payload.item.dimensions ||
+                  payload.item.dimensions === ''
+                "
+              >
+                No dimensions
+              </ng-container>
+            </p>
+          </div>
+          <div class="desc">
+            <p class="title">Seller’s Comment</p>
+            <p class="content">
+              No comment
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
