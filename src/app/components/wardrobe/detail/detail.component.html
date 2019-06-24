@@ -29,7 +29,12 @@
         </p>
         <div class="listed__logos">
           <div *ngFor="let item of payload.item.markets" class="logo">
-            <img width="50px" src="{{ item.images[0].url }}" alt="" />
+            <ng-container *ngIf="item.images | hasItem">
+              <img width="50px" src="{{ item.images[0].url }}" alt="" />
+            </ng-container>
+            <ng-container *ngIf="!(item.images | hasItem)">
+              <img width="50px" src="/assets/images/download.png" alt="" />
+            </ng-container>
           </div>
         </div>
 
@@ -188,16 +193,14 @@
             <p class="content">
               <ng-container
                 *ngIf="
-                  payload.item.dimensions &&
-                  payload.item.dimensions !== ''
+                  payload.item.dimensions && payload.item.dimensions !== ''
                 "
               >
                 {{ payload.item.dimensions }}
               </ng-container>
               <ng-container
                 *ngIf="
-                  !payload.item.dimensions ||
-                  payload.item.dimensions === ''
+                  !payload.item.dimensions || payload.item.dimensions === ''
                 "
               >
                 No dimensions
