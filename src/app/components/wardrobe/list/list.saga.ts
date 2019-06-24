@@ -10,7 +10,7 @@ function* watchFetchProductsRequest() {
   yield takeLatest(FETCH_PRODUCTS_REQUESTED, function*(action: any) {
     const api = AppInjector.get(ApiService);
     try {
-      const result = yield api.product.get({}).toPromise();
+      const result = yield api.product.get({ per_page: 100 }).toPromise();
       yield put({ type: FETCH_PRODUCTS_SUCCESSED, data: result.items });
     } catch (e) {
       yield put({ type: 'API_CALL_ERROR', error: e });

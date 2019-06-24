@@ -6,9 +6,10 @@ import { DirectivesModule } from '../../common/directives/directives.module';
 import { WardrobeRoutingModule } from './wardrobe-routing.module';
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
+import { PendingListingComponent } from './pending-listing/pending-listing.component';
 
 @NgModule({
-  declarations: [ListComponent, DetailComponent],
+  declarations: [ListComponent, DetailComponent, PendingListingComponent],
   imports: [
     CommonModule,
     WardrobeRoutingModule,

@@ -3,7 +3,7 @@ import { BaseComponent } from '../../base.component';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FETCH_PRODUCTS_REQUESTED } from './list.actions';
 import * as _ from 'lodash';
-import { SELLING_STATUS } from '../../../models/Product';
+import { SELLING_STATUS, PENDING_STATUS } from '../../../models/Product';
 
 @Component({
   selector: 'app-list',
@@ -36,12 +36,23 @@ export class ListComponent extends BaseComponent implements OnInit {
 
   getRedirectUrl(item) {
     let url: any = ['/'];
-    const able_statuses = [SELLING_STATUS];
+    const able_statuses = [
+      {
+        status: SELLING_STATUS,
+        url: ['/', 'wardrobe', 'selling-detail', item.id]
+      },
+      {
+        status: PENDING_STATUS,
+        url: ['/', 'wardrobe', 'pending-listing', item.id]
+      }
+    ];
     _.forEach(able_statuses, function(status) {
       if (
-        !_.isEmpty(_.filter(item.product_meta, o => o.status_id === status))
+        !_.isEmpty(
+          _.filter(item.product_meta, o => o.status_id === status.status)
+        )
       ) {
-        url = ['/', 'wardrobe', 'selling-detail', item.id];
+        url = status.url;
       }
     });
     return url;
