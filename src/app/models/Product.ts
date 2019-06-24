@@ -14,6 +14,12 @@ export const CANCELED_STATUS = 6;
 export const WANTED_STATUS = 7;
 export const SOLD_CONFIRMED_STATUS = 8;
 
+export const EXCELLENT_CONDITION = 1;
+export const GENTLY_LOVED_CONDITION = 2;
+export const NEW_WITH_TAG_CONDITION = 3;
+export const VERY_GOOD_CONDITION = 4;
+export const GOOD_CONDITION = 5;
+
 class Product extends Model {
   constructor(options) {
     super();
@@ -28,6 +34,9 @@ class Product extends Model {
     };
     (this as any).retailer = d => {
       return new User(d.data);
+    };
+    (this as any).markets = d => {
+      return _.map(d.data, item => new User(item));
     };
     this.bind(options);
   }
@@ -91,6 +100,38 @@ class Product extends Model {
 
   getImageBackgroundStyle(): String {
     return `url("${this.getImageUrl()}")`;
+  }
+
+  getLikesNumber() {
+    if ((this as any).likes) {
+      return (this as any).likes;
+    } else {
+      return 0;
+    }
+  }
+
+  getConditionMask() {
+    let result = 0;
+    if ((this as any).condition.data.name) {
+      switch ((this as any).condition.data.name) {
+        case 'excellent':
+          result = 4;
+          break;
+        case 'gently loved':
+          result = 1;
+          break;
+        case 'new with tag':
+          result = 5;
+          break;
+        case 'very good':
+          result = 3;
+          break;
+        case 'good':
+          result = 2;
+          break;
+      }
+    }
+    return result;
   }
 }
 

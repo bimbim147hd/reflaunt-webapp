@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../../base.component';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FETCH_PRODUCTS_REQUESTED } from './list.actions';
+import * as _ from 'lodash';
+import { SELLING_STATUS } from '../../../models/Product';
 
 @Component({
   selector: 'app-list',
@@ -30,6 +32,19 @@ export class ListComponent extends BaseComponent implements OnInit {
 
   closeNav() {
     document.getElementById('howSell').style.width = '0%';
+  }
+
+  getRedirectUrl(item) {
+    let url: any = ['/'];
+    const able_statuses = [SELLING_STATUS];
+    _.forEach(able_statuses, function(status) {
+      if (
+        !_.isEmpty(_.filter(item.product_meta, o => o.status_id === status))
+      ) {
+        url = ['/', 'wardrobe', 'selling-detail', item.id];
+      }
+    });
+    return url;
   }
 
   mapStateToProps(state) {

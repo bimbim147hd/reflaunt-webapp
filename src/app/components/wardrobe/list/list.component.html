@@ -69,7 +69,11 @@
             aria-labelledby="nav-all-tab"
           >
             <div class="products" *ngIf="payload.items | hasItem">
-              <div class="child" *ngFor="let item of payload.items">
+              <a
+                class="child"
+                *ngFor="let item of payload.items"
+                [routerLink]="getRedirectUrl(item)"
+              >
                 <img
                   [ngStyle]="{
                     'background-image': item.getImageBackgroundStyle()
@@ -88,7 +92,7 @@
                   <span class="status">{{ item.getStatusLabel().label }}</span>
                   <span class="price">${{ item.price.price }}</span>
                 </div>
-              </div>
+              </a>
             </div>
             <div class="products" *ngIf="!(payload.items | hasItem)">
               Resource not found!

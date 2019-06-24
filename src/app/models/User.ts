@@ -2,6 +2,8 @@ import * as _ from 'lodash';
 import Role from './Role';
 import UserBase from './Base/UserBase';
 import Retailer from './Retailer';
+import Merchant from './Merchant';
+import Image from './Image';
 
 class User extends UserBase {
   constructor(options) {
@@ -11,6 +13,12 @@ class User extends UserBase {
     };
     (this as any).retailer = d => {
       return new Retailer(d.data);
+    };
+    (this as any).merchant = d => {
+      return new Merchant(d.data);
+    };
+    (this as any).images = d => {
+      return _.map(d.data, item => new Image(item));
     };
     this.bind(options);
   }
