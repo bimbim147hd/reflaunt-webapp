@@ -66,12 +66,6 @@ export class DetailComponent extends BaseComponent
     $rangeInput.on('input', function() {
       sheet.textContent = getTrackStyle(this);
     });
-
-    // Change input value on label click
-    $('.range-labels li').on('click', function() {
-      const index = $(this).index();
-      $rangeInput.val(index + 1).trigger('input');
-    });
     $rangeInput.val(Number($rangeInput.val())).trigger('input');
   }
 

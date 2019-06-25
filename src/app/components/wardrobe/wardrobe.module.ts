@@ -7,15 +7,18 @@ import { WardrobeRoutingModule } from './wardrobe-routing.module';
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 import { PendingListingComponent } from './pending-listing/pending-listing.component';
+import { EditPendingListingComponent } from './edit-pending-listing/edit-pending-listing.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ListComponent, DetailComponent, PendingListingComponent],
+  declarations: [ListComponent, DetailComponent, PendingListingComponent, EditPendingListingComponent],
   imports: [
     CommonModule,
     WardrobeRoutingModule,
     PipesModule,
     VicodersPipesModule,
-    DirectivesModule
+    DirectivesModule,
+    FormsModule
   ]
 })
 export class WardrobeModule {}

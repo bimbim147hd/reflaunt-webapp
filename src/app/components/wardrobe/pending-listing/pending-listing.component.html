@@ -17,9 +17,12 @@
           <p class="price">${{ payload.item.getPrice().price }}</p>
         </div>
 
-        <button type="button" class="btn btn__edit--listing">
+        <a
+          [routerLink]="['/', 'wardrobe', 'pending-listing', productId, 'edit']"
+          class="btn btn__edit--listing"
+        >
           Edit Listing
-        </button>
+        </a>
 
         <p class="left-col__line"></p>
 
@@ -42,9 +45,9 @@
       </div>
       <div class="col-12 col-md-9 product__detail__right-col">
         <div class="notification">
-          <span
-            >Pending Listing - some information are missing, complete your
-            listing here</span
+          <p
+            >Pending Listing - some information are missing,
+            <span>complete your listing here</span></p
           >
         </div>
         <div class="item--images">
@@ -52,7 +55,7 @@
             <div class="item--image" *ngFor="let item of payload.item.images">
               <img
                 [ngStyle]="{
-                  'background-image': 'url(' + item.url + ')'
+                  'background-image': 'url(' + item + ')'
                 }"
                 src="/assets/images/mask.png"
                 alt=""
@@ -103,8 +106,7 @@
             <div class="condition-desc">
               <div class="left-col">
                 <p>
-                  The item has been used or worn and shows moderate signs of
-                  wear but it still looks great.
+                  {{ payload.item.condition_description_item }}
                 </p>
                 <span class="tag">Scuffs at edge</span>
                 <span class="tag">Scuffs at edge</span>
