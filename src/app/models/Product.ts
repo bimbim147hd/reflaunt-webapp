@@ -14,12 +14,6 @@ export const CANCELED_STATUS = 6;
 export const WANTED_STATUS = 7;
 export const SOLD_CONFIRMED_STATUS = 8;
 
-export const EXCELLENT_CONDITION = 1;
-export const GENTLY_LOVED_CONDITION = 2;
-export const NEW_WITH_TAG_CONDITION = 3;
-export const VERY_GOOD_CONDITION = 4;
-export const GOOD_CONDITION = 5;
-
 class Product extends Model {
   constructor(options) {
     super();
@@ -46,42 +40,44 @@ class Product extends Model {
       label: null,
       color: null
     };
-    switch ((this as any).product_meta[0].status_id) {
-      case PENDING_STATUS:
-        status.label = 'Pending';
-        status.color = '#f7b500';
-        break;
-      case FLAUNT_STATUS:
-        status.label = 'Flaunt';
-        status.color = '#34495e';
-        break;
-      case READY_FOR_SALE_STATUS:
-        status.label = 'Ready for sale';
-        status.color = '#34495e';
-        break;
-      case SELLING_STATUS:
-        status.label = 'Selling';
-        status.color = '#90c25d';
-        break;
-      case SOLD_STATUS:
-        status.label = 'Sold';
-        status.color = '#b5b5b5';
-        break;
-      case CANCELED_STATUS:
-        status.label = 'Canceled';
-        status.color = '#34495e';
-        break;
-      case WANTED_STATUS:
-        status.label = 'Wanted';
-        status.color = '#34495e';
-        break;
-      case SOLD_CONFIRMED_STATUS:
-        status.label = 'Sold Confirmed';
-        status.color = '#34495e';
-        break;
-      default:
-        status.label = 'Not Found';
-        status.color = '#34495e';
+    if (!_.isEmpty((this as any).product_meta)) {
+      switch ((this as any).product_meta[0].status_id) {
+        case PENDING_STATUS:
+          status.label = 'Pending';
+          status.color = '#f7b500';
+          break;
+        case FLAUNT_STATUS:
+          status.label = 'Flaunt';
+          status.color = '#34495e';
+          break;
+        case READY_FOR_SALE_STATUS:
+          status.label = 'Ready for sale';
+          status.color = '#34495e';
+          break;
+        case SELLING_STATUS:
+          status.label = 'Selling';
+          status.color = '#90c25d';
+          break;
+        case SOLD_STATUS:
+          status.label = 'Sold';
+          status.color = '#b5b5b5';
+          break;
+        case CANCELED_STATUS:
+          status.label = 'Canceled';
+          status.color = '#34495e';
+          break;
+        case WANTED_STATUS:
+          status.label = 'Wanted';
+          status.color = '#34495e';
+          break;
+        case SOLD_CONFIRMED_STATUS:
+          status.label = 'Sold Confirmed';
+          status.color = '#34495e';
+          break;
+        default:
+          status.label = 'Not Found';
+          status.color = '#34495e';
+      }
     }
     return status;
   }

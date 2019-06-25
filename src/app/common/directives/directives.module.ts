@@ -12,6 +12,7 @@ import { PerPageComponent } from './per-page/per-page.component';
 import { MultiPurposeSearchComponent } from './multi-purpose-search/multi-purpose-search.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ProductItemComponent } from './product-item/product-item.component';
+import { UploadFileDirective } from './upload-file/upload-file.directive';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, PipesModule],
@@ -24,7 +25,8 @@ import { ProductItemComponent } from './product-item/product-item.component';
     PerPageComponent,
     MultiPurposeSearchComponent,
     LoaderComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    UploadFileDirective
   ],
   declarations: [
     PaginationComponent,
@@ -35,7 +37,8 @@ import { ProductItemComponent } from './product-item/product-item.component';
     PerPageComponent,
     MultiPurposeSearchComponent,
     LoaderComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    UploadFileDirective
   ]
 })
 export class DirectivesModule {}

@@ -11,10 +11,12 @@ declare const $: any;
 })
 export class PendingListingComponent extends BaseComponent implements OnInit, AfterViewChecked {
   public reducer: String = 'Wardrobe.detail';
+  public productId;
   constructor(private route: ActivatedRoute) {
     super();
     window.scroll(0, 0);
     const productId = this.route.snapshot.paramMap.get('id');
+    this.productId = productId;
     this.store.dispatch({
       type: GET_PRODUCT_DETAIL_REQUESTED,
       data: { id: productId },
@@ -65,12 +67,6 @@ export class PendingListingComponent extends BaseComponent implements OnInit, Af
 
     $rangeInput.on('input', function() {
       sheet.textContent = getTrackStyle(this);
-    });
-
-    // Change input value on label click
-    $('.range-labels li').on('click', function() {
-      const index = $(this).index();
-      $rangeInput.val(index + 1).trigger('input');
     });
     $rangeInput.val(Number($rangeInput.val())).trigger('input');
   }

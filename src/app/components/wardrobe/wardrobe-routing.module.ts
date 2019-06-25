@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 import { PendingListingComponent } from './pending-listing/pending-listing.component';
+import { EditPendingListingComponent } from './edit-pending-listing/edit-pending-listing.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
       {
         path: 'pending-listing/:id',
         component: PendingListingComponent
+      },
+      {
+        path: 'pending-listing/:id/edit',
+        component: EditPendingListingComponent
       }
     ]
   }
