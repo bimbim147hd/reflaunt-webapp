@@ -160,15 +160,15 @@
           <label class="label" for="">Item Includes</label>
           <div class="desc">
             <div class="list-item">
-              <ng-container *ngIf="payload.item.item_includes[0] | hasItem">
+              <ng-container *ngIf="payload.item.item_includes | hasItem">
                 <div
                   class="item"
-                  *ngFor="let item of payload.item.item_includes[0]"
+                  *ngFor="let item of payload.item.item_includes"
                 >
                   <p *ngFor="let i of item">{{ i }}</p>
                 </div>
               </ng-container>
-              <ng-container *ngIf="!(payload.item.item_includes[0] | hasItem)">
+              <ng-container *ngIf="!(payload.item.item_includes | hasItem)">
                 No item includes
               </ng-container>
             </div>
