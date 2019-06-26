@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
-import { DetailComponent } from './detail/detail.component';
 import { PendingListingComponent } from './pending-listing/pending-listing.component';
 import { EditPendingListingComponent } from './edit-pending-listing/edit-pending-listing.component';
 import { PendingShipmentComponent } from './pending-shipment/pending-shipment.component';
+import { DetailComponent } from './selling-detail/detail.component';
+import { SellDetailComponent } from './sell-detail/sell-detail.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path: 'pending-shipment/:id',
         component: PendingShipmentComponent
+      },
+      {
+        path: 'sell-detail/:id',
+        component: SellDetailComponent
       }
     ]
   }

@@ -5,14 +5,15 @@ import { PipesModule as VicodersPipesModule } from '@vicoders/angular';
 import { DirectivesModule } from '../../common/directives/directives.module';
 import { WardrobeRoutingModule } from './wardrobe-routing.module';
 import { ListComponent } from './list/list.component';
-import { DetailComponent } from './detail/detail.component';
 import { PendingListingComponent } from './pending-listing/pending-listing.component';
 import { EditPendingListingComponent } from './edit-pending-listing/edit-pending-listing.component';
 import { FormsModule } from '@angular/forms';
 import { PendingShipmentComponent } from './pending-shipment/pending-shipment.component';
+import { DetailComponent } from './selling-detail/detail.component';
+import { SellDetailComponent } from './sell-detail/sell-detail.component';
 
 @NgModule({
-  declarations: [ListComponent, DetailComponent, PendingListingComponent, EditPendingListingComponent, PendingShipmentComponent],
+  declarations: [ListComponent, DetailComponent, PendingListingComponent, EditPendingListingComponent, PendingShipmentComponent, SellDetailComponent],
   imports: [
     CommonModule,
     WardrobeRoutingModule,

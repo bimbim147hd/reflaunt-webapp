@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { BaseComponent } from '../../base.component';
 import { ActivatedRoute } from '@angular/router';
-import { GET_PRODUCT_DETAIL_REQUESTED } from '../detail/detail.actions';
 import { default_conditions } from '../edit-pending-listing/edit-pending-listing.consts';
+import { GET_PRODUCT_DETAIL_REQUESTED } from '../selling-detail/detail.actions';
 declare const $: any;
 
 @Component({
