@@ -10,9 +10,21 @@ import { AdminApiModule } from './admin/admin.module';
 import { SliderService } from './slider/slider.service';
 import { ProductService } from './product/product.service';
 import { UserService } from './user/user.service';
+import { ShipmentService } from './shipment/shipment.service';
 @NgModule({
   imports: [CommonModule, AdminApiModule],
   declarations: [],
-  providers: [ApiUrl, ApiService, AuthService, RoleService, PermissionService, FileService, SliderService, ProductService, UserService]
+  providers: [
+    ApiUrl,
+    ApiService,
+    AuthService,
+    RoleService,
+    PermissionService,
+    FileService,
+    SliderService,
+    ProductService,
+    UserService,
+    ShipmentService
+  ]
 })
 export class ApiModule {}
