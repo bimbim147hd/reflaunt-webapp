@@ -105,7 +105,11 @@
             aria-labelledby="nav-pending-tab"
           >
             <div class="products" *ngIf="payload.pendingProdutcs | hasItem">
-              <div class="child" *ngFor="let item of payload.pendingProdutcs">
+              <div
+                class="child"
+                *ngFor="let item of payload.pendingProdutcs"
+                [routerLink]="getRedirectUrl(item)"
+              >
                 <img
                   [ngStyle]="{
                     'background-image': item.getImageBackgroundStyle()
@@ -137,7 +141,11 @@
             aria-labelledby="nav-sold-tab"
           >
             <div class="products" *ngIf="payload.soldProducts | hasItem">
-              <div class="child" *ngFor="let item of payload.soldProducts">
+              <div
+                class="child"
+                *ngFor="let item of payload.soldProducts"
+                [routerLink]="getRedirectUrl(item)"
+              >
                 <img
                   [ngStyle]="{
                     'background-image': item.getImageBackgroundStyle()

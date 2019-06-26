@@ -3,6 +3,7 @@ import { BaseComponent } from '../../base.component';
 import { ActivatedRoute } from '@angular/router';
 import { default_conditions } from '../edit-pending-listing/edit-pending-listing.consts';
 import { GET_PRODUCT_DETAIL_REQUESTED } from '../selling-detail/detail.actions';
+import { EMAIL_ME_SHIPPING_LABEL_REQUESTED } from './pending-shipment.actions';
 declare const $: any;
 
 @Component({
@@ -72,6 +73,17 @@ export class PendingShipmentComponent extends BaseComponent
     });
     $rangeInput.val(Number($rangeInput.val())).trigger('input');
   }
+
+  emailShippingLabel = () => {
+    this.store.dispatch({
+      type: EMAIL_ME_SHIPPING_LABEL_REQUESTED,
+      data: {
+        email: this.store.getState().Auth.login.profile.email,
+        shipment_id: this.payload.item.shipments[0].shipment_id
+      }
+    });
+  // tslint:disable-next-line:semicolon
+  };
 
   mapStateToProps(state) {
     return {

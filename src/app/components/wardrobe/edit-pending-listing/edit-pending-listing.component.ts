@@ -17,6 +17,7 @@ import {
   default_conditions
 } from './edit-pending-listing.consts';
 import { GET_PRODUCT_DETAIL_REQUESTED } from '../selling-detail/detail.actions';
+import { PUBLISH_PRODUCT_REQUESTED } from './edit-pending-listing.actions';
 
 @Component({
   selector: 'app-edit-pending-listing',
@@ -42,7 +43,6 @@ export class EditPendingListingComponent extends BaseComponent
     this.route.queryParams.subscribe((params: Params) => {
       if (params.type === 'resell') {
         this.resellType = true;
-        console.log(this.resellType);
       }
     });
     const productId = this.route.snapshot.paramMap.get('id');
@@ -151,13 +151,16 @@ export class EditPendingListingComponent extends BaseComponent
 
   conditionChange(val) {
     const condition = _.find(default_conditions, i => i.index === Number(val));
-    console.log(condition);
     this.payload.item.condition_id = condition.rf_id;
-    console.log(this.payload);
   }
 
   publishListing() {
-    console.log(this.payload.item);
+    this.store.dispatch({
+      type: PUBLISH_PRODUCT_REQUESTED,
+      data: _.assign({}, this.payload.item, {
+        price: this.payload.item.price.price
+      })
+    });
   }
 
   ngOnDestroy() {}

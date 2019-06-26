@@ -17,7 +17,7 @@
           <p class="price">${{ payload.item.getPrice().price }}</p>
         </div>
 
-        <a class="btn btn__edit--listing">
+        <a class="btn btn__edit--listing" (click)="emailShippingLabel()">
           Email me my shipping label
         </a>
 

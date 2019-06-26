@@ -19,6 +19,7 @@ export class ListComponent extends BaseComponent implements OnInit {
   public reducer: String = 'Wardrobe.list';
   constructor(activatedRoute: ActivatedRoute, private router: Router) {
     super();
+    window.scroll(0, 0);
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
         this.store.dispatch({ type: FETCH_PRODUCTS_REQUESTED });

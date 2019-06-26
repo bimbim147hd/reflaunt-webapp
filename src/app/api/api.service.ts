@@ -7,6 +7,7 @@ import { FileService } from './file/file.service';
 import { SliderService } from './slider/slider.service';
 import { ProductService } from './product/product.service';
 import { UserService } from './user/user.service';
+import { ShipmentService } from './shipment/shipment.service';
 
 @Injectable()
 export class ApiService {
@@ -18,6 +19,7 @@ export class ApiService {
     public admin: AdminApiService,
     public slider: SliderService,
     public product: ProductService,
-    public user: UserService
+    public user: UserService,
+    public shipment: ShipmentService
   ) {}
 }
