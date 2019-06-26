@@ -18,6 +18,12 @@ function* watchFetchProductDetailRequest() {
         case 'SELLING_DETAIL_COM':
           yield put({ type: GET_PRODUCT_DETAIL_SUCCESSED, data: result });
           break;
+        case 'EDIT_PENDING_LISTING_COM':
+          yield put({ type: GET_PRODUCT_DETAIL_SUCCESSED, data: result });
+          break;
+        case 'PENDING_SHIPMENT_COM':
+          yield put({ type: GET_PRODUCT_DETAIL_SUCCESSED, data: result });
+          break;
         default:
           yield put({ type: GET_PRODUCT_DETAIL_SUCCESSED, data: result });
       }

@@ -1,4 +1,4 @@
-<div class="product__detail" *ngIf="payload.fetched">
+<div class="pendding__shipment" *ngIf="payload.fetched">
   <div class="product__detail--back container">
     <p>
       <a routerLink="/wardrobe"
@@ -15,24 +15,27 @@
         <div class="resale">
           <p class="label">Resale Price</p>
           <p class="price">${{ payload.item.getPrice().price }}</p>
-          <p class="like">
-            <i class="fa fa-heart" aria-hidden="true"></i
-            >{{ payload.item.getLikesNumber() }} Likes
-          </p>
         </div>
+
+        <a class="btn btn__edit--listing">
+          Email me my shipping label
+        </a>
 
         <p class="left-col__line"></p>
 
-        <p class="listed" *ngIf="payload.item.markets | hasItem">
-          Listed on the following marketplaces since
-          {{ payload.item.markets[0].listed_at | date: 'dd/MM/yy' }}
+        <p class="listed" *ngIf="payload.item.sold_market">
+          Item sold on
         </p>
-        <div class="listed__logos" *ngIf="payload.item.markets | hasItem">
-          <div *ngFor="let item of payload.item.markets" class="logo">
-            <ng-container *ngIf="item.images | hasItem">
-              <img width="50px" src="{{ item.images[0].url }}" alt="" />
+        <div class="listed__logos">
+          <div class="logo" *ngIf="payload.item.sold_market">
+            <ng-container *ngIf="payload.item.sold_market.images | hasItem">
+              <img
+                width="50px"
+                src="{{ payload.item.sold_market.images[0].url }}"
+                alt=""
+              />
             </ng-container>
-            <ng-container *ngIf="!(item.images | hasItem)">
+            <ng-container *ngIf="!(payload.item.sold_market.images | hasItem)">
               <img width="50px" src="/assets/images/download.png" alt="" />
             </ng-container>
           </div>
@@ -59,7 +62,7 @@
       </div>
       <div class="col-12 col-md-9 product__detail__right-col">
         <div class="notification">
-          <span>Selling - your item has been listed</span>
+          <span>Your item is pending shipment</span>
         </div>
         <div class="item--images">
           <ng-container *ngIf="payload.item.images | hasItem">
