@@ -7,8 +7,7 @@ import {
   AfterViewInit
 } from '@angular/core';
 import { BaseComponent } from '../../base.component';
-import { ActivatedRoute } from '@angular/router';
-import { GET_PRODUCT_DETAIL_REQUESTED } from '../detail/detail.actions';
+import { ActivatedRoute, Params } from '@angular/router';
 declare const $: any;
 import * as _ from 'lodash';
 import {
@@ -17,6 +16,7 @@ import {
   estimatePrice,
   default_conditions
 } from './edit-pending-listing.consts';
+import { GET_PRODUCT_DETAIL_REQUESTED } from '../selling-detail/detail.actions';
 
 @Component({
   selector: 'app-edit-pending-listing',
@@ -35,9 +35,16 @@ export class EditPendingListingComponent extends BaseComponent
   public estimatePrice = estimatePrice;
   public new_sign;
   public conditions = default_conditions;
+  public resellType = false;
   constructor(private route: ActivatedRoute, private cdRef: ChangeDetectorRef) {
     super();
     window.scroll(0, 0);
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params.type === 'resell') {
+        this.resellType = true;
+        console.log(this.resellType);
+      }
+    });
     const productId = this.route.snapshot.paramMap.get('id');
     this.productId = productId;
     this.store.dispatch({

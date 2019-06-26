@@ -6,7 +6,8 @@ import * as _ from 'lodash';
 import {
   SELLING_STATUS,
   PENDING_STATUS,
-  SOLD_STATUS
+  SOLD_STATUS,
+  CANCELED_STATUS
 } from '../../../models/Product';
 
 @Component({
@@ -52,6 +53,10 @@ export class ListComponent extends BaseComponent implements OnInit {
       {
         status: SOLD_STATUS,
         url: ['/', 'wardrobe', 'pending-shipment', item.id]
+      },
+      {
+        status: CANCELED_STATUS,
+        url: ['/', 'wardrobe', 'sell-detail', item.id]
       }
     ];
     _.forEach(able_statuses, function(status) {

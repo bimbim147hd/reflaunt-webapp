@@ -64,7 +64,7 @@
     padding-left: 28px;
     .notification {
       background-color: #f7b500;
-      margin-bottom: 20px;
+      margin-bottom: 60px;
       p {
         position: relative;
         display: block;
@@ -86,7 +86,8 @@
       }
     }
     .item--info {
-      padding: 40px 0;
+      padding-bottom: 40px;
+      margin-bottom: 40px;
       border-bottom: solid 1px #dbdbdb;
       .desc {
         font-size: 12px;

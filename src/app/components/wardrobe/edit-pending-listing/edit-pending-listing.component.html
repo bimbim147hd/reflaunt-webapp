@@ -15,7 +15,7 @@
         <p class="desc">{{ payload.item.getName() }}</p>
       </div>
       <div class="col-12 col-md-9 product__detail__right-col">
-        <div class="notification">
+        <div class="notification" *ngIf="!resellType">
           <p>
             Pending Listing - some information are missing,
             <span>complete your listing here</span>
@@ -25,9 +25,16 @@
           <div class="desc">
             <div class="condition-desc">
               <div class="left-col">
-                <label class="label first-label" for="">PHOTOS</label>
+                <label
+                  [ngClass]="{ 'first-label': !resellType }"
+                  class="label"
+                  for=""
+                  >PHOTOS</label
+                >
                 <p class="left-col__desc">Choose a pricing for your item</p>
-                <p class="left-col__action">- Add more Photos</p>
+                <p *ngIf="!resellType" class="left-col__action">
+                  - Add more Photos
+                </p>
               </div>
               <div class="right-col">
                 <div class="item--images">
@@ -153,7 +160,10 @@
                   </div>
 
                   <ul class="range-labels">
-                    <li *ngFor="let item of conditions" (click)="conditionChange(item.index)">
+                    <li
+                      *ngFor="let item of conditions"
+                      (click)="conditionChange(item.index)"
+                    >
                       {{ item.name }}
                       <div class="condition-desc">
                         <p class="name">{{ item.name }}</p>

@@ -1,4 +1,4 @@
-<div class="pendding-listing" *ngIf="payload.fetched">
+<div class="sell__detail" *ngIf="payload.fetched">
   <div class="product__detail--back container">
     <p>
       <a routerLink="/wardrobe"
@@ -13,15 +13,16 @@
         <p class="desc">{{ payload.item.getName() }}</p>
 
         <div class="resale">
-          <p class="label">Estimated Resale</p>
+          <p class="label">Resale Price</p>
           <p class="price">${{ payload.item.getPrice().price }}</p>
         </div>
 
         <a
           [routerLink]="['/', 'wardrobe', 'pending-listing', productId, 'edit']"
+          [queryParams]="{ type: 'resell' }"
           class="btn btn__edit--listing"
         >
-          Edit Listing
+          Sell Item
         </a>
 
         <p class="left-col__line"></p>
@@ -44,12 +45,6 @@
         </div>
       </div>
       <div class="col-12 col-md-9 product__detail__right-col">
-        <div class="notification">
-          <p>
-            Pending Listing - some information are missing,
-            <span>complete your listing here</span>
-          </p>
-        </div>
         <div class="item--images">
           <ng-container *ngIf="payload.item.images | hasItem">
             <div class="item--image" *ngFor="let item of payload.item.images">
@@ -98,76 +93,6 @@
             >
               No material
             </ng-container>
-          </div>
-        </div>
-        <div class="item--info">
-          <label class="label" for="">Condition</label>
-          <div class="desc">
-            <div class="condition-desc">
-              <div class="left-col">
-                <p>
-                  {{ payload.item.condition_description_item }}
-                </p>
-                <span class="tag">Scuffs at edge</span>
-                <span class="tag">Scuffs at edge</span>
-              </div>
-              <div class="right-col">
-                <div class="range">
-                  <input
-                    disabled="true"
-                    id="conditions"
-                    type="range"
-                    min="1"
-                    max="5"
-                    steps="1"
-                    value="{{ payload.item.getConditionMask() }}"
-                  />
-                </div>
-
-                <ul class="range-labels">
-                  <li *ngFor="let item of conditions">{{ item.name }}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="item--info">
-          <label class="label" for="">Seller’s Comment</label>
-          <div class="desc">
-            <ng-container
-              *ngIf="
-                payload.item.seller_comment &&
-                payload.item.seller_comment !== ''
-              "
-            >
-              {{ payload.item.seller_comment }}
-            </ng-container>
-            <ng-container
-              *ngIf="
-                !payload.item.seller_comment ||
-                payload.item.seller_comment === ''
-              "
-            >
-              No comment
-            </ng-container>
-          </div>
-        </div>
-        <div class="item--info">
-          <label class="label" for="">Item Includes</label>
-          <div class="desc">
-            <div class="list-item">
-              <ng-container *ngIf="payload.item.item_includes | hasItem">
-                <div
-                  class="item"
-                  *ngFor="let item of payload.item.item_includes"
-                >
-                  <p *ngFor="let i of item">{{ i }}</p>
-                </div>
-              </ng-container>
-              <ng-container *ngIf="!(payload.item.item_includes | hasItem)">
-                No item includes
-              </ng-container>
-            </div>
           </div>
         </div>
         <div class="item--info item--info--last">
