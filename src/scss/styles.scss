@@ -15,7 +15,11 @@
   font-family: 'PlayfairDisplay';
   src: url('../fonts/playfair-display/PlayfairDisplay-Regular.otf');
 }
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SFProText/SFProText-Regular.ttf');
+}
 .nf-notify {
   z-index: 99;
 }
-
