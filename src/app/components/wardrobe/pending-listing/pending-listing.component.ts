@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BaseComponent } from '../../base.component';
 import { GET_PRODUCT_DETAIL_REQUESTED } from '../detail/detail.actions';
+import { default_conditions } from '../edit-pending-listing/edit-pending-listing.consts';
 declare const $: any;
 
 @Component({
@@ -9,9 +10,12 @@ declare const $: any;
   templateUrl: './pending-listing.component.html',
   styleUrls: ['./pending-listing.component.scss']
 })
-export class PendingListingComponent extends BaseComponent implements OnInit, AfterViewChecked {
+export class PendingListingComponent extends BaseComponent
+  implements OnInit, AfterViewChecked {
   public reducer: String = 'Wardrobe.detail';
   public productId;
+  public conditions = default_conditions;
+
   constructor(private route: ActivatedRoute) {
     super();
     window.scroll(0, 0);

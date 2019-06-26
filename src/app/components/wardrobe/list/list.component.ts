@@ -3,7 +3,11 @@ import { BaseComponent } from '../../base.component';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FETCH_PRODUCTS_REQUESTED } from './list.actions';
 import * as _ from 'lodash';
-import { SELLING_STATUS, PENDING_STATUS } from '../../../models/Product';
+import {
+  SELLING_STATUS,
+  PENDING_STATUS,
+  SOLD_STATUS
+} from '../../../models/Product';
 
 @Component({
   selector: 'app-list',
@@ -44,6 +48,10 @@ export class ListComponent extends BaseComponent implements OnInit {
       {
         status: PENDING_STATUS,
         url: ['/', 'wardrobe', 'pending-listing', item.id]
+      },
+      {
+        status: SOLD_STATUS,
+        url: ['/', 'wardrobe', 'pending-shipment', item.id]
       }
     ];
     _.forEach(able_statuses, function(status) {

@@ -9,9 +9,10 @@ import { DetailComponent } from './detail/detail.component';
 import { PendingListingComponent } from './pending-listing/pending-listing.component';
 import { EditPendingListingComponent } from './edit-pending-listing/edit-pending-listing.component';
 import { FormsModule } from '@angular/forms';
+import { PendingShipmentComponent } from './pending-shipment/pending-shipment.component';
 
 @NgModule({
-  declarations: [ListComponent, DetailComponent, PendingListingComponent, EditPendingListingComponent],
+  declarations: [ListComponent, DetailComponent, PendingListingComponent, EditPendingListingComponent, PendingShipmentComponent],
   imports: [
     CommonModule,
     WardrobeRoutingModule,

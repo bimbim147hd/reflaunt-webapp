@@ -1,16 +1,16 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { GET_PRODUCT_DETAIL_REQUESTED } from './detail.actions';
 import { BaseComponent } from '../../base.component';
+import { ActivatedRoute } from '@angular/router';
+import { GET_PRODUCT_DETAIL_REQUESTED } from '../detail/detail.actions';
 import { default_conditions } from '../edit-pending-listing/edit-pending-listing.consts';
 declare const $: any;
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  selector: 'app-pending-shipment',
+  templateUrl: './pending-shipment.component.html',
+  styleUrls: ['./pending-shipment.component.scss']
 })
-export class DetailComponent extends BaseComponent
+export class PendingShipmentComponent extends BaseComponent
   implements OnInit, AfterViewChecked {
   public reducer: String = 'Wardrobe.detail';
   public conditions = default_conditions;
@@ -22,13 +22,14 @@ export class DetailComponent extends BaseComponent
     this.store.dispatch({
       type: GET_PRODUCT_DETAIL_REQUESTED,
       data: { id: productId },
-      com: 'SELLING_DETAIL_COM'
+      com: 'PENDING_SHIPMENT_COM'
     });
   }
 
   ngOnInit() {
     this.init();
   }
+
   ngAfterViewChecked() {
     const getTrackStyle = function(el) {
       const curVal = el.value;

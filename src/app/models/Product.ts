@@ -32,6 +32,9 @@ class Product extends Model {
     (this as any).markets = d => {
       return _.map(d.data, item => new User(item));
     };
+    (this as any).sold_market = d => {
+      return new User(d.data);
+    };
     this.bind(options);
   }
 
