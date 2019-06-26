@@ -125,11 +125,7 @@
                 </div>
 
                 <ul class="range-labels">
-                  <li class="active selected">GENTLY LOVED</li>
-                  <li>good</li>
-                  <li>very good</li>
-                  <li>execellent</li>
-                  <li>brand new</li>
+                  <li *ngFor="let item of conditions">{{ item.name }}</li>
                 </ul>
               </div>
             </div>

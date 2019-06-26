@@ -146,53 +146,19 @@
                       min="1"
                       max="5"
                       steps="1"
-                      value="{{ payload.item.getConditionMask() }}"
+                      #conditionPending
+                      [value]="payload.item.getConditionMask()"
+                      (change)="conditionChange(conditionPending.value)"
                     />
                   </div>
 
                   <ul class="range-labels">
-                    <li class="active selected">
-                      GENTLY LOVED
+                    <li *ngFor="let item of conditions" (click)="conditionChange(item.index)">
+                      {{ item.name }}
                       <div class="condition-desc">
-                        <p class="name">GENTLY LOVED</p>
+                        <p class="name">{{ item.name }}</p>
                         <p class="desc">
-                          {{ getConditionDescription('gently_loved') }}
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      good
-                      <div class="condition-desc">
-                        <p class="name">good</p>
-                        <p class="desc">
-                          {{ getConditionDescription('good') }}
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      very good
-                      <div class="condition-desc">
-                        <p class="name">very good</p>
-                        <p class="desc">
-                          {{ getConditionDescription('very_good') }}
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      execellent
-                      <div class="condition-desc">
-                        <p class="name">execellent</p>
-                        <p class="desc">
-                          {{ getConditionDescription('excellent') }}
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      brand new
-                      <div class="condition-desc">
-                        <p class="name">brand new</p>
-                        <p class="desc">
-                          {{ getConditionDescription('new_with_tag') }}
+                          {{ getConditionDescription(item.key) }}
                         </p>
                       </div>
                     </li>
@@ -241,7 +207,9 @@
                     rows="5"
                   ></textarea>
                 </div>
-                <a (click)="publishListing()" class="btn-publish">Publish Listing</a>
+                <a (click)="publishListing()" class="btn-publish"
+                  >Publish Listing</a
+                >
               </div>
             </div>
           </div>

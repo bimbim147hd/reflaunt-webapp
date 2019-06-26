@@ -374,7 +374,7 @@
                     padding: 10px;
                     left: 50%;
                     margin-left: -190px;
-                    top: 80px;
+                    top: 70px;
                     &:before {
                       position: absolute;
                       content: '';
@@ -439,8 +439,8 @@
               .range-labels {
                 li {
                   width: 20%;
-                  top: -38px;
-                  padding-top: 38px;
+                  top: -18px;
+                  padding-top: 18px;
                 }
               }
             }
@@ -505,6 +505,7 @@
                 &:before {
                   display: none;
                 }
+                cursor: inherit;
                 span {
                   position: absolute;
                   right: 10px;
@@ -512,13 +513,13 @@
                   font-size: 12px;
                   font-weight: bold;
                   color: #000000;
+                  cursor: pointer;
                 }
                 input {
                   padding: 10px;
                   border: none;
                   width: 100%;
                   background-color: #fff;
-                  cursor: inherit;
                 }
               }
               textarea {

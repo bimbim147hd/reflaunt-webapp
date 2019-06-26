@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GET_PRODUCT_DETAIL_REQUESTED } from './detail.actions';
 import { BaseComponent } from '../../base.component';
+import { default_conditions } from '../edit-pending-listing/edit-pending-listing.consts';
 declare const $: any;
 
 @Component({
@@ -12,6 +13,8 @@ declare const $: any;
 export class DetailComponent extends BaseComponent
   implements OnInit, AfterViewChecked {
   public reducer: String = 'Wardrobe.detail';
+  public conditions = default_conditions;
+
   constructor(private route: ActivatedRoute) {
     super();
     window.scroll(0, 0);

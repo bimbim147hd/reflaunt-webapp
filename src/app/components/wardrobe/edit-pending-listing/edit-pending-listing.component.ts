@@ -14,7 +14,8 @@ import * as _ from 'lodash';
 import {
   getTrackPriceStyle,
   getTrackConditionStyle,
-  estimatePrice
+  estimatePrice,
+  default_conditions
 } from './edit-pending-listing.consts';
 
 @Component({
@@ -33,6 +34,7 @@ export class EditPendingListingComponent extends BaseComponent
   public checkSingsWear = true;
   public estimatePrice = estimatePrice;
   public new_sign;
+  public conditions = default_conditions;
   constructor(private route: ActivatedRoute, private cdRef: ChangeDetectorRef) {
     super();
     window.scroll(0, 0);
@@ -100,7 +102,7 @@ export class EditPendingListingComponent extends BaseComponent
   }
 
   getConditionDescription(condition) {
-    let result = 'Not found';
+    let result = 'Description is updating...';
     Object.keys(this.payload.item.condition_description_items).forEach(key => {
       if (condition === key) {
         result = this.payload.item.condition_description_items[key];
@@ -138,6 +140,13 @@ export class EditPendingListingComponent extends BaseComponent
       ];
       this.new_sign = undefined;
     }
+  }
+
+  conditionChange(val) {
+    const condition = _.find(default_conditions, i => i.index === Number(val));
+    console.log(condition);
+    this.payload.item.condition_id = condition.rf_id;
+    console.log(this.payload);
   }
 
   publishListing() {

@@ -136,11 +136,7 @@
                 </div>
 
                 <ul class="range-labels">
-                  <li class="active selected">GENTLY LOVED</li>
-                  <li>good</li>
-                  <li>very good</li>
-                  <li>execellent</li>
-                  <li>brand new</li>
+                  <li *ngFor="let item of conditions">{{ item.name }}</li>
                 </ul>
               </div>
             </div>
@@ -171,15 +167,15 @@
           <label class="label" for="">Item Includes</label>
           <div class="desc">
             <div class="list-item">
-              <ng-container *ngIf="payload.item.item_includes[0] | hasItem">
+              <ng-container *ngIf="payload.item.item_includes | hasItem">
                 <div
                   class="item"
-                  *ngFor="let item of payload.item.item_includes[0]"
+                  *ngFor="let item of payload.item.item_includes"
                 >
                   <p *ngFor="let i of item">{{ i }}</p>
                 </div>
               </ng-container>
-              <ng-container *ngIf="!(payload.item.item_includes[0] | hasItem)">
+              <ng-container *ngIf="!(payload.item.item_includes | hasItem)">
                 No item includes
               </ng-container>
             </div>

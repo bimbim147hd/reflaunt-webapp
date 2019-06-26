@@ -80,3 +80,11 @@ export const estimatePrice = original_price => {
     max_price: Math.round(original_price * 1.3)
   };
 };
+
+export const default_conditions = [
+  { name: 'GENTLY LOVED', key: 'gently_loved', index: 1, rf_id: 2 },
+  { name: 'good', key: 'good', index: 2, rf_id: 5 },
+  { name: 'very good', key: 'very_good', index: 3, rf_id: 4 },
+  { name: 'excellent', key: 'excellent', index: 4, rf_id: 1 },
+  { name: 'brand new', key: 'new_with_tag', index: 5, rf_id: 3 }
+];
