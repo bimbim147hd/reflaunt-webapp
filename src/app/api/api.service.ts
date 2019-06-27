@@ -9,6 +9,7 @@ import { ProductService } from './product/product.service';
 import { UserService } from './user/user.service';
 import { ShipmentService } from './shipment/shipment.service';
 import { NotificationService } from './notification/notification.service';
+import { WalletService } from './wallet/wallet.service';
 
 @Injectable()
 export class ApiService {
@@ -22,6 +23,7 @@ export class ApiService {
     public product: ProductService,
     public user: UserService,
     public shipment: ShipmentService,
-    public notification: NotificationService
+    public notification: NotificationService,
+    public wallet: WalletService
   ) {}
 }

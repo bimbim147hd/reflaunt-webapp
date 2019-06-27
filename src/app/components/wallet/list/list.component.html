@@ -1,0 +1,112 @@
+<div class="wallet">
+  <div class="container" *ngIf="payload.walletExist">
+    <div class="row">
+      <div class="col-12 col-md-3 wardrobe__left-col">
+        <h1 class="title">Wallet</h1>
+        <div class="box">
+          <p class="box-number symbol">{{ payload.wallet.amount_credit }}</p>
+          <p class="box-description">Credit Balance</p>
+        </div>
+
+        <a class="btn btn__edit--listing">
+          Redeem Voucher
+        </a>
+        <div class="point-group">
+          <img src="/assets/images/icon-bifina.png" alt="" />
+          <p class="point">gold tier</p>
+          <p>282 points</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-9 wardrobe__right-col">
+        <ng-container *ngIf="payload.fetched">
+          <h2>Pending Payments ({{ payload.pendingProducts.length }})</h2>
+          <div
+            class="notification-group"
+            *ngIf="payload.pendingProducts | hasItem"
+          >
+            <div
+              class="notication"
+              *ngFor="let item of payload.pendingProducts"
+            >
+              <img
+                [ngStyle]="{
+                  'background-image': item.getImageBackgroundStyle()
+                }"
+                src="/assets/images/43x43.png"
+                alt=""
+              />
+              <span class="content">
+                <p class="title">{{ item.name }}</p>
+              </span>
+              <span class="amount">
+                <p class="title">
+                  ${{ item.transaction_histories[0].amount }}.00
+                </p>
+              </span>
+            </div>
+          </div>
+          <div
+            style="padding: 15px;"
+            *ngIf="!(payload.pendingProducts | hasItem)"
+            class="notification-group"
+          >
+            Resource not found
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="payload.fetched">
+          <h2 class="past">Past Payments</h2>
+          <div
+            class="notification-group"
+            *ngIf="payload.historyTransactions | hasItem"
+          >
+            <div
+              class="notication notication--past"
+              *ngFor="let item of payload.historyTransactions"
+            >
+              <img
+                [ngStyle]="{
+                  'background-image': item.getImageBackgroundStyle()
+                }"
+                src="/assets/images/43x43.png"
+                alt=""
+              />
+              <span class="content">
+                <p class="title">{{ item.name }}</p>
+                <p class="desc">
+                  Payment Received -
+                  {{ item.transaction_histories[0].getTypeLabel() }}
+                </p>
+              </span>
+              <span class="amount">
+                <p
+                  *ngIf="item.transaction_histories[0].type === 1"
+                  class="title"
+                >
+                  +${{ item.transaction_histories[0].amount_credit }}.00
+                </p>
+                <p
+                  *ngIf="item.transaction_histories[0].type === 2"
+                  class="title"
+                >
+                  +${{ item.transaction_histories[0].amount_cash }}.00
+                </p>
+              </span>
+            </div>
+          </div>
+          <div
+            style="padding: 15px;"
+            *ngIf="!(payload.historyTransactions | hasItem)"
+            class="notification-group"
+          >
+            Resource not found
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div style="padding: 100px 0;" class="container" *ngIf="!payload.walletExist">
+    <p>You do not have a wallet on RF.</p>
+    <p>The wallet will be ready when you have sold at least 1 product.</p>
+  </div>
+</div>

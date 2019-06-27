@@ -1,6 +1,8 @@
 <header class="header" *ngIf="store.getState().Auth.login.loggedin">
   <div class="container">
-    <a href="" class="logo"><img src="/assets/images/logo.png" alt=""/></a>
+    <a routerLink="/" class="logo"
+      ><img src="/assets/images/logo.png" alt=""
+    /></a>
     <input class="menu-btn" type="checkbox" id="menu-btn" />
     <label class="menu-icon" for="menu-btn"
       ><span class="navicon"></span
@@ -10,8 +12,14 @@
         <a routerLink="/wardrobe" routerLinkActive="menu-actived">Wardrobe</a>
       </li>
       <li><a href="#Queries">Queries</a></li>
-      <li><a routerLink="/notification" routerLinkActive="menu-actived">Notification</a></li>
-      <li><a href="#Wallet">Wallet</a></li>
+      <li>
+        <a routerLink="/notification" routerLinkActive="menu-actived"
+          >Notification</a
+        >
+      </li>
+      <li>
+        <a routerLink="/wallet" routerLinkActive="menu-actived">Wallet</a>
+      </li>
       <li>
         <a (click)="openNav()"
           >{{ store.getState().Auth.login.profile.email }}

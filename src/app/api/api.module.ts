@@ -12,6 +12,7 @@ import { ProductService } from './product/product.service';
 import { UserService } from './user/user.service';
 import { ShipmentService } from './shipment/shipment.service';
 import { NotificationService } from './notification/notification.service';
+import { WalletService } from './wallet/wallet.service';
 @NgModule({
   imports: [CommonModule, AdminApiModule],
   declarations: [],
@@ -26,7 +27,8 @@ import { NotificationService } from './notification/notification.service';
     ProductService,
     UserService,
     ShipmentService,
-    NotificationService
+    NotificationService,
+    WalletService
   ]
 })
 export class ApiModule {}
