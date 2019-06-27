@@ -5,6 +5,7 @@ import Homepage from '../components/homepage/homepage.saga';
 import { API_CALL_ERROR } from './action';
 import Wardrobe from '../components/wardrobe/wardrobe.saga';
 import NotificationSaga from '../components/notification/notification.saga';
+import Wallet from '../components/wallet/wallet.saga';
 import Loader from '@vicoders/support/services/Loader';
 import Notification from '@vicoders/support/services/Notification';
 
@@ -30,6 +31,7 @@ export default function* sagas() {
       ...Homepage,
       ...Wardrobe,
       ...NotificationSaga,
+      ...Wallet,
       watchApiCallError
     ].map(item => fork(item))
   );

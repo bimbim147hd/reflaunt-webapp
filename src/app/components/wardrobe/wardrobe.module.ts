@@ -13,7 +13,14 @@ import { DetailComponent } from './selling-detail/detail.component';
 import { SellDetailComponent } from './sell-detail/sell-detail.component';
 
 @NgModule({
-  declarations: [ListComponent, DetailComponent, PendingListingComponent, EditPendingListingComponent, PendingShipmentComponent, SellDetailComponent],
+  declarations: [
+    ListComponent,
+    DetailComponent,
+    PendingListingComponent,
+    EditPendingListingComponent,
+    PendingShipmentComponent,
+    SellDetailComponent
+  ],
   imports: [
     CommonModule,
     WardrobeRoutingModule,

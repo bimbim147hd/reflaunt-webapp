@@ -5,6 +5,7 @@ import { Homepage } from '../components/homepage/homepage.reducer';
 import { environment } from '../../environments/environment';
 import { Wardrobe } from '../components/wardrobe/wardrobe.reducer';
 import { Notification } from '../components/notification/notification.reducer';
+import { Wallet } from '../components/wallet/wallet.reducer';
 
 const RootReducer = (
   state = { config: environment, isShowBtnSettings: false },
@@ -50,5 +51,6 @@ export default combineReducers({
   Homepage,
   RootReducer,
   Wardrobe,
-  Notification
+  Notification,
+  Wallet
 });

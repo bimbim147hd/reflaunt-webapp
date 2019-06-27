@@ -5,6 +5,7 @@ import Image from './Image';
 import ProductMeta from './ProductMeta';
 import User from './User';
 import Shipment from './Shipment';
+import TransactionHistory from './TransactionHistory';
 
 export const PENDING_STATUS = 1;
 export const FLAUNT_STATUS = 2;
@@ -38,6 +39,9 @@ class Product extends Model {
     };
     (this as any).shipments = d => {
       return _.map(d.data, item => new Shipment(item));
+    };
+    (this as any).transaction_histories = d => {
+      return _.map(d.data, item => new TransactionHistory(item));
     };
     this.bind(options);
   }

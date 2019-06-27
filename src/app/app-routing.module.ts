@@ -22,6 +22,10 @@ const appRoutes: Routes = [
       {
         path: 'notification',
         component: NotificationComponent
+      },
+      {
+        path: 'wallet',
+        loadChildren: './components/wallet/wallet.module#WalletModule'
       }
     ],
     canActivate: [AuthGuardService]
