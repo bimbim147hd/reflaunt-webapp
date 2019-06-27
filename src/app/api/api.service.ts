@@ -8,6 +8,7 @@ import { SliderService } from './slider/slider.service';
 import { ProductService } from './product/product.service';
 import { UserService } from './user/user.service';
 import { ShipmentService } from './shipment/shipment.service';
+import { NotificationService } from './notification/notification.service';
 
 @Injectable()
 export class ApiService {
@@ -20,6 +21,7 @@ export class ApiService {
     public slider: SliderService,
     public product: ProductService,
     public user: UserService,
-    public shipment: ShipmentService
+    public shipment: ShipmentService,
+    public notification: NotificationService
   ) {}
 }
