@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { HomepageComponent } from './components/homepage/homepage.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 const appRoutes: Routes = [
   {
@@ -15,13 +15,13 @@ const appRoutes: Routes = [
         redirectTo: 'wardrobe',
         pathMatch: 'full'
       },
-      // {
-      //   path: 'product',
-      //   loadChildren: './components/product/product.module#ProductModule'
-      // },
       {
         path: 'wardrobe',
         loadChildren: './components/wardrobe/wardrobe.module#WardrobeModule'
+      },
+      {
+        path: 'notification',
+        component: NotificationComponent
       }
     ],
     canActivate: [AuthGuardService]

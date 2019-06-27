@@ -4,6 +4,7 @@ import auth from '../components/auth/auth.saga';
 import Homepage from '../components/homepage/homepage.saga';
 import { API_CALL_ERROR } from './action';
 import Wardrobe from '../components/wardrobe/wardrobe.saga';
+import NotificationSaga from '../components/notification/notification.saga';
 import Loader from '@vicoders/support/services/Loader';
 import Notification from '@vicoders/support/services/Notification';
 
@@ -23,8 +24,13 @@ function* watchApiCallError() {
 
 export default function* sagas() {
   yield all(
-    [...main, ...auth, ...Homepage, ...Wardrobe, watchApiCallError].map(item =>
-      fork(item)
-    )
+    [
+      ...main,
+      ...auth,
+      ...Homepage,
+      ...Wardrobe,
+      ...NotificationSaga,
+      watchApiCallError
+    ].map(item => fork(item))
   );
 }

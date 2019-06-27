@@ -10,9 +10,10 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { DirectivesModule } from '../common/directives/directives.module';
 import { PipesModule } from '@vicoders/angular';
 import { WardrobeComponent } from './wardrobe/wardrobe.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
-  declarations: [PageNotFoundComponent, MainComponent, HomepageComponent, BaseComponent, WardrobeComponent],
+  declarations: [PageNotFoundComponent, MainComponent, HomepageComponent, BaseComponent, WardrobeComponent, NotificationComponent],
   imports: [CommonModule, RouterModule, FormsModule, BrowserAnimationsModule, DirectivesModule, PipesModule],
   providers: [],
   exports: []
