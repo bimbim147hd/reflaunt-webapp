@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { ChoosePaymentComponent } from './choose-payment/choose-payment.component';
+import { DetailPastPaymentComponent } from './detail-past-payment/detail-past-payment.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
       {
         path: ':id/choose-payment',
         component: ChoosePaymentComponent
+      },
+      {
+        path: ':id/detail-payment',
+        component: DetailPastPaymentComponent
       }
     ]
   }

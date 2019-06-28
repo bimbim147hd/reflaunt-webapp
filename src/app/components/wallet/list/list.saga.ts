@@ -8,13 +8,28 @@ import { takeLatest, put } from 'redux-saga/effects';
 import { AppInjector } from '../../../app-injector';
 import { ApiService } from '../../../api/api.service';
 import { GET_DETAIL_PENDING_PRODUCT_SUCCESSED } from '../choose-payment/choose-payment.actions';
+import { GET_DETAIL_PAYMENT_SUCCESSED } from '../detail-past-payment/detail-past-payment.actions';
 
 function* watchFetchUserWalletRequest() {
   yield takeLatest(FETCH_USER_WALLET_REQUESTED, function*(action: any) {
     const api = AppInjector.get(ApiService);
     try {
       const result = yield api.wallet.getUserWallet().toPromise();
-      yield put({ type: FETCH_USER_WALLET_SUCCESSED, data: result });
+      switch (action.com) {
+        case 'DETAIL_PAYMENT':
+          yield put({
+            type: FETCH_USER_WALLET_SUCCESSED,
+            data: result,
+            productId: action.productId,
+            com: action.com
+          });
+          break;
+        default:
+          yield put({
+            type: FETCH_USER_WALLET_SUCCESSED,
+            data: result
+          });
+      }
     } catch (e) {
       // tslint:disable-next-line:quotemark
       if (e.error.message === "Cannot read property 'id' of null") {
@@ -40,6 +55,13 @@ function* watchFetchUserWalletSuccessed() {
           yield put({
             type: GET_DETAIL_PENDING_PRODUCT_SUCCESSED,
             data: pendingProducts,
+            productId: action.productId
+          });
+          break;
+        case 'DETAIL_PAYMENT':
+          yield put({
+            type: GET_DETAIL_PAYMENT_SUCCESSED,
+            data: historyTransactions,
             productId: action.productId
           });
           break;

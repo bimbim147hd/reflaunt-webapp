@@ -61,9 +61,10 @@
             class="notification-group"
             *ngIf="payload.historyTransactions | hasItem"
           >
-            <div
+            <a
               class="notication notication--past"
               *ngFor="let item of payload.historyTransactions"
+              [routerLink]="['/', 'wallet', item.id, 'detail-payment']"
             >
               <img
                 [ngStyle]="{
@@ -93,7 +94,7 @@
                   +${{ item.transaction_histories[0].amount_cash }}.00
                 </p>
               </span>
-            </div>
+            </a>
           </div>
           <div
             style="padding: 15px;"

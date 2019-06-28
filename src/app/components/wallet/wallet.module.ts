@@ -7,9 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { WalletRoutingModule } from './wallet-routing.module';
 import { ListComponent } from './list/list.component';
 import { ChoosePaymentComponent } from './choose-payment/choose-payment.component';
+import { DetailPastPaymentComponent } from './detail-past-payment/detail-past-payment.component';
 
 @NgModule({
-  declarations: [ListComponent, ChoosePaymentComponent],
+  declarations: [ListComponent, ChoosePaymentComponent, DetailPastPaymentComponent],
   imports: [
     CommonModule,
     WalletRoutingModule,

@@ -1,11 +1,31 @@
 @import 'font';
 
-.wallet {
+.detail__payment {
   padding: 80px 0 50px 0;
   font-family: $lato-regular;
+  .product__detail--back {
+    p {
+      a {
+        color: #000000;
+      }
+      cursor: pointer;
+      margin: 0;
+      margin-top: 63px;
+      margin-bottom: 22px;
+      font-size: 12px;
+      line-height: normal;
+      letter-spacing: 0.19px;
+      i {
+        margin-right: 2px;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
   .wardrobe__left-col {
-    margin-top: 90px;
     width: 2px;
+    // min-height: 766px;
     border-right: solid 1px #dbdbdb;
     .btn__edit--listing {
       width: 100%;
@@ -85,98 +105,52 @@
     }
   }
   .wardrobe__right-col {
-    margin-top: 90px;
     padding-left: 70px;
-    h2 {
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      color: #f7b500;
-      margin-bottom: 20px;
-    }
-    h2.past {
-      color: #6d7278;
-    }
-    .notification-group {
-      border: solid 1px #dbdbdb;
+    .product--info {
+      overflow: hidden;
+      border-bottom: solid 1px #dbdbdb;
+      padding-bottom: 30px;
       margin-bottom: 40px;
-      .notication {
-        cursor: pointer;
-        padding: 20px 25px;
-        display: flex;
-        flex-flow: row wrap;
-        border-bottom: solid 1px #dbdbdb;
-        position: relative;
-        &:last-child {
-          border: none;
-        }
-        &:before {
-          position: absolute;
-          content: '';
-          width: 8px;
-          height: 8px;
-          background-color: #f7b500;
-          top: 50%;
-          margin-top: -4px;
-          left: 12px;
-          border-radius: 50%;
-        }
-        &:after {
-          content: '\f105';
-          font-family: FontAwesome;
-          right: 25px;
-          position: absolute;
-          top: 50%;
-          margin-top: -17px;
-          color: #6d7278;
-          font-size: 22px;
-        }
-        img {
-          flex: 0;
-          height: 43px;
-          position: relative;
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-        .content,
-        .amount {
-          flex: 1;
-          margin-left: 15px;
-          margin-top: 3px;
-          .title {
-            font-family: $lato-regular;
-            font-weight: bold;
-            color: #000000;
-            font-size: 12px;
-            margin-bottom: 0;
-            margin-top: 10px;
-          }
-          .desc {
-            font-family: $lato-regular;
-            color: #4a4a4a;
-            font-size: 12px;
-            margin-bottom: 0;
-            padding-right: 15px;
-          }
-        }
-        .amount {
-          flex: 0.5;
-          .title {
-            text-align: right;
-            padding-right: 15px;
-          }
+      .image,
+      .info {
+        float: left;
+        p {
+          margin-bottom: 0;
         }
       }
-      .notication.notication--past {
-        &:before {
-          display: none;
+      .info {
+        padding: 25px 25px 0 25px;
+        .branch {
+          font-family: $playfair-display;
+          font-size: 16px;
+          font-weight: bold;
+          color: #000000;
         }
-        .content {
-          .title {
-            margin-top: 0;
-          }
+        .name {
+          font-size: 13px;
+          color: #000000;
         }
+        .desc {
+          font-size: 16px;
+          font-weight: bold;
+          color: #000000;
+          padding-top: 8px;
+        }
+      }
+    }
+    .box {
+      margin-bottom: 25px;
+      .label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #6d7278;
+        margin-bottom: 0;
+      }
+      .content {
+        font-size: 16px;
+        font-weight: bold;
+        color: #000000;
+        padding-top: 8px;
       }
     }
   }
