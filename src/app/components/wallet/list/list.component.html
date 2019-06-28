@@ -24,9 +24,10 @@
             class="notification-group"
             *ngIf="payload.pendingProducts | hasItem"
           >
-            <div
+            <a
               class="notication"
               *ngFor="let item of payload.pendingProducts"
+              [routerLink]="['/', 'wallet', item.id, 'choose-payment']"
             >
               <img
                 [ngStyle]="{
@@ -43,7 +44,7 @@
                   ${{ item.transaction_histories[0].amount }}.00
                 </p>
               </span>
-            </div>
+            </a>
           </div>
           <div
             style="padding: 15px;"

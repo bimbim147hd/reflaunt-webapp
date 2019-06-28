@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
+import { ChoosePaymentComponent } from './choose-payment/choose-payment.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,10 @@ const routes: Routes = [
       {
         path: '',
         component: ListComponent
+      },
+      {
+        path: ':id/choose-payment',
+        component: ChoosePaymentComponent
       }
     ]
   }

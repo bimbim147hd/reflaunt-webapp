@@ -6,9 +6,10 @@ import { DirectivesModule } from '../../common/directives/directives.module';
 import { FormsModule } from '@angular/forms';
 import { WalletRoutingModule } from './wallet-routing.module';
 import { ListComponent } from './list/list.component';
+import { ChoosePaymentComponent } from './choose-payment/choose-payment.component';
 
 @NgModule({
-  declarations: [ListComponent],
+  declarations: [ListComponent, ChoosePaymentComponent],
   imports: [
     CommonModule,
     WalletRoutingModule,
