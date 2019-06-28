@@ -7,6 +7,7 @@ import {
 import { takeLatest, put } from 'redux-saga/effects';
 import { AppInjector } from '../../../app-injector';
 import { ApiService } from '../../../api/api.service';
+import { GET_DETAIL_PENDING_PRODUCT_SUCCESSED } from '../choose-payment/choose-payment.actions';
 
 function* watchFetchUserWalletRequest() {
   yield takeLatest(FETCH_USER_WALLET_REQUESTED, function*(action: any) {
@@ -34,11 +35,21 @@ function* watchFetchUserWalletSuccessed() {
         .getHistoryTransactions()
         .toPromise();
 
-      yield put({
-        type: FETCH_PENDING_PRODUCTS_SUCCESSED,
-        pendingProducts: pendingProducts,
-        historyTransactions: historyTransactions
-      });
+      switch (action.com) {
+        case 'CHOOSE_PAYMENT_COM':
+          yield put({
+            type: GET_DETAIL_PENDING_PRODUCT_SUCCESSED,
+            data: pendingProducts,
+            productId: action.productId
+          });
+          break;
+        default:
+          yield put({
+            type: FETCH_PENDING_PRODUCTS_SUCCESSED,
+            pendingProducts: pendingProducts,
+            historyTransactions: historyTransactions
+          });
+      }
     } catch (e) {
       yield put({ type: 'API_CALL_ERROR', error: e });
     }

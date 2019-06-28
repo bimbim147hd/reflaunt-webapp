@@ -1,4 +1,4 @@
-<div class="wallet__choose-payment">
+<div class="wallet__choose-payment" *ngIf="payload.fetched">
   <div class="product__detail--back container">
     <p>
       <a routerLink="/wallet"
@@ -20,11 +20,15 @@
           your wallet.
         </h2>
         <div class="optional cash" (click)="choosePayment('cash')">
-          <p class="price">$360</p>
+          <p class="price" *ngIf="payload.item">
+            ${{ payload.item.transaction_histories[0].amount_cash }}
+          </p>
           <p class="method">Cash</p>
         </div>
         <div class="optional credits active" (click)="choosePayment('credit')">
-          <p class="price">$400</p>
+          <p class="price">
+            ${{ payload.item.transaction_histories[0].amount_credit }}
+          </p>
           <p class="method">Credits</p>
         </div>
         <div style="clear: both;"></div>
