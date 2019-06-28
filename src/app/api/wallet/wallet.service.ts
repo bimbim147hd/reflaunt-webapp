@@ -55,4 +55,19 @@ export class WalletService extends BaseService {
       })
     );
   }
+
+  withdraw(data): Observable<any> {
+    Loader.show();
+    return this.http
+      .post(this.apiUrl.getApiUrl(this.url) + '/withdraw', data)
+      .pipe(
+        tap(result => {
+          Loader.hide();
+        }),
+        catchError(error => {
+          Loader.hide();
+          throw error;
+        })
+      );
+  }
 }

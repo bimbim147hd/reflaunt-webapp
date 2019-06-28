@@ -1,0 +1,94 @@
+<div class="detail__payment">
+  <div class="product__detail--back container">
+    <p>
+      <a routerLink="/wallet"
+        ><i class="fa fa-angle-left" aria-hidden="true"></i> Back to Wallet</a
+      >
+    </p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3 wardrobe__left-col">
+        <h1 class="title">Wallet</h1>
+        <div class="box" *ngIf="store.getState().Wallet.List.wallet">
+          <p class="box-number symbol">
+            {{ store.getState().Wallet.List.wallet.amount_credit }}
+          </p>
+          <p class="box-description">Credit Balance</p>
+        </div>
+
+        <a class="btn btn__edit--listing">
+          Redeem Voucher
+        </a>
+        <div class="point-group">
+          <img src="/assets/images/icon-bifina.png" alt="" />
+          <p class="point">gold tier</p>
+          <p>282 points</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-9 wardrobe__right-col">
+        <ng-container *ngIf="payload.fetched">
+          <div class="product--info">
+            <img
+              class="image"
+              src="{{ payload.item.images[0].url }}"
+              width="125px"
+              alt=""
+            />
+            <div class="info">
+              <p class="branch">Loewe</p>
+              <p class="name">{{ payload.item.name }}</p>
+
+              <ng-container
+                *ngIf="
+                  payload.item.transaction_histories[0].type ===
+                  TRANSACTION_TYPE_CREDIT
+                "
+              >
+                <p class="desc">
+                  You recevied ${{
+                    payload.item.transaction_histories[0].amount_credit
+                  }}.00 in credits
+                </p>
+              </ng-container>
+              <ng-container
+                *ngIf="
+                  payload.item.transaction_histories[0].type ===
+                  TRANSACTION_TYPE_CASH
+                "
+              >
+                <p class="desc">
+                  You recevied ${{
+                    payload.item.transaction_histories[0].amount_cash
+                  }}.00 in cash
+                </p>
+              </ng-container>
+            </div>
+          </div>
+          <div class="box">
+            <p class="label">Payment Mode</p>
+            <p class="content">
+              {{ payload.item.transaction_histories[0].getTypeLabel() }}
+            </p>
+          </div>
+          <div class="box">
+            <p class="label">Transaction Status</p>
+            <p class="content">Payment Recevied</p>
+          </div>
+          <div class="box">
+            <p class="label">Transaction Date</p>
+            <p class="content">
+              {{ payload.item.transaction_histories[0].created_at | date: 'd MMM y, h:mm:ss a' }}
+            </p>
+          </div>
+          <div class="box">
+            <p class="label">Transaction ID</p>
+            <p class="content">
+              {{ payload.item.transaction_histories[0].id }}
+            </p>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
