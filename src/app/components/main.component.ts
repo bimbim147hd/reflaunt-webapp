@@ -27,6 +27,7 @@ export class MainComponent implements OnInit {
 
   logout() {
     Cookies.remove(environment.jwtTokenKey, { path: '/' });
+    Cookies.remove(environment.authId, { path: '/' });
     this.router.navigate(['/', 'auth', 'login']);
   }
 

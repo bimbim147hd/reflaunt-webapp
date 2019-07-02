@@ -374,6 +374,12 @@
   dependencies:
     tslib "^1.9.0"
 
+"@toverux/ngx-sweetalert2@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@toverux/ngx-sweetalert2/-/ngx-sweetalert2-4.0.0.tgz#a5849a1435a2a4a720527f62e878d605c8ad6072"
+  dependencies:
+    tslib "^1.9.0"
+
 "@types/jasmine@*":
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.3.7.tgz#52f2bfe8d2995d4756585d2328c97fbb0fec66e3"

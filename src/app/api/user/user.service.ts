@@ -3,6 +3,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import User from '../../models/User';
 import { BaseService } from '../base.service';
 import { Observable } from 'rxjs';
+import PaymentAccount from '../../models/PaymentAccount';
 
 @Injectable()
 export class UserService extends BaseService {
@@ -65,6 +66,19 @@ export class UserService extends BaseService {
       .put(this.apiUrl.getApiUrl(this.url) + `/${userId}/roles`, roles)
       .pipe(
         tap(result => {}),
+        catchError(error => {
+          throw error;
+        })
+      );
+  }
+
+  getBankAccount(id): Observable<any> {
+    return this.http
+      .get(this.apiUrl.getApiUrl(this.url) + '/' + id + '/payment-account')
+      .pipe(
+        map(result => {
+          return new PaymentAccount((result as any).data);
+        }),
         catchError(error => {
           throw error;
         })

@@ -1,7 +1,8 @@
 import * as _ from 'lodash';
 import {
   CHOOSE_PAYMENT_SUCCESSED,
-  GET_DETAIL_PENDING_PRODUCT_SUCCESSED
+  GET_DETAIL_PENDING_PRODUCT_SUCCESSED,
+  GET_PAYMENT_ACCOUNT_SUCCESSED
 } from './choose-payment.actions';
 
 export const ChoosePayment = (
@@ -17,7 +18,11 @@ export const ChoosePayment = (
     case CHOOSE_PAYMENT_SUCCESSED:
       return _.assign({}, state, {
         payment: true,
-        item: action.data
+        result: action.data
+      });
+    case GET_PAYMENT_ACCOUNT_SUCCESSED:
+      return _.assign({}, state, {
+        accountPayment: action.data
       });
     default:
       return state;
