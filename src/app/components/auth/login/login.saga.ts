@@ -87,6 +87,9 @@ function* fetchProfileDetail(action) {
   if (action.com === 'LOGIN_COMP') {
     const customerRole = _.find(profile.roles, i => i.slug === 'customer');
     if (!_.isUndefined(customerRole)) {
+      Cookies.set(environment.authId, profile.id, {
+        path: '/'
+      });
       Notification.show('success', 'Login Success', 2000);
       yield put({
         type: FETCH_LOGIN_DETAIL_SUCCEEDED,
@@ -98,6 +101,9 @@ function* fetchProfileDetail(action) {
       Cookies.remove(environment.jwtTokenKey, { path: '/' });
     }
   } else {
+    Cookies.set(environment.authId, profile.id, {
+      path: '/'
+    });
     yield put({
       type: FETCH_LOGIN_DETAIL_SUCCEEDED,
       data: profile

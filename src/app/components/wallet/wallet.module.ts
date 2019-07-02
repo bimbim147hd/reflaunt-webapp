@@ -8,16 +8,22 @@ import { WalletRoutingModule } from './wallet-routing.module';
 import { ListComponent } from './list/list.component';
 import { ChoosePaymentComponent } from './choose-payment/choose-payment.component';
 import { DetailPastPaymentComponent } from './detail-past-payment/detail-past-payment.component';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 @NgModule({
-  declarations: [ListComponent, ChoosePaymentComponent, DetailPastPaymentComponent],
+  declarations: [
+    ListComponent,
+    ChoosePaymentComponent,
+    DetailPastPaymentComponent
+  ],
   imports: [
     CommonModule,
     WalletRoutingModule,
     PipesModule,
     VicodersPipesModule,
     DirectivesModule,
-    FormsModule
+    FormsModule,
+    SweetAlert2Module
   ]
 })
 export class WalletModule {}

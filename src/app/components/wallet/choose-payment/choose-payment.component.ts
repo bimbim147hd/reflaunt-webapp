@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '../../../store/store.module';
-import { CHOOSE_PAYMENT_REQUESTED } from './choose-payment.actions';
+import {
+  CHOOSE_PAYMENT_REQUESTED,
+  GET_PAYMENT_ACCOUNT_REQUESTED
+} from './choose-payment.actions';
 import { FETCH_USER_WALLET_SUCCESSED } from '../list/list.actions';
 import { BaseComponent } from '../../base.component';
 declare const $: any;
@@ -16,6 +19,10 @@ export class ChoosePaymentComponent extends BaseComponent implements OnInit {
   public productId;
   public store;
   public reducer: String = 'Wallet.ChoosePayment';
+  public isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+  }
+  public lastFour = str => str.substr(str.length - 4);
 
   constructor(private route: ActivatedRoute, store: Store) {
     super();
@@ -25,6 +32,9 @@ export class ChoosePaymentComponent extends BaseComponent implements OnInit {
       type: FETCH_USER_WALLET_SUCCESSED,
       com: 'CHOOSE_PAYMENT_COM',
       productId: this.productId
+    });
+    this.store.dispatch({
+      type: GET_PAYMENT_ACCOUNT_REQUESTED
     });
   }
 

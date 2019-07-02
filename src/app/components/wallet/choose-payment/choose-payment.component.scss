@@ -96,6 +96,58 @@
         bottom: 5px;
       }
     }
+    .bank__account {
+      margin-top: 60px;
+      cursor: pointer;
+      .bank__account-label {
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        color: #000000;
+      }
+      .bank__account-detail {
+        height: 45px;
+        border: solid 1px #e7e7e7;
+        background-color: #ffffff;
+        width: 542px;
+        line-height: 45px;
+        padding: 0 50px;
+        position: relative;
+        &:before {
+          position: absolute;
+          content: '';
+          width: 10px;
+          height: 10px;
+          background-image: url('/assets/images/bank.png');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          left: 25px;
+          top: 50%;
+          margin-top: -5px;
+        }
+        p {
+          font-size: 14px;
+          font-weight: 500;
+          span {
+            background-color: #e7e7e7;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 3px;
+          }
+          span.split {
+            margin-right: 10px;
+          }
+        }
+      }
+      .bank__account-notify {
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 15px;
+      }
+    }
     button {
       width: 542px;
       height: 40px;

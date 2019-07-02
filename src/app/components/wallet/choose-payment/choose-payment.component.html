@@ -32,6 +32,26 @@
           <p class="method">Credits</p>
         </div>
         <div style="clear: both;"></div>
+        <div class="bank__account" *ngIf="paymentMethod === 'cash'" >
+          <h3 class="bank__account-label">Bank Account Details</h3>
+          <div class="bank__account-detail">
+            <p *ngIf="isEmpty(payload.accountPayment)">Add your bank account</p>
+            <p *ngIf="!isEmpty(payload.accountPayment)">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span class="split"></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span class="split"></span>
+              {{ lastFour(payload.accountPayment.account_number) }}
+            </p>
+          </div>
+          <p class="bank__account-notify">
+            Please make sure your payment details are updated.
+          </p>
+        </div>
         <button (click)="widthDraw()">Submit</button>
       </div>
     </div>

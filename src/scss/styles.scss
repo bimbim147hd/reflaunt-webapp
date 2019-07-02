@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Lato');
+@import 'sweetalert2/src/sweetalert2.scss';
 
 @font-face {
   font-family: 'lato';
@@ -23,3 +24,16 @@
 .nf-notify {
   z-index: 99;
 }
+
+.swal2-popup {
+  border-radius: 0px !important;
+}
+
+.swal2-popup .swal2-styled {
+  padding: 0.625em 11em !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
+  border-radius: 0px !important;
+  background-color: #fff !important;
+}
+
