@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '../../../store/store.module';
 import {
@@ -14,7 +14,8 @@ declare const $: any;
   templateUrl: './choose-payment.component.html',
   styleUrls: ['./choose-payment.component.scss']
 })
-export class ChoosePaymentComponent extends BaseComponent implements OnInit {
+export class ChoosePaymentComponent extends BaseComponent
+  implements OnInit, AfterViewChecked {
   public paymentMethod = 'credit';
   public productId;
   public store;
@@ -28,6 +29,11 @@ export class ChoosePaymentComponent extends BaseComponent implements OnInit {
     super();
     this.store = store.getInstance();
     this.productId = this.route.snapshot.paramMap.get('id');
+    this.route.queryParams.subscribe(params => {
+      if (params.goFrom === 'add-bank-account') {
+        this.paymentMethod = 'cash';
+      }
+    });
     this.store.dispatch({
       type: FETCH_USER_WALLET_SUCCESSED,
       com: 'CHOOSE_PAYMENT_COM',
@@ -40,6 +46,10 @@ export class ChoosePaymentComponent extends BaseComponent implements OnInit {
 
   ngOnInit() {
     this.init();
+  }
+
+  ngAfterViewChecked() {
+    this.choosePayment(this.paymentMethod);
   }
 
   choosePayment(val) {

@@ -4,10 +4,13 @@ import User from '../../models/User';
 import { BaseService } from '../base.service';
 import { Observable } from 'rxjs';
 import PaymentAccount from '../../models/PaymentAccount';
+import Loader from '@vicoders/support/services/Loader';
+import Address from '../../models/Address';
 
 @Injectable()
 export class UserService extends BaseService {
   public url = '/api/v1/users';
+  public addressUrl = '/api/v1/addresses';
   public model = User;
 
   profile(params: {}): Observable<any> {
@@ -73,13 +76,88 @@ export class UserService extends BaseService {
   }
 
   getBankAccount(id): Observable<any> {
+    Loader.show();
     return this.http
       .get(this.apiUrl.getApiUrl(this.url) + '/' + id + '/payment-account')
       .pipe(
+        tap(result => {
+          Loader.hide();
+        }),
         map(result => {
           return new PaymentAccount((result as any).data);
         }),
         catchError(error => {
+          Loader.hide();
+          throw error;
+        })
+      );
+  }
+
+  createAccountPayment(userId, data): Observable<any> {
+    Loader.show();
+    return this.http
+      .post(
+        this.apiUrl.getApiUrl(this.url) + `/${userId}/payment-account`,
+        data
+      )
+      .pipe(
+        tap(result => {
+          Loader.hide();
+        }),
+        map(result => new PaymentAccount((result as any).data)),
+        catchError(error => {
+          Loader.hide();
+
+          throw error;
+        })
+      );
+  }
+
+  updateAccountPayment(userId, data): Observable<any> {
+    Loader.show();
+    return this.http
+      .put(this.apiUrl.getApiUrl(this.url) + `/${userId}/payment-account`, data)
+      .pipe(
+        tap(result => {
+          Loader.hide();
+        }),
+        map(result => new PaymentAccount((result as any).data)),
+        catchError(error => {
+          Loader.hide();
+
+          throw error;
+        })
+      );
+  }
+
+  getDefaultAddress(id): Observable<any> {
+    Loader.show();
+    return this.http
+      .get(this.apiUrl.getApiUrl(this.url) + '/' + id + '/default-address')
+      .pipe(
+        tap(result => {
+          Loader.hide();
+        }),
+        map(result => new Address((result as any).data)),
+        catchError(error => {
+          Loader.hide();
+          throw error;
+        })
+      );
+  }
+
+  saveAddress(data): Observable<any> {
+    Loader.show();
+    return this.http
+      .post(this.apiUrl.getApiUrl(this.addressUrl) + `/me/save`, data)
+      .pipe(
+        tap(result => {
+          Loader.hide();
+        }),
+        map(result => new Address((result as any).data)),
+        catchError(error => {
+          Loader.hide();
+
           throw error;
         })
       );

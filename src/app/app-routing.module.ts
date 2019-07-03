@@ -26,6 +26,11 @@ const appRoutes: Routes = [
       {
         path: 'wallet',
         loadChildren: './components/wallet/wallet.module#WalletModule'
+      },
+      {
+        path: 'payment-account',
+        loadChildren:
+          './components/payment-account/payment-account.module#PaymentAccountModule'
       }
     ],
     canActivate: [AuthGuardService]

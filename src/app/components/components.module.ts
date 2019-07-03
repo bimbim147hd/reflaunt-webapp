@@ -12,6 +12,7 @@ import { PipesModule } from '@vicoders/angular';
 import { WardrobeComponent } from './wardrobe/wardrobe.component';
 import { NotificationComponent } from './notification/notification.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { PaymentAccountComponent } from './payment-account/payment-account.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { WalletComponent } from './wallet/wallet.component';
     BaseComponent,
     WardrobeComponent,
     NotificationComponent,
-    WalletComponent
+    WalletComponent,
+    PaymentAccountComponent
   ],
   imports: [
     CommonModule,
