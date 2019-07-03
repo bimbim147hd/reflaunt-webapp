@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'font';
+
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import 'sweetalert2/src/sweetalert2.scss';
 
@@ -37,3 +39,105 @@
   background-color: #fff !important;
 }
 
+.dynamic-input-group {
+  dynamic-input,
+  .reactive-form-group {
+    .phone-box {
+      height: 38px;
+      border: solid 1px #e7e7e7;
+      .phone-code {
+        height: 37px;
+        font-size: $small;
+        font-family: $lato-regular;
+      }
+    }
+    .select2-container--default .select2-selection--single {
+      border: none;
+    }
+    .select2-container--default
+      .select2-selection--single
+      .select2-selection__rendered,
+    input {
+      border: solid 1px #e7e7e7;
+      background-color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 0px;
+      font-family: $lato-regular;
+      font-size: $small;
+      font-weight: 500;
+      color: #000000;
+    }
+    label {
+      font-family: $lato-regular;
+      font-size: $small;
+      font-weight: bold;
+      color: #000000;
+    }
+    textarea:focus,
+    select.form-control:focus,
+    input:focus {
+      outline: 0 !important;
+      box-shadow: none;
+      border: 1px solid #ccc;
+    }
+    input::-webkit-input-placeholder,
+    input::-moz-placeholder,
+    input:-ms-input-placeholder,
+    input:-moz-placeholder {
+      font-family: $lato-regular;
+      font-size: $small;
+      font-weight: 500;
+      color: #b5b5b5;
+    }
+  }
+}
+
+.dynamic-input-group.rf--radio {
+  .radio.radiofill {
+    width: 49.5%;
+    float: left;
+    .checkmark {
+      height: 20px !important;
+      width: 20px !important;
+      border: solid 1px #979797 !important;
+      background-color: #fff !important;
+    }
+
+    .radio-label input:checked ~ .checkmark {
+      background-color: #fff !important;
+    }
+
+    .radio-label .checkmark:after {
+      top: 2px !important;
+      left: 2px !important;
+      width: 14px !important;
+      height: 14px !important;
+      background: #000 !important;
+    }
+  }
+}
+
+.dynamic-input-group.rf--block {
+  font-family: $lato-regular;
+  font-size: $small;
+  font-weight: 500;
+  line-height: 1.58;
+  color: #6d7278;
+}
+
+.rf-form .dynamic-submit-btn {
+  button {
+    width: 187px;
+    height: 40px;
+    background-color: #000000;
+    font-family: $lato-regular;
+    font-size: $small;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 0px;
+    float: right;
+    cursor: pointer;
+    margin-top: 60px;
+  }
+}

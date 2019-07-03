@@ -1,0 +1,66 @@
+@import 'font';
+
+.payment-account__add {
+  padding: 80px 0 50px 0;
+  font-family: $lato-regular;
+  .product__detail--back {
+    p {
+      a {
+        color: #000000;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+      .address-link {
+        float: right;
+      }
+      cursor: pointer;
+      margin: 0;
+      margin-top: 63px;
+      margin-bottom: 22px;
+      font-size: 12px;
+      line-height: normal;
+      letter-spacing: 0.19px;
+      i {
+        margin-right: 2px;
+      }
+    }
+  }
+  .wardrobe__left-col {
+    width: 2px;
+    border-right: solid 1px #dbdbdb;
+    .title {
+      font-family: $playfair-display;
+      font-size: $large;
+      font-weight: bold;
+      line-height: normal;
+      letter-spacing: 0.7px;
+      color: #000000;
+    }
+  }
+  .wardrobe__right-col {
+    padding-left: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 767px) {
+  .payment-account__add {
+    padding-top: 68px;
+    .wardrobe__left-col {
+      border: none;
+      min-height: 300px;
+      border-bottom: solid 1px #dbdbdb;
+      margin-top: 40px;
+    }
+    .wardrobe__right-col {
+      padding-left: 15px;
+      margin-top: 65px;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+}

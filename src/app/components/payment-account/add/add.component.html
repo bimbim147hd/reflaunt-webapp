@@ -1,0 +1,63 @@
+<div class="payment-account__add">
+  <div class="product__detail--back container">
+    <p>
+      <a
+        [routerLink]="['/', 'wallet', preItem, 'choose-payment']"
+        [queryParams]="{ goFrom: 'add-bank-account' }"
+        ><i class="fa fa-angle-left" aria-hidden="true"></i> Back to Account</a
+      >
+      <a
+        href="javascript:void(0)"
+        *ngIf="!payload.showAddress"
+        (click)="showAddress()"
+        class="address-link"
+        title="
+      Make sure your address infomation match your bank account."
+      >
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
+        Update your address
+      </a>
+      <a
+        href="javascript:void(0)"
+        *ngIf="payload.showAddress"
+        (click)="showAddress()"
+        class="address-link"
+      >
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        Go Back
+      </a>
+    </p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3 wardrobe__left-col">
+        <h1 class="title">
+          <p>Add Bank</p>
+          <p>Account</p>
+        </h1>
+      </div>
+      <div class="col-12 col-md-9 wardrobe__right-col">
+        <reactive-form
+          *ngIf="!payload.showAddress"
+          class="rf-form"
+          [onChangeReactive]="onChangePayment"
+          [keysChange]="keysChange"
+          [(inputs)]="payload.inputs"
+          [onSubmit]="addPaymentAccount"
+          submitText="Redeem my Cash"
+          [saveValue]="true"
+        ></reactive-form>
+        <reactive-form
+          *ngIf="payload.showAddress"
+          class="rf-form"
+          [onChangeReactive]="onChange"
+          [keysChange]="keysChange"
+          [(inputs)]="payload.addressInputs"
+          [onSubmit]="confirmAddress"
+          submitText="Save"
+          [saveValue]="true"
+        ></reactive-form>
+      </div>
+    </div>
+  </div>
+</div>

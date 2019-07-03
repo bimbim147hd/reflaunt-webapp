@@ -8,6 +8,7 @@ import NotificationSaga from '../components/notification/notification.saga';
 import Wallet from '../components/wallet/wallet.saga';
 import Loader from '@vicoders/support/services/Loader';
 import Notification from '@vicoders/support/services/Notification';
+import PaymentAccount from '../components/payment-account/payment-account.saga';
 
 function* watchApiCallError() {
   yield takeEvery(API_CALL_ERROR, function*(action) {
@@ -32,6 +33,7 @@ export default function* sagas() {
       ...Wardrobe,
       ...NotificationSaga,
       ...Wallet,
+      ...PaymentAccount,
       watchApiCallError
     ].map(item => fork(item))
   );

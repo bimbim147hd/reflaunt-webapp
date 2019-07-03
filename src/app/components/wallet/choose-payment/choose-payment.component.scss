@@ -98,6 +98,13 @@
     }
     .bank__account {
       margin-top: 60px;
+      a {
+        color: #000;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
       cursor: pointer;
       .bank__account-label {
         font-size: 14px;
