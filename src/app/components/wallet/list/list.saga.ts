@@ -9,6 +9,7 @@ import { AppInjector } from '../../../app-injector';
 import { ApiService } from '../../../api/api.service';
 import { GET_DETAIL_PENDING_PRODUCT_SUCCESSED } from '../choose-payment/choose-payment.actions';
 import { GET_DETAIL_PAYMENT_SUCCESSED } from '../detail-past-payment/detail-past-payment.actions';
+import { FETCH_USER_WALLET_VOUCHERS_COM_SUCCESSED } from '../redeem-voucher/redeem-voucher.actions';
 
 function* watchFetchUserWalletRequest() {
   yield takeLatest(FETCH_USER_WALLET_REQUESTED, function*(action: any) {
@@ -22,6 +23,12 @@ function* watchFetchUserWalletRequest() {
             data: result,
             productId: action.productId,
             com: action.com
+          });
+          break;
+        case 'REDEEM_VOUCHER':
+          yield put({
+            type: FETCH_USER_WALLET_VOUCHERS_COM_SUCCESSED,
+            data: result
           });
           break;
         default:

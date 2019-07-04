@@ -1,0 +1,91 @@
+<div class="redeem-voucher" *ngIf="payload.fetched">
+  <div class="product__detail--back container">
+    <p>
+      <a routerLink="/wallet"
+        ><i class="fa fa-angle-left" aria-hidden="true"></i> Back to Wallet</a
+      >
+    </p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3 wardrobe__left-col">
+        <h1 class="title">Vouchers</h1>
+        <div class="box">
+          <p class="box-number symbol">{{ payload.wallet.amount_credit }}</p>
+          <p class="box-description">Credit Balance</p>
+        </div>
+        <div class="point-group">
+          <img src="/assets/images/icon-bifina.png" alt="" />
+          <p class="point">gold tier</p>
+          <p>282 points</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-9 wardrobe__right-col">
+        <div class="row">
+          <div class="col-7">
+            <div
+              class="notification-group"
+              *ngIf="payload.wallet.wallet_detail | hasItem"
+            >
+              <a
+                class="notication"
+                *ngFor="let item of payload.wallet.wallet_detail"
+                (click)="chooseBranch(item)"
+                [ngClass]="{ active: item.choosed }"
+              >
+                <div class="item image">
+                  <img
+                    [ngStyle]="{
+                      'background-image': item.getImageBackgroundStyle()
+                    }"
+                    src="/assets/images/98x30.png"
+                    alt=""
+                  />
+                </div>
+                <div class="item amount">
+                  <p>${{ item.amount_credit }}.00 Available</p>
+                </div>
+                <div class="item name">
+                  <p>{{ item.retailer_name }}</p>
+                </div>
+              </a>
+            </div>
+            <div
+              class="notification-group"
+              style="padding: 15px;"
+              *ngIf="!(payload.wallet.wallet_detail | hasItem)"
+            >
+              Resource not found
+            </div>
+          </div>
+          <div class="col-5 right-side" *ngIf="payload.choosedBranch">
+            <img src="{{ payload.choosedBranch.retailer_logo }}" alt="" />
+            <p class="purchase">Purchase</p>
+            <div class="amount-group">
+              <div
+                class="child-item child-reduce"
+                (click)="changeAmount('-')"
+              ></div>
+              <div class="child-item child-amount">
+                $<input
+                  type="number"
+                  [(ngModel)]="payload.choosedBranch.current_amount"
+                  min="0"
+                  max="{{ payload.choosedBranch.amount_credit }}"
+                />.00
+              </div>
+              <div
+                class="child-item child-plus"
+                (click)="changeAmount('+')"
+              ></div>
+            </div>
+            <p class="branch">
+              {{ payload.choosedBranch.retailer_name }} vouchers
+            </p>
+            <a (click)="getVoucher()">GET VOUCHERS</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

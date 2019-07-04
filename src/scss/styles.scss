@@ -30,13 +30,98 @@
 .swal2-popup {
   border-radius: 0px !important;
 }
+.swal2-popup .swal2-actions {
+  margin: 0 !important;
+}
 
 .swal2-popup .swal2-styled {
-  padding: 0.625em 11em !important;
+  margin: 0 !important;
+  width: 100% !important;
   color: #000 !important;
   border: 1px solid #000 !important;
   border-radius: 0px !important;
   background-color: #fff !important;
+  font-family: $lato-regular;
+  font-size: $small !important;
+  font-weight: bold;
+}
+
+.swal2-popup .swal2-styled:focus {
+  box-shadow: none !important;
+}
+
+.swal2-popup .swal2-styled.btn-view-voucher {
+  color: #fff !important;
+  background-color: #000 !important;
+}
+
+#voucher-popup {
+  .title {
+    font-weight: bold;
+    font-family: $lato-regular;
+    margin-bottom: 50px;
+  }
+  #voucher {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.17);
+    background-color: #ffffff;
+    padding: 15px;
+    .voucher_info {
+      display: flex;
+      flex-flow: row wrap;
+      .info--item {
+        margin: 15px 0;
+        p {
+          margin: 0;
+        }
+        flex: 1;
+        .amount {
+          font-family: $lato-regular;
+          font-size: 23px;
+          font-weight: bold;
+          letter-spacing: 0.32px;
+          color: #000;
+          span {
+            color: #c6c6c6;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-left: 5px;
+          }
+        }
+        .branch {
+          color: #000;
+          font-size: 13px;
+          font-weight: bold;
+          font-family: $playfair-display;
+          margin-top: 5px;
+        }
+      }
+    }
+    .voucher_info.top--voucher {
+      .info--item.left {
+        text-align: left;
+      }
+      .info--item.right {
+        text-align: right;
+      }
+    }
+    .voucher_info.bottom--voucher {
+      .info--item {
+        text-align: left;
+        .valid-date {
+          font-family: $lato-regular;
+          font-size: 13px;
+          font-weight: bold;
+          letter-spacing: 0.32px;
+          color: #c6c6c6;
+          text-transform: uppercase;
+        }
+        .code {
+          color: #000;
+          font-size: 12px;
+        }
+      }
+    }
+  }
 }
 
 .dynamic-input-group {
