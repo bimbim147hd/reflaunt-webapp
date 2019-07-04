@@ -11,6 +11,12 @@ export const RedeemVoucher = (
 ) => {
   switch (action.type) {
     case FETCH_USER_WALLET_VOUCHERS_COM_SUCCESSED:
+      action.data.wallet_detail = _.map(action.data.wallet_detail, i => {
+        if (i.retailer_logo === '' || !i.retailer_logo) {
+          i.retailer_logo = '/assets/images/17-512.png';
+        }
+        return i;
+      });
       return _.assign({}, state, {
         fetched: true,
         wallet: action.data
