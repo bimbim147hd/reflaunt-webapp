@@ -6,11 +6,13 @@ import { Observable } from 'rxjs';
 import PaymentAccount from '../../models/PaymentAccount';
 import Loader from '@vicoders/support/services/Loader';
 import Address from '../../models/Address';
+import Voucher from '../../models/Voucher';
 
 @Injectable()
 export class UserService extends BaseService {
   public url = '/api/v1/users';
   public addressUrl = '/api/v1/addresses';
+  public voucherUrl = '/api/v1/vouchers';
   public model = User;
 
   profile(params: {}): Observable<any> {
@@ -155,6 +157,23 @@ export class UserService extends BaseService {
           Loader.hide();
         }),
         map(result => new Address((result as any).data)),
+        catchError(error => {
+          Loader.hide();
+
+          throw error;
+        })
+      );
+  }
+
+  getVouchers(data): Observable<any> {
+    Loader.show();
+    return this.http
+      .post(this.apiUrl.getApiUrl(this.voucherUrl), data)
+      .pipe(
+        tap(result => {
+          Loader.hide();
+        }),
+        map(result => new Voucher((result as any).data)),
         catchError(error => {
           Loader.hide();
 

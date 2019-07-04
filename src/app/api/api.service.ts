@@ -10,6 +10,7 @@ import { UserService } from './user/user.service';
 import { ShipmentService } from './shipment/shipment.service';
 import { NotificationService } from './notification/notification.service';
 import { WalletService } from './wallet/wallet.service';
+import { VoucherService } from './voucher/voucher.service';
 
 @Injectable()
 export class ApiService {
@@ -24,6 +25,7 @@ export class ApiService {
     public user: UserService,
     public shipment: ShipmentService,
     public notification: NotificationService,
-    public wallet: WalletService
+    public wallet: WalletService,
+    public voucher: VoucherService
   ) {}
 }

@@ -9,12 +9,14 @@ import { ListComponent } from './list/list.component';
 import { ChoosePaymentComponent } from './choose-payment/choose-payment.component';
 import { DetailPastPaymentComponent } from './detail-past-payment/detail-past-payment.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import { RedeemVoucherComponent } from './redeem-voucher/redeem-voucher.component';
 
 @NgModule({
   declarations: [
     ListComponent,
     ChoosePaymentComponent,
-    DetailPastPaymentComponent
+    DetailPastPaymentComponent,
+    RedeemVoucherComponent
   ],
   imports: [
     CommonModule,
