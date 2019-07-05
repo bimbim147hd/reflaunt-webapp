@@ -62,22 +62,25 @@
             <img src="{{ payload.choosedBranch.retailer_logo }}" alt="" />
             <p class="purchase">Purchase</p>
             <div class="amount-group">
-              <div
+              <!-- <div
                 class="child-item child-reduce"
                 (click)="changeAmount('-')"
-              ></div>
+              ></div> -->
+              <div class="child-item child-reduce"></div>
               <div class="child-item child-amount">
                 $<input
+                  readonly
                   type="number"
                   [(ngModel)]="payload.choosedBranch.current_amount"
                   min="0"
                   max="{{ payload.choosedBranch.amount_credit }}"
                 />.00
               </div>
-              <div
+              <!-- <div
                 class="child-item child-plus"
                 (click)="changeAmount('+')"
-              ></div>
+              ></div> -->
+              <div class="child-item child-reduce"></div>
             </div>
             <p class="branch">
               {{ payload.choosedBranch.retailer_name }} vouchers
