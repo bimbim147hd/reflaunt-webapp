@@ -44,6 +44,7 @@
   font-family: $lato-regular;
   font-size: $small !important;
   font-weight: bold;
+  margin-top: 13px !important;
 }
 
 .swal2-popup .swal2-styled:focus {
@@ -55,7 +56,8 @@
   background-color: #000 !important;
 }
 
-#voucher-popup {
+#voucher-popup,
+#redeem__voucher-popup {
   .title {
     font-weight: bold;
     font-family: $lato-regular;
@@ -97,8 +99,10 @@
       }
     }
     .voucher_info.top--voucher {
+      border-bottom: solid 1px #dbdbdb;
       .info--item.left {
         text-align: left;
+        padding-left: 15px;
       }
       .info--item.right {
         text-align: right;
@@ -119,6 +123,42 @@
           color: #000;
           font-size: 12px;
         }
+      }
+    }
+  }
+}
+
+#redeem__voucher-popup {
+  #voucher {
+    box-shadow: none;
+    padding: 30px 0;
+    .voucher_info {
+      .info--item {
+        .amount {
+          span {
+            color: #000;
+          }
+        }
+      }
+    }
+    .voucher_info.terms_conditions {
+      margin: 30px 0 15px 0;
+      .label {
+        font-size: 12px;
+        font-family: $playfair-display;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #000;
+      }
+      .content {
+        font-size: $small;
+        font-family: $lato-regular;
+        font-weight: bold;
+        text-align: left;
+        font-size: 13px;
+        line-height: 25px;
+        letter-spacing: 0.3px;
+        color: #8f8f8f;
       }
     }
   }
