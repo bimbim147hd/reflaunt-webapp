@@ -1,6 +1,6 @@
 @import 'font';
 
-.wardrobe {
+.voucher {
   padding: 80px 0 50px 0;
   .wardrobe__notification {
     height: 40px;
@@ -21,54 +21,6 @@
       cursor: pointer;
     }
   }
-  .wardrobe__left-col {
-    margin-top: 90px;
-    width: 2px;
-    min-height: 766px;
-    border-right: solid 1px #dbdbdb;
-    .title {
-      font-family: $playfair-display;
-      font-size: $large;
-      font-weight: bold;
-      line-height: normal;
-      letter-spacing: 0.7px;
-      color: #000000;
-    }
-    .box {
-      margin-top: 42px;
-      .box-number {
-        font-family: $lato-regular;
-        font-size: $normal;
-        font-weight: bold;
-        line-height: normal;
-        letter-spacing: 0.3px;
-        color: #3a3a3a;
-        margin-bottom: 6px;
-      }
-      .box-number.symbol {
-        padding-left: 10px;
-        position: relative;
-        &:before {
-          position: absolute;
-          content: '$';
-          font-family: $lato-regular;
-          font-size: 16px;
-          font-weight: 500;
-          line-height: normal;
-          letter-spacing: 0.3px;
-          color: #3a3a3a;
-          left: 0;
-        }
-      }
-      .box-description {
-        font-family: $lato-regular;
-        font-size: $small;
-        font-weight: 600;
-        line-height: normal;
-        color: #6d7278;
-      }
-    }
-  }
   .wardrobe__right-col {
     margin-top: 90px;
     padding-left: 70px;
@@ -76,7 +28,7 @@
       margin-bottom: 10px;
       border-bottom: 1px solid #dee2e6;
       .nav {
-        width: 302px;
+        width: 210px;
         border: none;
       }
       .nav-tabs .nav-item.show .nav-link,
@@ -109,67 +61,91 @@
         margin-bottom: 20px;
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.17);
         background-color: #ffffff;
-        height: 341px;
+        min-height: 200px;
         flex: 0 1 calc(33.33% - 20px); /* <-- adjusting for margin */
         text-align: center;
-        img {
-          margin-top: 35px;
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-        .product--name {
-          position: relative;
-          font-family: $playfair-display;
-          font-size: 16px;
-          font-weight: bold;
-          line-height: normal;
-          color: #000000;
-          margin-top: 50px;
-          &:before {
-            position: absolute;
-            content: '';
-            width: 14px;
-            height: 1px;
-            border: solid 1px #000000;
-            bottom: -12px;
-            left: 50%;
-            margin-left: -5px;
+        #wardrobe-voucher {
+          // box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.17);
+          background-color: #ffffff;
+          padding: 15px;
+          .voucher_info {
+            display: flex;
+            flex-flow: row wrap;
+            .info--item {
+              margin: 15px 0;
+              img {
+                background-size: contain;
+                background-repeat: no-repeat;
+              }
+              p {
+                margin: 0;
+              }
+              flex: 1;
+              .amount {
+                font-family: $lato-regular;
+                font-size: 23px;
+                font-weight: bold;
+                letter-spacing: 0.32px;
+                color: #000;
+                span {
+                  color: #c6c6c6;
+                  text-transform: uppercase;
+                  font-size: 13px;
+                  margin-left: 5px;
+                }
+              }
+              .branch {
+                color: #000;
+                font-size: 11px;
+                font-weight: bold;
+                font-family: $playfair-display;
+                margin-top: 5px;
+              }
+            }
+          }
+          .voucher_info.top--voucher {
+            border-bottom: solid 1px #dbdbdb;
+            .info--item.left {
+              text-align: left;
+              padding-left: 15px;
+            }
+            .info--item.right {
+              text-align: right;
+            }
+          }
+          .voucher_info.bottom--voucher {
+            .info--item {
+              text-align: left;
+              .valid-date {
+                font-family: $lato-regular;
+                font-size: 11px;
+                font-weight: bold;
+                letter-spacing: 0.32px;
+                color: #c6c6c6;
+                text-transform: uppercase;
+              }
+              .code {
+                color: #000;
+                font-size: 11px;
+              }
+            }
           }
         }
-        .product--info {
-          font-family: $lato-regular;
-          font-size: $small;
-          line-height: normal;
-          color: #000000;
-          margin-top: 25px;
-        }
-        .product--state {
-          position: absolute;
-          bottom: 0;
+        button {
           width: 100%;
-          height: 45px;
-          padding: 0 20px;
-          background-color: #90c25d;
-          color: #ffffff;
-          .status,
-          .price {
-            font-family: $lato-regular;
-            font-size: $small;
-            font-weight: bold;
-            line-height: normal;
-            letter-spacing: 0.5px;
-            float: left;
-            line-height: 45px;
-          }
-          .price {
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: normal;
-            float: right;
-            line-height: 45px;
-          }
+          border: none;
+          background: #000;
+          color: #fff;
+          text-transform: uppercase;
+          font-size: 12px;
+          padding: 10px;
+          font-family: $lato-regular;
+          cursor: pointer;
         }
+        button.redeemed {
+          background-color: darkgray;
+        }
+
         &:hover {
           text-decoration: none;
         }
@@ -179,7 +155,7 @@
 }
 
 @media (max-width: 768px) {
-  .wardrobe {
+  .voucher {
     .wardrobe__right-col {
       .tab-content .tab-pane .products {
         .child {
@@ -191,7 +167,7 @@
 }
 
 @media (max-width: 767px) {
-  .wardrobe {
+  .voucher {
     padding-top: 68px;
     .wardrobe__left-col {
       border: none;
@@ -207,7 +183,7 @@
 }
 
 @media (max-width: 425px) {
-  .wardrobe {
+  .voucher {
     .wardrobe__right-col {
       .tab-content .tab-pane .products {
         .child {

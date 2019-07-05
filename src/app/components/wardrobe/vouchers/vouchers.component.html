@@ -1,0 +1,163 @@
+<div class="voucher">
+  <div class="wardrobe__notification">
+    <div class="container notification--desc">
+      <p><span>i</span><a (click)="openNav()">How does resell work?</a></p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 wardrobe__right-col" *ngIf="payload.fetched">
+        <nav>
+          <div class="nav-main">
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+              <a
+                [ngClass]="{ active: !payload.redeemed }"
+                class="nav-item nav-link"
+                id="nav-all-tab"
+                data-toggle="tab"
+                href="#nav-all"
+                role="tab"
+                aria-controls="nav-all"
+                aria-selected="true"
+                >Available ({{ payload.availableItems.length }})</a
+              >
+              <a
+                [ngClass]="{ active: payload.redeemed }"
+                class="nav-item nav-link"
+                id="nav-pending-tab"
+                data-toggle="tab"
+                href="#nav-pending"
+                role="tab"
+                aria-controls="nav-pending"
+                aria-selected="false"
+                >Redeemed ({{ payload.redeemedItems.length }})</a
+              >
+            </div>
+          </div>
+        </nav>
+        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+          <div
+            [ngClass]="{
+              active: !payload.redeemed,
+              show: !payload.redeemed
+            }"
+            class="tab-pane fade"
+            id="nav-all"
+            role="tabpanel"
+            aria-labelledby="nav-all-tab"
+          >
+            <div class="products" *ngIf="payload.availableItems | hasItem">
+              <a class="child" *ngFor="let item of payload.availableItems">
+                <div id="wardrobe-voucher">
+                  <div class="voucher_info top--voucher">
+                    <div class="info--item left">
+                      <img
+                        [ngStyle]="{
+                          'background-image': item.getImageBackgroundStyle()
+                        }"
+                        src="/assets/images/98x30.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="info--item right">
+                      <p class="amount">${{ item.amount }}<span>with</span></p>
+                      <p class="branch">{{ item.brand }}</p>
+                    </div>
+                  </div>
+                  <div class="voucher_info bottom--voucher">
+                    <div class="info--item">
+                      <p class="valid-date">
+                        valid till {{ item.validity_date | date: 'MM/dd/yyyy' }}
+                      </p>
+                    </div>
+                    <div class="info--item">
+                      <p class="valid-date">voucher code</p>
+                      <p class="valid-date code">{{ item.code }}</p>
+                    </div>
+                  </div>
+                </div>
+                <button (click)="redeemVoucher(item)" class="btn-redeem">
+                  redeem voucher
+                </button>
+              </a>
+            </div>
+          </div>
+          <div
+            [ngClass]="{
+              active: payload.redeemed,
+              show: payload.redeemed
+            }"
+            class="tab-pane fade"
+            id="nav-pending"
+            role="tabpanel"
+            aria-labelledby="nav-pending-tab"
+          >
+            <div class="products" *ngIf="payload.redeemedItems | hasItem">
+              <a class="child" *ngFor="let item of payload.redeemedItems">
+                <div id="wardrobe-voucher">
+                  <div class="voucher_info top--voucher">
+                    <div class="info--item left">
+                      <img
+                        [ngStyle]="{
+                          'background-image': item.getImageBackgroundStyle()
+                        }"
+                        src="/assets/images/98x30.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="info--item right">
+                      <p class="amount">${{ item.amount }}<span>with</span></p>
+                      <p class="branch">{{ item.brand }}</p>
+                    </div>
+                  </div>
+                  <div class="voucher_info bottom--voucher">
+                    <div class="info--item">
+                      <p class="valid-date">
+                        valid till {{ item.validity_date | date: 'MM/dd/yyyy' }}
+                      </p>
+                    </div>
+                    <div class="info--item">
+                      <p class="valid-date">voucher code</p>
+                      <p class="valid-date code">{{ item.code }}</p>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn-redeem redeemed">redeemed</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="howSellVoucher" class="overlay">
+  <div class="overlay-content content">
+    <h3>How does resell works?</h3>
+    <p>
+      when you sell an item in second cycle ... Lorem Ipsum is simply dummy text
+      of the printing and typesetting industry. Lorem Ipsum has been the
+      industry's standard dummy text ever since the 1500s, when an unknown
+      printer took a galley of type and scrambled it to make a type specimen
+      book. It has survived not only five centuries, but also the leap into
+      electronic typesetting, remaining essentially unchanged. It was
+      popularised in the 1960s with the release of Letraset sheets containing
+      Lorem Ipsum passages, and more recently with desktop publishing software
+      like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
+    <h4>States of reselling</h4>
+    <ol>
+      <li>Resell</li>
+      <li>Pending Listing</li>
+      <li>Pending Sale</li>
+      <li>Pending Delivery</li>
+      <li>Sale Completed</li>
+    </ol>
+  </div>
+  <div class="overlay-content">
+    <i (click)="closeNav()" class="fa fa-times-circle-o" aria-hidden="true">
+      <span>Close</span></i
+    >
+  </div>
+</div>

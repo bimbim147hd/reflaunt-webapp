@@ -6,6 +6,7 @@ import { EditPendingListingComponent } from './edit-pending-listing/edit-pending
 import { PendingShipmentComponent } from './pending-shipment/pending-shipment.component';
 import { DetailComponent } from './selling-detail/detail.component';
 import { SellDetailComponent } from './sell-detail/sell-detail.component';
+import { VouchersComponent } from './vouchers/vouchers.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
       {
         path: 'sell-detail/:id',
         component: SellDetailComponent
+      },
+      {
+        path: 'vouchers',
+        component: VouchersComponent
       }
     ]
   }

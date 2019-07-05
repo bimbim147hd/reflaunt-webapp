@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { PendingShipmentComponent } from './pending-shipment/pending-shipment.component';
 import { DetailComponent } from './selling-detail/detail.component';
 import { SellDetailComponent } from './sell-detail/sell-detail.component';
+import { VouchersComponent } from './vouchers/vouchers.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SellDetailComponent } from './sell-detail/sell-detail.component';
     PendingListingComponent,
     EditPendingListingComponent,
     PendingShipmentComponent,
-    SellDetailComponent
+    SellDetailComponent,
+    VouchersComponent
   ],
   imports: [
     CommonModule,
