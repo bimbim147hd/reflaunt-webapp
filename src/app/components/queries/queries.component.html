@@ -6,33 +6,42 @@
         <div class="queries--group">
           <div class="queries--list">
             <div class="scrollbar" id="style-3">
-              <div class="force-overflow" *ngIf="payload.items | hasItem">
-                <div
-                  class="querie__info"
-                  *ngFor="let i of payload.items"
-                  [ngClass]="{ unread: i.unread, selected: i.selected }"
-                  (click)="chooseMessage(i)"
-                >
-                  <div class="image">
-                    <img
-                      [ngStyle]="{
-                        'background-image': i.conversation.product.getImageBackgroundStyle()
-                      }"
-                      src="/assets/images/48x40.png"
-                      alt=""
-                    />
-                  </div>
-                  <div class="desc">
-                    <p class="name">{{ i.conversation.product.name }}</p>
-                    <p class="content">
-                      {{ i.message }}
-                    </p>
-                  </div>
-                  <div class="date">
-                    {{ i.created_at | date: 'MMM d, y' }}
+              <ng-container *ngIf="payload.items | hasItem">
+                <div class="force-overflow">
+                  <div
+                    class="querie__info"
+                    *ngFor="let i of payload.items"
+                    [ngClass]="{ unread: i.unread, selected: i.selected }"
+                    (click)="chooseMessage(i)"
+                  >
+                    <div class="image">
+                      <img
+                        [ngStyle]="{
+                          'background-image': i.conversation.product.getImageBackgroundStyle()
+                        }"
+                        src="/assets/images/48x40.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="desc">
+                      <p class="name">{{ i.conversation.product.name }}</p>
+                      <p class="content">
+                        {{ i.message }}
+                      </p>
+                    </div>
+                    <div class="date">
+                      {{ i.created_at | date: 'MMM d, y' }}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ng-container>
+              <ng-container>
+                <img
+                  style="display: block; margin: auto; margin-top: 30px;"
+                  src="/assets/images/empty-box.png"
+                  alt=""
+                />
+              </ng-container>
             </div>
           </div>
           <div class="queries--detail">
