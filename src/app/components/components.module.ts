@@ -13,6 +13,7 @@ import { WardrobeComponent } from './wardrobe/wardrobe.component';
 import { NotificationComponent } from './notification/notification.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { PaymentAccountComponent } from './payment-account/payment-account.component';
+import { QueriesComponent } from './queries/queries.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PaymentAccountComponent } from './payment-account/payment-account.compo
     WardrobeComponent,
     NotificationComponent,
     WalletComponent,
-    PaymentAccountComponent
+    PaymentAccountComponent,
+    QueriesComponent
   ],
   imports: [
     CommonModule,

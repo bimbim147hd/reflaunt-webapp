@@ -14,6 +14,7 @@ import { ShipmentService } from './shipment/shipment.service';
 import { NotificationService } from './notification/notification.service';
 import { WalletService } from './wallet/wallet.service';
 import { VoucherService } from './voucher/voucher.service';
+import { InboxService } from './inbox/inbox.service';
 @NgModule({
   imports: [CommonModule, AdminApiModule],
   declarations: [],
@@ -30,7 +31,8 @@ import { VoucherService } from './voucher/voucher.service';
     ShipmentService,
     NotificationService,
     WalletService,
-    VoucherService
+    VoucherService,
+    InboxService
   ]
 })
 export class ApiModule {}

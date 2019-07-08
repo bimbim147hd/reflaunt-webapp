@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { QueriesComponent } from './components/queries/queries.component';
 
 const appRoutes: Routes = [
   {
@@ -31,6 +32,10 @@ const appRoutes: Routes = [
         path: 'payment-account',
         loadChildren:
           './components/payment-account/payment-account.module#PaymentAccountModule'
+      },
+      {
+        path: 'queries',
+        component: QueriesComponent
       }
     ],
     canActivate: [AuthGuardService]

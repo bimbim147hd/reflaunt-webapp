@@ -22,8 +22,15 @@
     }
   }
   .wardrobe__right-col {
+    h2 {
+      font-family: $playfair-display;
+      font-size: $large;
+      font-weight: bold;
+      letter-spacing: 0.73px;
+      color: #000000;
+      margin-bottom: 30px;
+    }
     margin-top: 90px;
-    padding-left: 70px;
     .nav-main {
       margin-bottom: 10px;
       border-bottom: 1px solid #dee2e6;
@@ -176,7 +183,6 @@
       margin-top: 40px;
     }
     .wardrobe__right-col {
-      padding-left: 15px;
       margin-top: 65px;
     }
   }
