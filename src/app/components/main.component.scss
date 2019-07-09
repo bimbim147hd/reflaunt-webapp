@@ -71,6 +71,24 @@ a.menu-actived {
   clear: both;
   max-height: 0;
   transition: max-height 0.2s ease-out;
+  .link {
+    position: relative;
+    span {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.24);
+      background-color: #ffff92;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+      color: #000000;
+      right: -12px;
+      border-radius: 50%;
+      top: 22px;
+      padding-top: 3px;
+    }
+  }
 }
 
 /* menu icon */

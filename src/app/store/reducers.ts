@@ -43,6 +43,8 @@ const RootReducer = (
         MenuItems: MenuItems,
         isShowBtnSettings: action.isShowBtnSettings
       });
+    case 'FETCH_NUMBER_OF_UNREAD_MESSAGE_SUCCEEDED':
+      return _.assign({}, state, { no_of_unread: action.data.data.unread });
     default:
       return state;
   }

@@ -17,6 +17,9 @@ export class MainComponent implements OnInit {
 
   constructor(public router: Router) {
     this.store = AppInjector.get(Store).getInstance();
+    this.store.dispatch({
+      type: 'FETCH_NUMBER_OF_UNREAD_MESSAGE_REQUESTED'
+    });
   }
 
   ngOnInit() {

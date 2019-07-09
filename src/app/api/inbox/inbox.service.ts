@@ -47,4 +47,17 @@ export class InboxService extends BaseService {
         })
       );
   }
+
+  getNoUnreadMessage(): Observable<any> {
+    Loader.show();
+    return this.http.get(this.apiUrl.getApiUrl(`${this.url}/unread`)).pipe(
+      tap(result => {
+        Loader.hide();
+      }),
+      catchError(error => {
+        Loader.hide();
+        throw error;
+      })
+    );
+  }
 }
