@@ -41,7 +41,6 @@ function* watchGetUnreadRequest() {
     const api = AppInjector.get(ApiService);
     try {
       const result = yield api.inbox.getNoUnreadMessage().toPromise();
-      console.log(result);
       yield put({
         type: 'FETCH_NUMBER_OF_UNREAD_MESSAGE_SUCCEEDED',
         data: result
