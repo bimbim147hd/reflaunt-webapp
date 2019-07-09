@@ -12,11 +12,20 @@
         <a routerLink="/wardrobe" routerLinkActive="menu-actived">Wardrobe</a>
       </li>
       <li>
-        <a routerLink="/queries" routerLinkActive="menu-actived">Queries</a>
+        <a class="link" routerLink="/queries" routerLinkActive="menu-actived"
+          >Queries
+          <span *ngIf="store.getState().RootReducer.no_of_unread">{{
+            store.getState().RootReducer.no_of_unread
+          }}</span></a
+        >
       </li>
       <li>
-        <a routerLink="/notification" routerLinkActive="menu-actived"
-          >Notification</a
+        <a
+          class="link"
+          routerLink="/notification"
+          routerLinkActive="menu-actived"
+          >Notification
+          <span *ngIf="store.getState().RootReducer.no_of_unread">3</span></a
         >
       </li>
       <li>

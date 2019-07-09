@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../base.component';
 import { Router, NavigationEnd } from '@angular/router';
 import { FETCH_NOTIFICATIONS_REQUESTED } from './notification.actions';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
 
 @Component({
   selector: 'app-notification',
@@ -10,6 +12,12 @@ import { FETCH_NOTIFICATIONS_REQUESTED } from './notification.actions';
 })
 export class NotificationComponent extends BaseComponent implements OnInit {
   public reducer: String = 'Notification';
+  public timeFormat = time => {
+    TimeAgo.addLocale(en);
+    const timeAgo = new TimeAgo('en-US');
+    return timeAgo.format(new Date(time));
+    // tslint:disable-next-line:semicolon
+  };
   constructor(private router: Router) {
     super();
     this.navigationSubscription = this.router.events.subscribe((e: any) => {

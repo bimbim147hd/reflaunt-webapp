@@ -17,6 +17,9 @@ function* watchFetchMessagesRequest() {
         type: FETCH_MESSAGES_SUCCESSED,
         data: result
       });
+      yield put({
+        type: 'FETCH_NUMBER_OF_UNREAD_MESSAGE_REQUESTED'
+      });
       if (action.selectedMessage) {
         yield put({
           type: SELECTED_MESSAGES_REQUESTED,

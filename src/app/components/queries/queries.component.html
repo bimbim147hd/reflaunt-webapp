@@ -35,7 +35,7 @@
                   </div>
                 </div>
               </ng-container>
-              <ng-container>
+              <ng-container *ngIf="!(payload.items | hasItem)">
                 <img
                   style="display: block; margin: auto; margin-top: 30px;"
                   src="/assets/images/empty-box.png"
