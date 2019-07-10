@@ -39,7 +39,7 @@
         border: none;
       }
       .nav-tabs .nav-item.show .nav-link,
-      .nav-tabs .nav-link.active {
+      .nav-tabs .nav-link.active span {
         font-weight: 900;
         color: #000000;
         border-bottom: solid 2px #000000;
@@ -54,6 +54,13 @@
         color: #8f8f8f;
         border: none;
         text-align: left;
+        border-bottom: 1px solid #dee2e6;
+        padding: 0;
+        span {
+          height: 100%;
+          display: inline-block;
+          padding: 5px 0;
+        }
       }
     }
     .tab-content .tab-pane .products {
