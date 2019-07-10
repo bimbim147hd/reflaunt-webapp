@@ -7,7 +7,8 @@ import {
   SELLING_STATUS,
   PENDING_STATUS,
   SOLD_STATUS,
-  CANCELED_STATUS
+  CANCELED_STATUS,
+  SOLD_CONFIRMED_STATUS
 } from '../../../models/Product';
 
 @Component({
@@ -58,6 +59,10 @@ export class ListComponent extends BaseComponent implements OnInit {
       {
         status: CANCELED_STATUS,
         url: ['/', 'wardrobe', 'sell-detail', item.id]
+      },
+      {
+        status: SOLD_CONFIRMED_STATUS,
+        url: ['/', 'wardrobe', 'pending-shipment', item.id]
       }
     ];
     _.forEach(able_statuses, function(status) {
