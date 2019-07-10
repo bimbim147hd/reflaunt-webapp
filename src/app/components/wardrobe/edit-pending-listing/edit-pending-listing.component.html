@@ -12,7 +12,7 @@
         <h1>Edit Listing</h1>
         <img width="125px" src="{{ payload.item.images[0] }}" alt="" />
         <h3 class="title">
-          {{ payload.item.designer ? payload.item.designer.name : 'xxx' }}
+          {{ payload.item.designer ? payload.item.designer.name : 'Undefined' }}
         </h3>
         <p class="desc">{{ payload.item.getName() }}</p>
       </div>
