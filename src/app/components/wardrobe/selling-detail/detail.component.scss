@@ -35,6 +35,9 @@
       line-height: normal;
       letter-spacing: 0.73px;
       color: #000000;
+      &:first-letter {
+        text-transform: uppercase;
+      }
       &:before {
         position: absolute;
         content: '';

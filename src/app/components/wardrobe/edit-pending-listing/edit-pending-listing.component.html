@@ -11,7 +11,7 @@
       <div class="col-12 col-md-3 product__detail__left-col">
         <h1>Edit Listing</h1>
         <img width="125px" src="{{ payload.item.images[0] }}" alt="" />
-        <h3 class="title">Loewe</h3>
+        <h3 class="title">{{ payload.item.designer.name }}</h3>
         <p class="desc">{{ payload.item.getName() }}</p>
       </div>
       <div class="col-12 col-md-9 product__detail__right-col">

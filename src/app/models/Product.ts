@@ -6,6 +6,7 @@ import ProductMeta from './ProductMeta';
 import User from './User';
 import Shipment from './Shipment';
 import TransactionHistory from './TransactionHistory';
+import Designer from './Designer';
 
 export const PENDING_STATUS = 1;
 export const FLAUNT_STATUS = 2;
@@ -30,6 +31,9 @@ class Product extends Model {
     };
     (this as any).retailer = d => {
       return new User(d.data);
+    };
+    (this as any).designer = d => {
+      return new Designer(d.data);
     };
     (this as any).markets = d => {
       return _.map(d.data, item => new User(item));
