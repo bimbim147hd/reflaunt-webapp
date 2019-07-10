@@ -78,7 +78,9 @@
                   src="/assets/images/mask.png"
                   alt=""
                 />
-                <h2 class="product--name">{{ item.designer.name }}</h2>
+                <h2 class="product--name">
+                  {{ item.designer ? item.designer.name : xxx }}
+                </h2>
                 <p class="product--info">{{ item.name }}</p>
                 <div
                   class="product--state"
@@ -114,7 +116,9 @@
                   src="/assets/images/mask.png"
                   alt=""
                 />
-                <h2 class="product--name">Balenciaga</h2>
+                <h2 class="product--name">
+                  {{ item.designer ? item.designer.name : xxx }}
+                </h2>
                 <p class="product--info">{{ item.name }}</p>
                 <div
                   class="product--state"
@@ -150,7 +154,9 @@
                   src="/assets/images/mask.png"
                   alt=""
                 />
-                <h2 class="product--name">Balenciaga</h2>
+                <h2 class="product--name">
+                  {{ item.designer ? item.designer.name : xxx }}
+                </h2>
                 <p class="product--info">{{ item.name }}</p>
                 <div
                   class="product--state"
