@@ -9,7 +9,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-3 product__detail__left-col">
-        <h1 class="title">{{ payload.item.designer.name }}</h1>
+        <h1 class="title">
+          {{ payload.item.designer ? payload.item.designer.name : xxx }}
+        </h1>
         <p class="desc">{{ payload.item.getName() }}</p>
 
         <div class="resale">
