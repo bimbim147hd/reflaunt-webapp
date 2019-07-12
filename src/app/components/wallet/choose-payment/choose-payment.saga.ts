@@ -39,6 +39,7 @@ function* watchChoosePaymentRequested() {
     const router = AppInjector.get(Router);
     let alertText;
     let imgUrl;
+    let iconUrl;
     try {
       const result = yield api.wallet.withdraw(action.data).toPromise();
 
@@ -47,21 +48,24 @@ function* watchChoosePaymentRequested() {
           result.data.amount_credit
         } Credit has been added to your <br /> Reflaunt Wallet`;
         imgUrl = '/assets/images/wallet.png';
+        iconUrl = '/assets/images/check-icon.png';
       } else if (result.data.type === TRANSACTION_TYPE_CASH) {
         alertText = `$${
           result.data.amount_cash
         } cash has been transferred to your <br /> your bank account`;
         imgUrl = '/assets/images/transcation.png';
+        iconUrl = '/assets/images/check-icon.png';
       }
       yield put({
         type: CHOOSE_PAYMENT_SUCCESSED,
         data: result
       });
-      swalAlert(imgUrl, alertText, 'CONTINUE', () => {
+      swalAlert(iconUrl, imgUrl, alertText, 'CONTINUE', () => {
         router.navigate(['/', 'wallet']);
       });
     } catch (e) {
       swalAlert(
+        '',
         '/assets/images/warning.png',
         `${e.error.message}`,
         'GO BACK',
