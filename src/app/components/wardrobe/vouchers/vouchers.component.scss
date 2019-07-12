@@ -40,9 +40,11 @@
       }
       .nav-tabs .nav-item.show .nav-link,
       .nav-tabs .nav-link.active span {
-        font-weight: 900;
         color: #000000;
         border-bottom: solid 2px #000000;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.4px;
       }
       .nav-tabs .nav-link {
         padding: 5px 0;
@@ -54,7 +56,7 @@
         color: #8f8f8f;
         border: none;
         text-align: left;
-        border-bottom: 1px solid #dee2e6;
+        border-bottom: 1px solid #dbdbdb;
         padding: 0;
         span {
           height: 100%;
@@ -73,13 +75,12 @@
         position: relative;
         margin-right: 20px;
         margin-bottom: 20px;
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.17);
         background-color: #ffffff;
         min-height: 200px;
         flex: 0 1 calc(33.33% - 20px); /* <-- adjusting for margin */
         text-align: center;
         #wardrobe-voucher {
-          // box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.17);
+          box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
           background-color: #ffffff;
           padding: 15px;
           .voucher_info {
@@ -97,28 +98,31 @@
               flex: 1;
               .amount {
                 font-family: $lato-regular;
-                font-size: 23px;
                 font-weight: bold;
-                letter-spacing: 0.32px;
                 color: #000;
+                font-size: 25px;
+                font-weight: 800;
                 span {
-                  color: #c6c6c6;
                   text-transform: uppercase;
                   font-size: 13px;
                   margin-left: 5px;
+                  font-weight: bold;
+                  color: #c4c4c4;
                 }
               }
               .branch {
                 color: #000;
-                font-size: 11px;
                 font-weight: bold;
                 font-family: $playfair-display;
                 margin-top: 5px;
+                font-size: 11px;
+                font-weight: bold;
+                letter-spacing: 0.2px;
               }
             }
           }
           .voucher_info.top--voucher {
-            border-bottom: solid 1px #dbdbdb;
+            border-bottom: solid 1px #e4e4e4;
             .info--item.left {
               text-align: left;
               padding-left: 15px;
@@ -135,12 +139,14 @@
                 font-size: 11px;
                 font-weight: bold;
                 letter-spacing: 0.32px;
-                color: #c6c6c6;
                 text-transform: uppercase;
+                color: #9b9b9b;
               }
               .code {
                 color: #000;
                 font-size: 11px;
+                font-weight: bold;
+                letter-spacing: 0.2px;
               }
             }
           }
@@ -151,13 +157,15 @@
           background: #000;
           color: #fff;
           text-transform: uppercase;
-          font-size: 12px;
           padding: 10px;
           font-family: $lato-regular;
           cursor: pointer;
+          font-size: 11px;
+          font-weight: bold;
+          letter-spacing: 0.5px;
         }
         button.redeemed {
-          background-color: darkgray;
+          background-color: #b5b5b5;
         }
 
         &:hover {

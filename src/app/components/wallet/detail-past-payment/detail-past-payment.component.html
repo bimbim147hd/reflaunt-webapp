@@ -36,7 +36,13 @@
               alt=""
             />
             <div class="info">
-              <p class="branch">Loewe</p>
+              <p class="branch">
+                {{
+                  payload.item.designer
+                    ? payload.item.designer.name
+                    : 'Undefined'
+                }}
+              </p>
               <p class="name">{{ payload.item.name }}</p>
 
               <ng-container
@@ -78,7 +84,10 @@
           <div class="box">
             <p class="label">Transaction Date</p>
             <p class="content">
-              {{ payload.item.transaction_histories[0].created_at | date: 'd MMM y, h:mm:ss a' }}
+              {{
+                payload.item.transaction_histories[0].created_at
+                  | date: 'd MMM y, h:mm:ss a'
+              }}
             </p>
           </div>
           <div class="box">

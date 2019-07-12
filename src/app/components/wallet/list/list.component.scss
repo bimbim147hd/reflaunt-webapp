@@ -13,19 +13,19 @@
       background-color: #000;
       border: none;
       border-radius: 0;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.43px;
       text-align: center;
       color: #ffffff;
       padding: 11px;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
     .title {
       font-family: $playfair-display;
       font-size: $large;
       font-weight: bold;
-      line-height: normal;
-      letter-spacing: 0.7px;
+      letter-spacing: 0.73px;
       color: #000000;
     }
     .box {
@@ -35,10 +35,9 @@
         font-family: $lato-regular;
         font-size: $normal;
         font-weight: bold;
-        line-height: normal;
-        letter-spacing: 0.3px;
         color: #3a3a3a;
         margin-bottom: 6px;
+        letter-spacing: 0.32px;
       }
       .box-number.symbol {
         padding-left: 10px;
@@ -72,13 +71,15 @@
         margin: 0;
         color: #9b9b9b;
         text-transform: uppercase;
-        font-size: 12px;
         font-weight: bold;
-        letter-spacing: 0.7px;
+        font-size: 10px;
+        letter-spacing: 0.5px;
+        color: #9b9b9b;
       }
       p.point {
-        color: #bcbf00;
+        color: #d5ba1c;
         margin-top: 15px;
+        margin-bottom: 4px;
       }
       img {
         width: 34px;
@@ -90,23 +91,24 @@
     padding-left: 70px;
     h2 {
       font-size: 14px;
-      font-weight: 800;
       letter-spacing: 0.5px;
-      color: #f7b500;
       margin-bottom: 20px;
+      object-fit: contain;
+      font-weight: bold;
+      color: #f5a623;
     }
     h2.past {
-      color: #6d7278;
+      color: #8f8f8f;
     }
     .notification-group {
-      border: solid 1px #dbdbdb;
+      border: solid 1px #e7e7e7;
       margin-bottom: 40px;
       .notication {
         cursor: pointer;
         padding: 20px 25px;
         display: flex;
         flex-flow: row wrap;
-        border-bottom: solid 1px #dbdbdb;
+        border-bottom: solid 1px #e7e7e7;
         position: relative;
         &:last-child {
           border: none;
@@ -147,11 +149,13 @@
           margin-top: 3px;
           .title {
             font-family: $lato-regular;
-            font-weight: bold;
-            color: #000000;
             font-size: 12px;
             margin-bottom: 0;
             margin-top: 10px;
+            object-fit: contain;
+            font-weight: 500;
+            letter-spacing: -0.22px;
+            color: #4a4a4a;
           }
           .desc {
             font-family: $lato-regular;
@@ -176,6 +180,12 @@
         .content {
           .title {
             margin-top: 0;
+            font-size: 13px;
+          }
+          .desc {
+            font-size: 11px;
+            font-weight: bold;
+            color: #b5b5b5;
           }
         }
       }

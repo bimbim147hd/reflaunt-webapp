@@ -2,12 +2,25 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import * as moment from 'moment';
 
-export const swalAlert = (imgUrl, title, buttonText, callBack: Function) => {
+export const swalAlert = (
+  iconUrl,
+  imgUrl,
+  title,
+  buttonText,
+  callBack: Function
+) => {
   return Swal.fire({
     html: `
     <div style="text-align: center;">
-      <p><img src="${imgUrl}" width="200px" /></p>
-      <p style="font-weight: bold;">${title}</p>
+      <p><img src="${iconUrl}" width="60px" style="margin-top: 50px;"/></p>
+      <p><img src="${imgUrl}" width="150px" style="margin-bottom: 50px; margin-top: 30px;"/></p>
+      <p style="
+        font-family: 'Lato';
+        font-size: 19px;
+        color: #000000;
+        font-weight: bold;
+        margin-bottom: 70px;
+      ">${title}</p>
     </div>
     `,
     allowOutsideClick: false,
@@ -24,6 +37,7 @@ export const voucherAlert = (voucher, callBack: Function) => {
   return Swal.fire({
     html: `
     <div id="voucher-popup" style="text-align: center;">
+      <p><img src="/assets/images/check-icon.png" width="60px" style="margin-top: 50px; margin-bottom: 30px;"/></p>
       <p class="title">$${voucher.amount} ${
       voucher.retailer.retailer.first_name
     } ${
