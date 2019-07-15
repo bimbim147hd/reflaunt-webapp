@@ -9,6 +9,10 @@ export const Notification = (state = { fetched: false, items: [] }, action) => {
         items: action.data,
         pagination: action.pagination
       });
+    case 'UPDATE_NOTIFICATION_REAL_TIME_REQUESTED':
+      return _.assign({}, state, {
+        items: [action.data, ...state.items]
+      });
     default:
       return state;
   }

@@ -6,6 +6,7 @@ import { FETCH_LOGIN_DETAIL_REQUESTED } from './auth/login/login.actions';
 import { environment } from '../../environments/environment';
 import * as Cookies from 'js-cookie';
 import { Router } from '@angular/router';
+import { NotificationService } from '../api/notification/notification.service';
 
 @Component({
   selector: 'app-main',
@@ -15,10 +16,22 @@ import { Router } from '@angular/router';
 export class MainComponent implements OnInit {
   public store;
 
-  constructor(public router: Router) {
+  constructor(
+    public router: Router,
+    private _notificationService: NotificationService
+  ) {
     this.store = AppInjector.get(Store).getInstance();
+    this._notificationService.newNotificationReceived().subscribe(data => {
+      this.store.dispatch({
+        type: 'UPDATE_NOTIFICATION_REAL_TIME_REQUESTED',
+        data: data
+      });
+    });
     this.store.dispatch({
       type: 'FETCH_NUMBER_OF_UNREAD_MESSAGE_REQUESTED'
+    });
+    this.store.dispatch({
+      type: 'FETCH_NUMBER_OF_UNREAD_NOTIFICATION_REQUESTED'
     });
   }
 

@@ -24,7 +24,11 @@
           class="link"
           routerLink="/notification"
           routerLinkActive="menu-actived"
-          >Notification <span>8</span></a
+          >Notification
+          <span
+            *ngIf="store.getState().RootReducer.no_of_unread_notification"
+            >{{ store.getState().RootReducer.no_of_unread_notification }}</span
+          ></a
         >
       </li>
       <li>
