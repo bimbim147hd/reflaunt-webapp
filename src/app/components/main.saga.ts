@@ -51,8 +51,28 @@ function* watchGetUnreadRequest() {
   });
 }
 
+function* watchGetUnreadNotificationRequest() {
+  yield takeLatest('FETCH_NUMBER_OF_UNREAD_NOTIFICATION_REQUESTED', function*(
+    action: any
+  ) {
+    const api = AppInjector.get(ApiService);
+    try {
+      const result = yield api.notification
+        .getNoUnreadNotification()
+        .toPromise();
+      yield put({
+        type: 'FETCH_NUMBER_OF_UNREAD_NOTIFICATION_SUCCEEDED',
+        data: result
+      });
+    } catch (e) {
+      yield put({ type: 'API_CALL_ERROR', error: e });
+    }
+  });
+}
+
 export default [
   watchFetchLoginDetailSuccessed,
   watchSwapAppMenu,
-  watchGetUnreadRequest
+  watchGetUnreadRequest,
+  watchGetUnreadNotificationRequest
 ];

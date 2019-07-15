@@ -10,7 +10,7 @@ import { PaymentAccount } from '../components/payment-account/payment-account.re
 import { Queries } from '../components/queries/queries.reducer';
 
 const RootReducer = (
-  state = { config: environment, isShowBtnSettings: false },
+  state: any = { config: environment, isShowBtnSettings: false },
   action
 ) => {
   switch (action.type) {
@@ -45,6 +45,14 @@ const RootReducer = (
       });
     case 'FETCH_NUMBER_OF_UNREAD_MESSAGE_SUCCEEDED':
       return _.assign({}, state, { no_of_unread: action.data.data.unread });
+    case 'FETCH_NUMBER_OF_UNREAD_NOTIFICATION_SUCCEEDED':
+      return _.assign({}, state, {
+        no_of_unread_notification: action.data.data.count
+      });
+    case 'UPDATE_NOTIFICATION_REAL_TIME_REQUESTED':
+      return _.assign({}, state, {
+        no_of_unread_notification: state.no_of_unread_notification + 1
+      });
     default:
       return state;
   }
