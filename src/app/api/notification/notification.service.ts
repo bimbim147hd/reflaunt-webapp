@@ -12,7 +12,8 @@ export class NotificationService extends BaseService {
   public url = '/api/v1/notifications';
   public model = Notification;
   private socket = io(environment.apiUrl, {
-    transports: ['websocket', 'polling', 'flashsocket']
+    transports: ['websocket'],
+    secure: true
   });
 
   newNotificationReceived() {
