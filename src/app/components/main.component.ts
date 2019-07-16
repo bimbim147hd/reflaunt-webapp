@@ -1,5 +1,5 @@
 import { AppInjector } from './../app-injector';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '../store/store.module';
 import * as _ from 'lodash';
 import { FETCH_LOGIN_DETAIL_REQUESTED } from './auth/login/login.actions';
@@ -7,11 +7,13 @@ import { environment } from '../../environments/environment';
 import * as Cookies from 'js-cookie';
 import { Router } from '@angular/router';
 import { NotificationService } from '../api/notification/notification.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
+  providers: [NotificationService]
 })
 export class MainComponent implements OnInit {
   public store;
@@ -21,7 +23,13 @@ export class MainComponent implements OnInit {
     private _notificationService: NotificationService
   ) {
     this.store = AppInjector.get(Store).getInstance();
-    this._notificationService.newNotificationReceived().subscribe(data => {
+    // this._notificationService.getNotificationFromSocketIo().subscribe(data => {
+    //   this.store.dispatch({
+    //     type: 'UPDATE_NOTIFICATION_REAL_TIME_REQUESTED',
+    //     data: data
+    //   });
+    // });
+    this._notificationService.getNotificationFromPusher().subscribe(data => {
       this.store.dispatch({
         type: 'UPDATE_NOTIFICATION_REAL_TIME_REQUESTED',
         data: data
