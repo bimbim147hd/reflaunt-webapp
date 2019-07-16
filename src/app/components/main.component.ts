@@ -23,19 +23,18 @@ export class MainComponent implements OnInit {
     private _notificationService: NotificationService
   ) {
     this.store = AppInjector.get(Store).getInstance();
-    // this._notificationService.getNotificationFromSocketIo().subscribe(data => {
-    //   this.store.dispatch({
-    //     type: 'UPDATE_NOTIFICATION_REAL_TIME_REQUESTED',
-    //     data: data
-    //   });
-    // });
-    this._notificationService.getNotificationFromPusher().subscribe(data => {
-      console.log('data', data);
+    this._notificationService.getNotificationFromSocketIo().subscribe(data => {
       this.store.dispatch({
         type: 'UPDATE_NOTIFICATION_REAL_TIME_REQUESTED',
         data: data
       });
     });
+    // this._notificationService.getNotificationFromPusher().subscribe(data => {
+    //   this.store.dispatch({
+    //     type: 'UPDATE_NOTIFICATION_REAL_TIME_REQUESTED',
+    //     data: data
+    //   });
+    // });
     this.store.dispatch({
       type: 'FETCH_NUMBER_OF_UNREAD_MESSAGE_REQUESTED'
     });
