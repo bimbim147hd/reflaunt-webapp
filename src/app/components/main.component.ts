@@ -30,6 +30,7 @@ export class MainComponent implements OnInit {
     //   });
     // });
     this._notificationService.getNotificationFromPusher().subscribe(data => {
+      console.log('data', data);
       this.store.dispatch({
         type: 'UPDATE_NOTIFICATION_REAL_TIME_REQUESTED',
         data: data

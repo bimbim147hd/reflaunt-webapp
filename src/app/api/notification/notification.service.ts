@@ -12,15 +12,17 @@ import Pusher from 'pusher-js';
 export class NotificationService extends BaseService {
   public url = '/api/v1/notifications';
   public model = Notification;
-  private socket = io(environment.apiUrl, {
-    transports: ['websocket'],
-    secure: true
-  });
+  // private socket = io(environment.apiUrl, {
+  //   transports: ['websocket'],
+  //   secure: true
+  // });
   private pusherClient = new Pusher(environment.PUSHER_APP_KEY, {
     cluster: environment.PUSHER_APP_CLUSTER
   });
 
   getNotificationFromPusher() {
+    console.log('environment.PUSHER_APP_KEY', environment.PUSHER_APP_KEY);
+
     const observable = new Observable<any>(observer => {
       const channel = this.pusherClient.subscribe('rf_notification_channel');
 
@@ -32,18 +34,18 @@ export class NotificationService extends BaseService {
     return observable;
   }
 
-  getNotificationFromSocketIo() {
-    const observable = new Observable<any>(observer => {
-      this.socket.on('rf_return_notification', data => {
-        observer.next(data);
-      });
-      return () => {
-        this.socket.disconnect();
-      };
-    });
+  // getNotificationFromSocketIo() {
+  //   const observable = new Observable<any>(observer => {
+  //     this.socket.on('rf_return_notification', data => {
+  //       observer.next(data);
+  //     });
+  //     return () => {
+  //       this.socket.disconnect();
+  //     };
+  //   });
 
-    return observable;
-  }
+  //   return observable;
+  // }
 
   getNoUnreadNotification(): Observable<any> {
     Loader.show();
