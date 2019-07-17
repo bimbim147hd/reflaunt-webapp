@@ -23,12 +23,12 @@ export class MainComponent implements OnInit {
     private _notificationService: NotificationService
   ) {
     this.store = AppInjector.get(Store).getInstance();
-    this._notificationService.getNotificationFromSocketIo().subscribe(data => {
-      this.store.dispatch({
-        type: 'UPDATE_NOTIFICATION_REAL_TIME_REQUESTED',
-        data: data
-      });
-    });
+    // this._notificationService.getNotificationFromSocketIo().subscribe(data => {
+    //   this.store.dispatch({
+    //     type: 'UPDATE_NOTIFICATION_REAL_TIME_REQUESTED',
+    //     data: data
+    //   });
+    // });
     // this._notificationService.getNotificationFromPusher().subscribe(data => {
     //   this.store.dispatch({
     //     type: 'UPDATE_NOTIFICATION_REAL_TIME_REQUESTED',
