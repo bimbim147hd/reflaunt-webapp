@@ -78,8 +78,8 @@ class Product extends Model {
           status.color = '#b5b5b5';
           break;
         case CANCELED_STATUS:
-          status.label = 'Canceled';
-          status.color = '#34495e';
+          status.label = 'Resell';
+          status.color = '#000000';
           break;
         case WANTED_STATUS:
           status.label = 'Wanted';
