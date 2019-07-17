@@ -1,0 +1,305 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'font';
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import 'sweetalert2/src/sweetalert2.scss';
+
+@font-face {
+  font-family: 'lato';
+  src: url('../fonts/lato/lato-regular.ttf');
+}
+
+@font-face {
+  font-family: 'lato-bold';
+  src: url('../fonts/lato/lato-bold.ttf');
+}
+
+@font-face {
+  font-family: 'PlayfairDisplay';
+  src: url('../fonts/playfair-display/PlayfairDisplay-Regular.otf');
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SFProText/SFProText-Regular.ttf');
+}
+.nf-notify {
+  z-index: 99;
+}
+
+.swal2-popup {
+  border-radius: 0px !important;
+  max-width: 450px !important;
+}
+.swal2-popup .swal2-actions {
+  margin: 0 !important;
+}
+
+.swal2-popup .swal2-styled {
+  margin: 0 !important;
+  width: 100% !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
+  border-radius: 0px !important;
+  background-color: #fff !important;
+  font-family: $lato-regular;
+  font-weight: bold;
+  margin-top: 13px !important;
+  font-size: 11px !important;
+  letter-spacing: 0.5px;
+  padding: 14px 0 13px 0;
+}
+
+.swal2-popup .swal2-styled:focus {
+  box-shadow: none !important;
+}
+
+.swal2-popup .swal2-styled.btn-view-voucher {
+  color: #fff !important;
+  background-color: #000 !important;
+}
+
+#voucher-popup,
+#redeem__voucher-popup {
+  .title {
+    font-weight: bold;
+    font-family: $lato-regular;
+    margin-bottom: 50px;
+  }
+  #voucher {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.17);
+    background-color: #ffffff;
+    padding: 15px;
+    .voucher_info {
+      display: flex;
+      flex-flow: row wrap;
+      .info--item {
+        margin: 15px 0;
+        p {
+          margin: 0;
+        }
+        flex: 1;
+        .amount {
+          font-family: $lato-regular;
+          font-size: 23px;
+          font-weight: bold;
+          letter-spacing: 0.32px;
+          color: #000;
+          span {
+            color: #c6c6c6;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-left: 5px;
+          }
+        }
+        .branch {
+          color: #000;
+          font-size: 13px;
+          font-weight: bold;
+          font-family: $playfair-display;
+          margin-top: 5px;
+        }
+      }
+    }
+    .voucher_info.top--voucher {
+      border-bottom: solid 1px #dbdbdb;
+      .info--item.left {
+        text-align: left;
+        padding-left: 15px;
+      }
+      .info--item.right {
+        text-align: right;
+      }
+    }
+    .voucher_info.bottom--voucher {
+      .info--item {
+        text-align: left;
+        .valid-date {
+          font-family: $lato-regular;
+          font-size: 13px;
+          font-weight: bold;
+          letter-spacing: 0.32px;
+          color: #c6c6c6;
+          text-transform: uppercase;
+        }
+        .code {
+          color: #000;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+#redeem__voucher-popup {
+  #voucher {
+    box-shadow: none;
+    padding: 30px 0;
+    .voucher_info {
+      .info--item {
+        .amount {
+          font-size: 25px;
+          font-weight: 800;
+          span {
+            font-size: 13px;
+            font-weight: bold;
+            color: #000000;
+          }
+        }
+        .branch {
+          font-size: 12px;
+          font-weight: bold;
+          letter-spacing: 0.4px;
+          color: #000000;
+        }
+      }
+    }
+    .voucher_info.top--voucher {
+      border-bottom: solid 1px #dbdbdb;
+      margin-bottom: 30px;
+    }
+    .voucher_info.bottom--voucher {
+      .info--item {
+        text-align: left;
+        .valid-date {
+          font-family: $lato-regular;
+          font-weight: bold;
+          letter-spacing: 0.32px;
+          text-transform: uppercase;
+          font-size: 11px;
+          color: #9b9b9b;
+        }
+        .code {
+          color: #000;
+          font-size: 11px;
+          font-weight: bold;
+          letter-spacing: 0.2px;
+        }
+      }
+    }
+    .voucher_info.terms_conditions {
+      margin: 30px 0 15px 0;
+      .label {
+        font-family: $playfair-display;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #000;
+        font-size: 10px;
+      }
+      .content {
+        font-size: $small;
+        font-family: $lato-regular;
+        text-align: left;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.67;
+        color: #616161;
+      }
+    }
+  }
+}
+
+.dynamic-input-group {
+  margin-bottom: 5px;
+  dynamic-input,
+  .reactive-form-group {
+    .phone-box {
+      height: 38px;
+      border: solid 1px #e7e7e7;
+      .phone-code {
+        height: 37px;
+        font-size: $small;
+        font-family: $lato-regular;
+      }
+    }
+    .select2-container--default .select2-selection--single {
+      border: none;
+    }
+    .select2-container--default
+      .select2-selection--single
+      .select2-selection__rendered,
+    input {
+      border: solid 1px #e7e7e7;
+      background-color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 0px;
+      font-family: $lato-regular;
+      font-size: $small;
+      color: #000000;
+      font-weight: 500;
+    }
+    label {
+      font-family: $lato-regular;
+      font-size: $small;
+      font-weight: bold;
+      color: #000000;
+    }
+    textarea:focus,
+    select.form-control:focus,
+    input:focus {
+      outline: 0 !important;
+      box-shadow: none;
+      border: 1px solid #ccc;
+    }
+    input::-webkit-input-placeholder,
+    input::-moz-placeholder,
+    input:-ms-input-placeholder,
+    input:-moz-placeholder {
+      font-family: $lato-regular;
+      font-size: $small;
+      font-weight: 500;
+      color: #b5b5b5;
+    }
+  }
+}
+
+.dynamic-input-group.rf--radio {
+  .radio.radiofill {
+    width: 49.5%;
+    float: left;
+    .checkmark {
+      height: 20px !important;
+      width: 20px !important;
+      border: solid 1px #979797 !important;
+      background-color: #fff !important;
+    }
+
+    .radio-label input:checked ~ .checkmark {
+      background-color: #fff !important;
+    }
+
+    .radio-label .checkmark:after {
+      top: 2px !important;
+      left: 2px !important;
+      width: 14px !important;
+      height: 14px !important;
+      background: #000 !important;
+    }
+  }
+}
+
+.dynamic-input-group.rf--block {
+  font-family: $lato-regular;
+  font-size: $small;
+  font-weight: 500;
+  line-height: 1.58;
+  color: #6d7278;
+}
+
+.rf-form .dynamic-submit-btn {
+  button {
+    width: 187px;
+    height: 40px;
+    background-color: #000000;
+    font-family: $lato-regular;
+    font-size: $small;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 0px;
+    float: right;
+    cursor: pointer;
+    margin-top: 60px;
+    border-color: #000;
+  }
+}

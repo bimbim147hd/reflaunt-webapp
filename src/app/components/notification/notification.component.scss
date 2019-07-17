@@ -1,0 +1,67 @@
+@import 'font';
+
+.notification {
+  padding: 80px 0 50px 0;
+  .wardrobe__left-col {
+    margin-top: 90px;
+    .title {
+      font-family: $playfair-display;
+      font-size: $large;
+      font-weight: bold;
+      letter-spacing: 0.73px;
+      color: #000000;
+      margin-bottom: 30px;
+    }
+    .notification-group {
+      border: solid 1px #dbdbdb;
+      .notication {
+        padding: 20px;
+        display: flex;
+        flex-flow: row wrap;
+        border-bottom: solid 1px #dbdbdb;
+        &:last-child {
+          border: none;
+        }
+        img {
+          flex: 0;
+          height: 43px;
+        }
+        .content {
+          flex: 1;
+          margin-left: 15px;
+          margin-top: 3px;
+          .title {
+            font-family: $lato-regular;
+            font-weight: bold;
+            color: #000000;
+            font-size: 12px;
+            margin-bottom: 0;
+          }
+          .desc {
+            font-family: $lato-regular;
+            color: #4a4a4a;
+            font-size: 12px;
+            margin-bottom: 0;
+          }
+          .date {
+            float: right;
+            font-size: 10px;
+            font-style: italic;
+            color: #4a4a4a;
+            margin-top: -25px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .notification {
+    padding-top: 68px;
+    .wardrobe__left-col {
+      min-height: 300px;
+      margin-top: 40px;
+    }
+  }
+}

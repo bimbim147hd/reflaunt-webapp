@@ -1,0 +1,315 @@
+@import 'font';
+
+.voucher {
+  padding: 80px 0 50px 0;
+  .wardrobe__notification {
+    height: 40px;
+    background-color: #ffff92;
+    p span {
+      border: 1px solid #000;
+      padding: 0px 5px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .notification--desc,
+    .notification--desc p a {
+      line-height: 40px;
+      font-family: $lato-regular;
+      font-size: 12px;
+      font-weight: bold;
+      color: #000000;
+      cursor: pointer;
+    }
+  }
+  .wardrobe__right-col {
+    h2 {
+      font-family: $playfair-display;
+      font-size: $large;
+      font-weight: bold;
+      letter-spacing: 0.73px;
+      color: #000000;
+      margin-bottom: 30px;
+    }
+    margin-top: 90px;
+    .nav-main {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #dee2e6;
+      .nav {
+        width: 210px;
+        border: none;
+      }
+      .nav-tabs .nav-item.show .nav-link,
+      .nav-tabs .nav-link.active span {
+        color: #000000;
+        border-bottom: solid 2px #000000;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.4px;
+      }
+      .nav-tabs .nav-link {
+        padding: 5px 0;
+        font-family: $lato-regular;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.4px;
+        color: #8f8f8f;
+        border: none;
+        text-align: left;
+        border-bottom: 1px solid #dbdbdb;
+        padding: 0;
+        span {
+          height: 100%;
+          display: inline-block;
+          padding: 5px 0;
+        }
+      }
+    }
+    .tab-content .tab-pane .products {
+      min-height: 200px; /* height given for illustration */
+      display: flex;
+      flex-flow: row wrap;
+      position: relative;
+      .child {
+        cursor: pointer;
+        position: relative;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        background-color: #ffffff;
+        min-height: 200px;
+        flex: 0 1 calc(33.33% - 20px); /* <-- adjusting for margin */
+        text-align: center;
+        #wardrobe-voucher {
+          box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
+          background-color: #ffffff;
+          padding: 15px;
+          .voucher_info {
+            display: flex;
+            flex-flow: row wrap;
+            .info--item {
+              margin: 15px 0;
+              img {
+                background-size: contain;
+                background-repeat: no-repeat;
+              }
+              p {
+                margin: 0;
+              }
+              flex: 1;
+              .amount {
+                font-family: $lato-regular;
+                font-weight: bold;
+                color: #000;
+                font-size: 25px;
+                font-weight: 800;
+                span {
+                  text-transform: uppercase;
+                  font-size: 13px;
+                  margin-left: 5px;
+                  font-weight: bold;
+                  color: #c4c4c4;
+                }
+              }
+              .branch {
+                color: #000;
+                font-weight: bold;
+                font-family: $playfair-display;
+                margin-top: 5px;
+                font-size: 11px;
+                font-weight: bold;
+                letter-spacing: 0.2px;
+              }
+            }
+          }
+          .voucher_info.top--voucher {
+            border-bottom: solid 1px #e4e4e4;
+            .info--item.left {
+              text-align: left;
+              padding-left: 15px;
+            }
+            .info--item.right {
+              text-align: right;
+            }
+          }
+          .voucher_info.bottom--voucher {
+            .info--item {
+              text-align: left;
+              .valid-date {
+                font-family: $lato-regular;
+                font-size: 11px;
+                font-weight: bold;
+                letter-spacing: 0.32px;
+                text-transform: uppercase;
+                color: #9b9b9b;
+              }
+              .code {
+                color: #000;
+                font-size: 11px;
+                font-weight: bold;
+                letter-spacing: 0.2px;
+              }
+            }
+          }
+        }
+        button {
+          width: 100%;
+          border: none;
+          background: #000;
+          color: #fff;
+          text-transform: uppercase;
+          padding: 10px;
+          font-family: $lato-regular;
+          cursor: pointer;
+          font-size: 11px;
+          font-weight: bold;
+          letter-spacing: 0.5px;
+        }
+        button.redeemed {
+          background-color: #b5b5b5;
+        }
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .voucher {
+    .wardrobe__right-col {
+      .tab-content .tab-pane .products {
+        .child {
+          flex: 0 1 calc(50% - 20px);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .voucher {
+    padding-top: 68px;
+    .wardrobe__left-col {
+      border: none;
+      min-height: 300px;
+      border-bottom: solid 1px #dbdbdb;
+      margin-top: 40px;
+    }
+    .wardrobe__right-col {
+      margin-top: 65px;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .voucher {
+    .wardrobe__right-col {
+      .tab-content .tab-pane .products {
+        .child {
+          flex: 0 1 calc(100%);
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.overlay {
+  z-index: 9;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  i {
+    position: relative;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      color: #bdc3c7;
+    }
+    span {
+      position: absolute;
+      left: 50%;
+      font-size: 15px;
+      bottom: -17px;
+      margin-left: -19px;
+      font-family: $lato-bold;
+    }
+  }
+}
+
+.overlay-content.content {
+  h3,
+  h4 {
+    font-size: $normal;
+    text-align: left;
+    font-family: $lato-bold;
+    margin: 20px 0;
+  }
+  h4 {
+    font-size: 18px;
+  }
+  p {
+    text-align: left;
+  }
+  ol {
+    padding: 0 17px;
+    li {
+      text-align: left;
+    }
+  }
+  font-family: $lato-regular;
+  background-color: #fff;
+  padding: 30px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}

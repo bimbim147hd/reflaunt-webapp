@@ -42,11 +42,11 @@ jobs:
           name: Deploying
           command: |
             if [[ "$CIRCLE_BRANCH" == "dev" ]]; then
-              aws s3 cp --region=ap-southeast-1 --recursive dist s3://my-dev.reflaunt.com
+              aws s3 cp --region=ap-southeast-1 --recursive dist/kitangular s3://my-dev.reflaunt.com
             fi
 
             if [[ "$CIRCLE_BRANCH" == "production" ]]; then
-              aws s3 cp --region=ap-southeast-1 --recursive dist s3://my.reflaunt.com
+              aws s3 cp --region=ap-southeast-1 --recursive dist/kitangular s3://my.reflaunt.com
             fi
 workflows:
   version: 2

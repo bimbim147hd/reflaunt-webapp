@@ -1,0 +1,110 @@
+<div class="queries" *ngIf="payload.fetched">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 wardrobe__right-col">
+        <h2>Queries</h2>
+        <div class="queries--group">
+          <div class="queries--list">
+            <div class="scrollbar" id="style-3">
+              <ng-container *ngIf="payload.items | hasItem">
+                <div class="force-overflow">
+                  <div
+                    class="querie__info"
+                    *ngFor="let i of payload.items"
+                    [ngClass]="{ unread: i.unread, selected: i.selected }"
+                    (click)="chooseMessage(i)"
+                  >
+                    <div class="image">
+                      <img
+                        [ngStyle]="{
+                          'background-image': i.conversation.product.getImageBackgroundStyle()
+                        }"
+                        src="/assets/images/48x40.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="desc">
+                      <p class="name">{{ i.conversation.product.name }}</p>
+                      <p class="content">
+                        {{ i.message }}
+                      </p>
+                    </div>
+                    <div class="date">
+                      {{ i.created_at | date: 'MMM d, y' }}
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="!(payload.items | hasItem)">
+                <img
+                  style="display: block; margin: auto; margin-top: 30px;"
+                  src="/assets/images/empty-box.png"
+                  alt=""
+                />
+              </ng-container>
+            </div>
+          </div>
+          <div class="queries--detail">
+            <ng-container *ngIf="payload.messageSelected">
+              <div class="infomation">
+                <img
+                  [ngStyle]="{
+                    'background-image': payload.messageSelected.conversation.product.getImageBackgroundStyle()
+                  }"
+                  src="/assets/images/mask.png"
+                  alt=""
+                />
+                <div class="detail">
+                  <p class="brand">Chanel</p>
+                  <p class="name">
+                    {{ payload.messageSelected.conversation.product.name }}
+                  </p>
+                  <p class="date">
+                    {{ payload.messageSelected.created_at | date: 'MMM d, y' }}
+                  </p>
+                </div>
+              </div>
+              <div class="scrollbar-detail" id="style-4">
+                <div class="force-overflow-detail">
+                  <div class="asked">
+                    <p class="label">
+                      {{ payload.messageSelected.user.email }} asked:
+                    </p>
+                    <p class="content">
+                      “{{ payload.messageSelected.message }}”
+                    </p>
+                  </div>
+                  <div
+                    class="replied"
+                    *ngIf="payload.messageSelected.reply_mess | hasItem"
+                  >
+                    <p class="label">You replied:</p>
+                    <p
+                      class="content"
+                      *ngFor="let i of payload.messageSelected.reply_mess"
+                    >
+                      {{ i.message }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="replied-box">
+                <textarea
+                  [(ngModel)]="payload.replyMessage"
+                  placeholder="Answer the query"
+                  rows="10"
+                ></textarea>
+                <button class="btn-post__answer" (click)="postMessage()">
+                  POST ANSWER
+                </button>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="!payload.messageSelected">
+              <p class="resource-not-found">Let select a message.</p>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

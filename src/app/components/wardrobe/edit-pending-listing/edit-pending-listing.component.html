@@ -1,0 +1,232 @@
+<div class="edit-pendding-listing" *ngIf="payload.fetched">
+  <div class="product__detail--back container">
+    <p>
+      <a [routerLink]="['/', 'wardrobe', 'pending-listing', productId]"
+        ><i class="fa fa-angle-left" aria-hidden="true"></i> Back to Product</a
+      >
+    </p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3 product__detail__left-col">
+        <h1>Edit Listing</h1>
+        <img width="125px" src="{{ payload.item.images[0] }}" alt="" />
+        <h3 class="title">
+          {{ payload.item.designer ? payload.item.designer.name : 'Undefined' }}
+        </h3>
+        <p class="desc">{{ payload.item.getName() }}</p>
+      </div>
+      <div class="col-12 col-md-9 product__detail__right-col">
+        <div class="notification" *ngIf="!resellType">
+          <p>
+            Pending Listing - some information are missing,
+            <span>complete your listing here</span>
+          </p>
+        </div>
+        <div class="item--info">
+          <div class="desc">
+            <div class="condition-desc">
+              <div class="left-col">
+                <label
+                  [ngClass]="{ 'first-label': !resellType }"
+                  class="label"
+                  for=""
+                  >PHOTOS</label
+                >
+                <p class="left-col__desc">Choose a pricing for your item</p>
+                <p *ngIf="!resellType" class="left-col__action">
+                  - Add more Photos
+                </p>
+              </div>
+              <div class="right-col">
+                <div class="item--images">
+                  <ng-container *ngIf="payload.item.images | hasItem">
+                    <div
+                      class="item-image"
+                      *ngFor="let item of payload.item.images"
+                    >
+                      <img
+                        [ngStyle]="{
+                          'background-image': 'url(' + item + ')'
+                        }"
+                        src="/assets/images/mask.png"
+                        alt=""
+                      />
+                    </div>
+                  </ng-container>
+
+                  <div
+                    class="item-image btn-add__more"
+                    uploadImage
+                    [(inProgress)]="uploading"
+                    subProgress="process"
+                    subError="error"
+                    accept="png|jpg|jpeg"
+                    allowMaxSize="2"
+                    multiple="true"
+                    (onComplete)="completeUpload($event)"
+                    (onError)="errorUploadAvatar($event)"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item--info pricing">
+          <div class="desc">
+            <div class="condition-desc">
+              <div class="left-col">
+                <label class="label" for="">PRICING</label>
+                <p class="left-col__desc">Choose a pricing for your item</p>
+              </div>
+              <div class="right-col">
+                <div class="price-group">
+                  <div class="price-item">
+                    <p>Retail Price</p>
+                    <div class="btn-input">
+                      <input
+                        readonly
+                        [(ngModel)]="payload.item.original_price"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="price-item selling">
+                    <p>Selling Price</p>
+                    <div class="btn-input">
+                      <input
+                        readonly
+                        [(ngModel)]="payload.item.price.price"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="price-edit">
+                  <div class="range">
+                    <input
+                      id="price"
+                      type="range"
+                      [min]="
+                        estimatePrice(payload.item.original_price).min_price
+                      "
+                      [max]="
+                        estimatePrice(payload.item.original_price).max_price
+                      "
+                      steps="1"
+                      #sellingPrice
+                      [value]="payload.item.price.price"
+                      (change)="priceChange(sellingPrice.value)"
+                    />
+                  </div>
+
+                  <ul class="range-labels">
+                    <li class="active selected min-price">
+                      ${{
+                        estimatePrice(payload.item.original_price).min_price
+                      }}
+                      <span>Sell Faster</span>
+                    </li>
+                    <li class="max-price">
+                      ${{
+                        estimatePrice(payload.item.original_price).max_price
+                      }}
+                      <span>Sell Slower</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item--info item--info--last">
+          <div class="desc">
+            <div class="condition-desc">
+              <div class="left-col">
+                <label class="label" for="">CONDITION</label>
+                <p class="left-col__desc">Choose the condition of your item</p>
+              </div>
+              <div class="right-col">
+                <div class="condition-edit">
+                  <div class="range">
+                    <input
+                      id="conditions"
+                      type="range"
+                      min="1"
+                      max="5"
+                      steps="1"
+                      #conditionPending
+                      [value]="payload.item.getConditionMask()"
+                      (change)="conditionChange(conditionPending.value)"
+                    />
+                  </div>
+
+                  <ul class="range-labels">
+                    <li
+                      *ngFor="let item of conditions"
+                      (click)="conditionChange(item.index)"
+                    >
+                      {{ item.name }}
+                      <div class="condition-desc">
+                        <p class="name">{{ item.name }}</p>
+                        <p class="desc">
+                          {{ getConditionDescription(item.key) }}
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="right__line"></div>
+                <div class="sign__of__wear">
+                  <p>Does this item have any signs of wear?</p>
+                  <a
+                    (click)="displaySigns('yes')"
+                    id="signs-yes"
+                    class="btn-signs btn-yes focus"
+                    >Yes</a
+                  >
+                  <a
+                    (click)="displaySigns('no')"
+                    id="signs-no"
+                    class="btn-signs btn-no"
+                    >No</a
+                  >
+                </div>
+                <div *ngIf="checkSingsWear" class="sign__of__wear">
+                  <p>Check any signs of wear</p>
+                  <div
+                    *ngFor="let item of payload.item.signs_of_wear"
+                    class="sign"
+                    [ngClass]="{ checked: item.checked }"
+                    (click)="signSelected(item)"
+                  >
+                    {{ item.title }}
+                  </div>
+                  <div class="sign btn-add">
+                    <input
+                      [(ngModel)]="new_sign"
+                      placeholder="Add your own item"
+                      type="text"
+                    />
+                    <span (click)="addSign(new_sign)">Add</span>
+                  </div>
+                </div>
+                <div class="sign__of__wear">
+                  <p>Please describe wear or damage in detail</p>
+                  <textarea
+                    [(ngModel)]="payload.item.description"
+                    placeholder="Describe the item ..."
+                    rows="5"
+                  ></textarea>
+                </div>
+                <a (click)="publishListing()" class="btn-publish"
+                  >Publish Listing</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

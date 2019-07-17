@@ -1,0 +1,66 @@
+<div class="wallet__choose-payment" *ngIf="payload.fetched">
+  <div class="product__detail--back container">
+    <p>
+      <a routerLink="/wallet"
+        ><i class="fa fa-angle-left" aria-hidden="true"></i> Back to Wallet</a
+      >
+    </p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3 wardrobe__left-col">
+        <h1 class="title">
+          <p>Choose</p>
+          <p>Payment</p>
+        </h1>
+      </div>
+      <div class="col-12 col-md-9 wardrobe__right-col">
+        <h2>
+          Choose between cash or shopping credits and withdraw your payment from
+          your wallet.
+        </h2>
+        <div class="optional cash" (click)="choosePayment('cash')">
+          <p class="price" *ngIf="payload.item">
+            ${{ payload.item.transaction_histories[0].amount_cash }}
+          </p>
+          <p class="method">Cash</p>
+        </div>
+        <div class="optional credits" (click)="choosePayment('credit')">
+          <p class="price">
+            ${{ payload.item.transaction_histories[0].amount_credit }}
+          </p>
+          <p class="method">Credits</p>
+        </div>
+        <div style="clear: both;"></div>
+        <div class="bank__account" *ngIf="paymentMethod === 'cash'">
+          <a
+            routerLink="/payment-account"
+            [queryParams]="{ preItem: productId }"
+          >
+            <h3 class="bank__account-label">Bank Account Details</h3>
+            <div class="bank__account-detail">
+              <p *ngIf="isEmpty(payload.accountPayment)">
+                Add your bank account
+              </p>
+              <p *ngIf="!isEmpty(payload.accountPayment)">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span class="split"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span class="split"></span>
+                {{ lastFour(payload.accountPayment.account_number) }}
+              </p>
+            </div>
+            <p class="bank__account-notify">
+              Please make sure your payment details are updated.
+            </p>
+          </a>
+        </div>
+        <button (click)="widthDraw()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

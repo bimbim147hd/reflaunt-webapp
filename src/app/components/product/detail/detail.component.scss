@@ -1,0 +1,115 @@
+.post-detail-section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .col-left {
+    .image-product {
+      height: auto;
+      width: 100%;
+    }
+    .function {
+      padding: 12px 0px;
+      button {
+        padding: 5px 40px;
+        border: solid #ff0000;
+        background-color: #f0f3f2;
+        a {
+          color: #ff0000;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-weight: bold;
+          font-size: 14px;
+        }
+      }
+      .btn-share {
+        padding: 5px 30px;
+        float: right;
+        i {
+          padding-right: 5px;
+        }
+      }
+      button:hover {
+        background-color: #ff0000;
+        a {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+  .col-right {
+    background-color: #fff;
+    padding: 20px 31px;
+    h1 {
+      font-size: 1.6rem;
+      margin: 0;
+    }
+    .entry-author {
+      padding: 5px 0px;
+      a {
+        color: #000;
+      }
+      span {
+        font-size: 18px;
+      }
+    }
+    .entry-excerpt {
+      font-size: 18px;
+      font-family: 'arial-bold';
+      margin-bottom: 14px;
+      color: #000000;
+      line-height: 1.3;
+      font-weight: bold;
+    }
+    .entry-metadata {
+      border-top: 1px solid #d7d7d7;
+      border-bottom: 1px solid #d7d7d7;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding-top: 20px;
+      padding-bottom: 15px;
+      line-height: 25px;
+      .entry-dimensions {
+        .col-title {
+          font-weight: bold;
+        }
+        .col-content {
+          padding-left: 16px;
+        }
+      }
+      .entry-medium {
+        .col-title {
+          font-weight: bold;
+        }
+        .col-content {
+          padding-left: 50px;
+        }
+      }
+      .entry-status {
+        font-weight: bold;
+        color: #ff0000;
+      }
+    }
+    .entry-action {
+      .entry-action__price {
+        min-width: 50%;
+        float: left;
+        font-size: 24px;
+        line-height: 50px;
+      }
+      .vc-btn {
+        float: left;
+        width: 50%;
+        text-transform: uppercase;
+        color: #fff;
+        padding: 12px 10px;
+        border-radius: 0;
+        font-size: 14px;
+        font-weight: bold;
+        background-color: #ff0000;
+        cursor: pointer;
+      }
+      .vc-btn:hover {
+        background-color: #cc0000;
+      }
+    }
+  }
+}

@@ -1,0 +1,207 @@
+@import 'font';
+
+.wallet__choose-payment {
+  padding: 80px 0 50px 0;
+  font-family: $lato-regular;
+  .product__detail--back {
+    p {
+      a {
+        color: #000000;
+      }
+      cursor: pointer;
+      margin: 0;
+      margin-top: 63px;
+      margin-bottom: 22px;
+      font-size: 12px;
+      line-height: normal;
+      letter-spacing: 0.19px;
+      i {
+        margin-right: 2px;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .wardrobe__left-col {
+    width: 2px;
+    padding-right: 30px;
+    border-right: solid 1px #dbdbdb;
+    .title {
+      font-family: $playfair-display;
+      font-size: $large;
+      font-weight: bold;
+      line-height: normal;
+      letter-spacing: 0.7px;
+      color: #000000;
+    }
+  }
+  .wardrobe__right-col {
+    padding-left: 70px;
+    h2 {
+      color: #000000;
+      margin-bottom: 30px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .optional {
+      background-color: #ffffff;
+      padding: 20px 15px;
+      float: left;
+      cursor: pointer;
+      position: relative;
+      width: 284px;
+      object-fit: contain;
+      border-radius: 3px;
+      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.12);
+      p {
+        margin-bottom: 0;
+        font-weight: bold;
+        letter-spacing: 0.32px;
+        object-fit: contain;
+        font-size: 23px;
+        color: #9b9b9b;
+      }
+      p.method {
+        font-size: 13px;
+        text-transform: uppercase;
+        object-fit: contain;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+      &:hover {
+        border: 1px solid #000000;
+        width: 284px;
+        padding: 19px 14px;
+        p {
+          color: #000000;
+        }
+        &:before {
+          content: '\f00c';
+          font-family: FontAwesome;
+          position: absolute;
+          right: 10px;
+          bottom: 5px;
+        }
+      }
+    }
+    .optional.credits {
+      margin-left: 23px;
+    }
+    .optional.active {
+      border: 1px solid #000;
+      width: 259px;
+      padding: 19px 14px;
+      p {
+        color: #000;
+      }
+      &:before {
+        content: '\f00c';
+        font-family: FontAwesome;
+        position: absolute;
+        right: 10px;
+        bottom: 5px;
+      }
+    }
+    .bank__account {
+      margin-top: 60px;
+      a {
+        color: #000;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      cursor: pointer;
+      .bank__account-label {
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        color: #000000;
+        font-weight: 500;
+      }
+      .bank__account-detail {
+        height: 45px;
+        border: solid 1px #e7e7e7;
+        background-color: #ffffff;
+        width: 566px;
+        line-height: 45px;
+        padding: 0 50px;
+        position: relative;
+        &:before {
+          position: absolute;
+          content: '';
+          width: 10px;
+          height: 10px;
+          background-image: url('/assets/images/bank.png');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          left: 25px;
+          top: 50%;
+          margin-top: -5px;
+        }
+        p {
+          font-weight: 500;
+          object-fit: contain;
+          font-size: $small;
+          letter-spacing: -0.22px;
+          color: #4a4a4a;
+          font-family: $SFProText;
+          span {
+            background-color: #9b9b9b;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 3px;
+          }
+          span.split {
+            margin-right: 10px;
+          }
+        }
+      }
+      .bank__account-notify {
+        font-weight: 500;
+        margin-top: 15px;
+        object-fit: contain;
+        font-size: 12px;
+        line-height: 1.67;
+        letter-spacing: -0.2px;
+        color: rgba(0, 0, 0, 0.85);
+      }
+    }
+    button {
+      width: 566px;
+      height: 40px;
+      border: none;
+      background-color: #000000;
+      margin-top: 30px;
+      cursor: pointer;
+      font-size: $small;
+      font-weight: bold;
+      color: #ffffff;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 767px) {
+  .wallet {
+    padding-top: 68px;
+    .wardrobe__left-col {
+      border: none;
+      min-height: 300px;
+      border-bottom: solid 1px #dbdbdb;
+      margin-top: 40px;
+    }
+    .wardrobe__right-col {
+      padding-left: 15px;
+      margin-top: 65px;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+}

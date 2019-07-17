@@ -1,0 +1,22 @@
+<div class="notification" *ngIf="payload.fetched">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 wardrobe__left-col">
+        <h1 class="title">Notification</h1>
+        <div class="notification-group">
+          <div class="notication" *ngFor="let item of payload.items">
+            <img
+              src="{{ item.icon ? item.icon : '/assets/images/17-512.png' }}"
+              alt=""
+            />
+            <span class="content">
+              <p class="title">{{ item.title }}</p>
+              <p class="desc">{{ item.content }}</p>
+              <span class="date">{{ timeFormat(item.created_at) }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

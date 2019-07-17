@@ -1,0 +1,70 @@
+.box {
+  border: 1px solid #d2d2d2;
+  a {
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .image {
+    img {
+      max-height: 263px;
+
+      width: 100%;
+      background-size: cover;
+      background-position-x: 50%;
+      background-position-y: top;
+    }
+  }
+
+  .box-panel {
+    background: #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    .content-wrapper {
+      padding: 8px 15px 3px 15px;
+
+      h3 {
+        a {
+          font-size: 18px;
+          color: #555555;
+          display: block;
+          margin-bottom: 10px;
+          height: 24px;
+          line-height: 1.6;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        a:hover {
+          color: #ff0000;
+        }
+      }
+      .amount_installed {
+        p {
+          text-align: center;
+          color: #000;
+          font-size: 12px;
+        }
+      }
+      .install-product {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        button {
+          background: #c0392b;
+          color: #fff;
+          font-size: 14px;
+        }
+        button:hover {
+          background: #e74c3c;
+        }
+      }
+    }
+  }
+}
+
+.box:hover {
+  box-shadow: 2px 1px 38px 2px #bdbdbd;
+  cursor: pointer;
+}
